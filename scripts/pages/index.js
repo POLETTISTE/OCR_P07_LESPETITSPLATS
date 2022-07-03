@@ -3,38 +3,28 @@ let recipes;
 
 async function getRecipes() {
   await fetch('data/recipes.json')
-    .then(function(res) {
-      if (res.ok) {
-        return res.json();
-      }
-    })
-    .then(function(data) {
+    .then((res) => res.json())
+    .then((data) => {
       recipes = data.recipes;
-      console.log(data.recipes);
-      console.log(recipes);
     })
-    .catch((err) => {
-      console.log('error in the function getRecipes()', err);
-    });
+    .catch((err) => err);
 
-  return {recipes};
-
+  return { recipes };
 }
 
-// async function displayData(recipes) {
-//   const photographersSection = document.querySelector(".photographer_section");
+async function displayData(recipes) {
+  const RecipesSection = document.querySelector(".recipes");
 
-//   recipes.forEach((recipe) => {
-//     const photographerModel = new photographersFactory(recipe);
-//     const userCardDOM = photographerModel.getUserCardDOM();
-//     photographersSection.appendChild(userCardDOM);
-//   });
-// }
+  recipes.forEach((recipe) => {
+    const recipeModel = new Recipe(recipe);
+    const recipeCardDOM = recipeModel.getRecipeCard();
+    RecipesSection.appendChild(recipeCardDOM);
+  });
+}
 
 async function init() {
-        
   await getRecipes();
-//   await displayData(recipes);
+  await displayData(recipes);
 }
 
 init();
