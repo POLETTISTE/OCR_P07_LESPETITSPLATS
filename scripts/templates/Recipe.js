@@ -12,11 +12,19 @@ class Recipe {
   }
 
   getRecipeCard() {
+
     const card = document.createElement('article');
+
     const nameRecipe = document.createElement('h2');
     nameRecipe.textContent = this._name;
 
+    const timeRecipe = document.createElement('h2');
+    timeRecipe.textContent = this._time;
+
+
     card.appendChild(nameRecipe);
+    card.appendChild(timeRecipe);
+
 
     return (card);
   }
