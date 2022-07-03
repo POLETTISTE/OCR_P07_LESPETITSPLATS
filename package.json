@@ -1,0 +1,23 @@
+{
+  "name": "ocr_p7_lespetitsplats",
+  "version": "1.0.0",
+  "description": "P7 ocr",
+  "main": "index.js",
+  "scripts": {
+    "lint": "./node_modules/.bin/eslint ." 
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/POLETTISTE/OCR_P7_LESPETITSPLATS.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/POLETTISTE/OCR_P7_LESPETITSPLATS/issues"
+  },
+  "homepage": "https://github.com/POLETTISTE/OCR_P7_LESPETITSPLATS#readme",
+  "devDependencies": {
+    "eslint": "^8.19.0",
+    "eslint-plugin-react": "^7.30.1"
+  }
+}
