@@ -4,12 +4,16 @@ module.exports = {
     es2021: true,
   },
   extends: [
-    'airbnb-base',
+    "eslint:recommended"
   ],
   parserOptions: {
     ecmaVersion: 'latest',
-    sourceType: 'module',
   },
   rules: {
-  },
+    "eqeqeq": "warn",
+    "indent": ["warn", 2, { "SwitchCase": 1 }],
+    "multiline-ternary": ["warn", "always-multiline"],
+    "no-undef": "off",
+    "no-unused-vars": "off",
+  }
 };

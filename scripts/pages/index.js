@@ -12,8 +12,8 @@ async function getRecipes() {
   return { recipes };
 }
 
-async function displayData(recipes) {
-  const RecipesSection = document.querySelector(".recipes");
+async function displayData() {
+  const RecipesSection = document.querySelector('.recipes');
 
   recipes.forEach((recipe) => {
     const recipeModel = new Recipe(recipe);
@@ -24,7 +24,7 @@ async function displayData(recipes) {
 
 async function init() {
   await getRecipes();
-  await displayData(recipes);
+  await displayData();
 }
 
 init();
