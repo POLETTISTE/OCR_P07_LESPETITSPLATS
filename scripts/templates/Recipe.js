@@ -15,16 +15,21 @@ class Recipe {
 
     const card = document.createElement('article');
 
+    const pictureRecipe = document.createElement('img');
+    pictureRecipe.setAttribute('src', 'assets/images/image.jpeg');
+    pictureRecipe.setAttribute('alt', ' ');
+    pictureRecipe.classList.add('picture')
+
+
     const nameRecipe = document.createElement('h2');
     nameRecipe.textContent = this._name;
 
     const timeRecipe = document.createElement('h2');
     timeRecipe.textContent = this._time;
 
-
+    card.appendChild(pictureRecipe);
     card.appendChild(nameRecipe);
     card.appendChild(timeRecipe);
-
 
     return (card);
   }
