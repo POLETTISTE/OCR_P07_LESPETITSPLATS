@@ -1,14 +1,64 @@
+body {
+  box-sizing: border-box;
+  font-size: Lato;
+}
+
 h1 {
   color: red;
   font: 900;
 }
 
 h2 {
-  color: green;
+  font-size: 18px;
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+  margin: 0;
+}
+
+p {
+  font-size: 12px;
+  margin: 0;
+}
+
+span {
+  font-weight: 400;
+}
+
+article {
+  min-width: 380px;
+  height: 364px;
+  background-color: #E7E7E7;
+  margin: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .picture {
-  width: 100px;
+  height: 178px;
+  background-color: #C7BEBE;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.ingredients {
+  height: 105px;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+}
+
+.descriptionRecipe {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  height: 105px;
+  padding: 0;
+}
+
+.bottomCardInfos {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .logo {

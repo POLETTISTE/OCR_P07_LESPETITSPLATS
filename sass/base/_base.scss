@@ -1,4 +1,25 @@
+body{
+    box-sizing: border-box;
+    font-size: Lato;
+}
 h1{
     color: red;
     font: 900;
+}
+
+h2{
+    font-size:18px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    margin: 0;
+}
+
+p{
+    font-size: 12px;
+    margin:0;
+    // font-family: 'Roboto', sans-serif;
+}
+
+span{
+    font-weight: 400;
 }

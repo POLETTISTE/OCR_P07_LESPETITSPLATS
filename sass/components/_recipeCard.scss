@@ -1,7 +1,38 @@
-h2 {
-    color:green;
+article{
+    min-width:380px;
+    height: 364px;
+    background-color: #E7E7E7;
+    margin: 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .picture{
-    width:100px;
+    height:178px;
+    background-color: #C7BEBE;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.ingredients{
+    height:105px;
+    padding:0;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+}
+
+.descriptionRecipe{
+    text-overflow: ellipsis;
+    // white-space: nowrap;
+    overflow: hidden;
+    height: 105px;
+    padding:0;
+}
+
+
+.bottomCardInfos{
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }

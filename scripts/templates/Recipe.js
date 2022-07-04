@@ -13,26 +13,37 @@ class Recipe {
 
 //CREATION DE LA CARTE RECETTE
   getRecipeCard() {
-
     const card = document.createElement('article');
+    card.classList.add('col-3', 'p-0');
 
     //IMAGE DE LA RECETTE
-    const pictureRecipe = document.createElement('img');
-    pictureRecipe.setAttribute('src', 'assets/images/image.jpeg');
-    pictureRecipe.setAttribute('alt', ' ');
+    const pictureRecipe = document.createElement('div');
     pictureRecipe.classList.add('picture');
+
+    //MILIEU DE CARTE NOM / TEMPS DE PREPARATION DE LA RECETTE
+
+    const middleCardInfos = document.createElement('div');
+    middleCardInfos.classList.add('middleCardInfos','d-flex', 'flex-row', 'justify-content-between','m-3');
+    
 
     //NOM DE LA RECETTE
     const nameRecipe = document.createElement('h2');
+    nameRecipe.classList.add('col-8','pl-0');
     nameRecipe.textContent = this._name;
 
     //TEMPS PREPARATION DE LA RECETTE
     const timeRecipe = document.createElement('h2');
-    // timeRecipe.textContent =this._time;
+    timeRecipe.classList.add('col-4','pr-0','text-right')
     timeRecipe.innerHTML =`<i class="fa-solid fa-clock"></i> ${this._time} min`;
+
+    //BAS DE CARTE INGREDIENTS / DESCRIPTION DE LA RECETTE
+
+    const bottomCardInfos = document.createElement('div');
+    bottomCardInfos.classList.add('bottomCardInfos','d-flex', 'flex-row', 'm-3', 'ml-0', 'mr-0');
     
     //LISTE DES INGREDIENTS DE LA RECETTE
     const ingredientsRecipe = document.createElement('div');
+    ingredientsRecipe.classList.add('ingredients','col-7')
     this._ingredients.forEach(element => {
       let liste = document.createElement('p');
       if (element.quantity === undefined) {
@@ -43,20 +54,25 @@ class Recipe {
       if (element.unit === undefined) {
         element.unit="";
       }
-      liste.innerHTML = `${element.ingredient}${element.quantity} ${element.unit}`;
+      liste.innerHTML = `${element.ingredient}<span>${element.quantity} ${element.unit}</span>`;
       ingredientsRecipe.appendChild(liste);
     });
 
     //DESCRIPTION DE LA RECETTE
     const descriptionRecipe = document.createElement('p');
+    descriptionRecipe.classList.add('descriptionRecipe','col-5');
     descriptionRecipe.textContent = this._description;
   
 
     card.appendChild(pictureRecipe);
-    card.appendChild(nameRecipe);
-    card.appendChild(timeRecipe);
-    card.appendChild(ingredientsRecipe);
-    card.appendChild(descriptionRecipe);
+    card.appendChild(middleCardInfos);
+    card.appendChild(bottomCardInfos);
+
+    middleCardInfos.appendChild(nameRecipe);
+    middleCardInfos.appendChild(timeRecipe);
+
+    bottomCardInfos.appendChild(ingredientsRecipe);
+    bottomCardInfos.appendChild(descriptionRecipe);
 
     return (card);
   }
