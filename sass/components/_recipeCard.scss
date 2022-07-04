@@ -1,6 +1,6 @@
 article{
     min-width:380px;
-    height: 364px;
+    min-height: 364px;
     background-color: #E7E7E7;
     margin: 10px;
     border-top-left-radius: 5px;
@@ -18,17 +18,27 @@ article{
 
 .ingredients{
     height:105px;
+    line-height: 14.4px;
     padding:0;
     font-family: 'Lato', sans-serif;
     font-weight: 700;
 }
 
+.time{
+    font-weight: 700;
+}
+
 .descriptionRecipe{
-    text-overflow: ellipsis;
-    // white-space: nowrap;
-    overflow: hidden;
-    height: 105px;
+    height: 70px;
+    width:171px;
     padding:0;
+    padding-left: 3px;
+    line-height: 12px;
+    font-family: 'Roboto', sans-serif;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6;
+    overflow: hidden;
 }
 
 

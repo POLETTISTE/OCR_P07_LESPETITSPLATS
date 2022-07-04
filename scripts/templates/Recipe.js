@@ -23,7 +23,7 @@ class Recipe {
     //MILIEU DE CARTE NOM / TEMPS DE PREPARATION DE LA RECETTE
 
     const middleCardInfos = document.createElement('div');
-    middleCardInfos.classList.add('middleCardInfos','d-flex', 'flex-row', 'justify-content-between','m-3');
+    middleCardInfos.classList.add('middleCardInfos','d-flex', 'justify-content-around', 'p-3');
     
 
     //NOM DE LA RECETTE
@@ -33,17 +33,18 @@ class Recipe {
 
     //TEMPS PREPARATION DE LA RECETTE
     const timeRecipe = document.createElement('h2');
-    timeRecipe.classList.add('col-4','pr-0','text-right')
-    timeRecipe.innerHTML =`<i class="fa-solid fa-clock"></i> ${this._time} min`;
+
+    timeRecipe.classList.add('time','col-4','pr-0','text-right')
+    timeRecipe.innerHTML =`<i class="fa-regular fa-clock"></i> ${this._time} min`;
 
     //BAS DE CARTE INGREDIENTS / DESCRIPTION DE LA RECETTE
 
     const bottomCardInfos = document.createElement('div');
-    bottomCardInfos.classList.add('bottomCardInfos','d-flex', 'flex-row', 'm-3', 'ml-0', 'mr-0');
+    bottomCardInfos.classList.add('bottomCardInfos','d-flex','justify-content-between','pl-3','pr-3','pb-3', 'pt-0');
     
     //LISTE DES INGREDIENTS DE LA RECETTE
     const ingredientsRecipe = document.createElement('div');
-    ingredientsRecipe.classList.add('ingredients','col-7')
+    ingredientsRecipe.classList.add('ingredients','col-6')
     this._ingredients.forEach(element => {
       let liste = document.createElement('p');
       if (element.quantity === undefined) {
@@ -60,7 +61,7 @@ class Recipe {
 
     //DESCRIPTION DE LA RECETTE
     const descriptionRecipe = document.createElement('p');
-    descriptionRecipe.classList.add('descriptionRecipe','col-5');
+    descriptionRecipe.classList.add('descriptionRecipe','col-6');
     descriptionRecipe.textContent = this._description;
   
 
