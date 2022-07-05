@@ -1,0 +1,39 @@
+
+.form-control{
+    width:1240px;
+    height: 69px;
+    border:none;
+    background-color: #E7E7E7;
+
+
+}
+
+#oSaisie {
+    background-color: #E7E7E7;
+    &:focus{
+        outline:0px;
+        -webkit-appearance:none;
+        box-shadow: none;
+        font-family: Lato;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 22px;
+        letter-spacing: 0em;
+        text-align: left;
+        color: black;
+    }
+}
+
+
+
+
+.btn-valid-search{
+    padding:0;
+    padding-right: 15px;
+    font-size: 32.06px;
+    height: 100%;
+    background-color: transparent;
+    border:none;
+    z-index: 100;
+    background-color: #E7E7E7;
+}

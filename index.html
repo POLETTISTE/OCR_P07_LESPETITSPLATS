@@ -18,11 +18,13 @@
    </header>
    <main>
     <section class="container-fluid search">
-      <form class="w-100" action="/recherche/" method="get">
+      <form class="w-100" action="#" method="get">
         <fieldset>    
           <div class="input-group">
-            <input id="oSaisie" name="oSaisie" type="text" class="form-control " aria-label="Saisie de mots clés" required="required">
-            <i class="fa-solid fa-magnifying-glass"></i>
+            <input id="oSaisie" name="oSaisie" type="text" class="form-control " aria-label="Saisie de mots clés" placeholder="Rechercher une recette" required="required">
+            <div class="loupe">
+              <button class="btn-valid-search"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
           </div>
         </fieldset> 
       </form>
@@ -31,11 +33,37 @@
       <p>liste hashtags</p>
     </div>
     <div class="container-fluid filters">
-      <p>filtres</p>
-    </div>
-    <div class="container-fluid">
-      <div class="recipes">
+      <!-- BOUTON FILTRE INGREDIENTS -->
+      <div class="dropdown">
+        <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Ingrédients
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <p class="dropdown-item" href="#">Action</p>
+        </div>
       </div>
+
+      <!-- BOUTON FILTRE APPAREILS -->
+      <div class="dropdown">
+        <a class="btn btn-success dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Appareils
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <p class="dropdown-item" href="#">Action</p>
+        </div>
+      </div>
+
+      <!-- BOUTON FILTRE USTENSILES -->
+      <div class="dropdown">
+        <a class="btn btn-danger dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Ustensiles
+        </a>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+          <p class="dropdown-item" href="#">Action</p>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid recipes d-flex flex-wrap justify-content-between ">
     </div>
    </main>
    

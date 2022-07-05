@@ -1,0 +1,23 @@
+.filters{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 80px;
+}
+
+#dropdownMenuLink{
+    margin-right: 30px;
+    width:170px;
+    height:69px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &::after{
+        margin-left: 30px;
+    }
+    &:focus,
+    &:hover{
+        outline:0px;
+        -webkit-appearance:none;
+        box-shadow: none;
+    }
+}
