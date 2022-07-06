@@ -1,0 +1,159 @@
+body {
+  box-sizing: border-box;
+  font-size: Lato;
+}
+
+h1 {
+  color: red;
+  font: 900;
+}
+
+h2 {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.6px;
+  margin: 0;
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21.6px;
+  margin: 0;
+}
+
+p {
+  font-size: 12px;
+  margin: 0;
+}
+
+span {
+  font-weight: 400;
+}
+
+.btn {
+  font-weight: 700;
+}
+
+.btn-danger {
+  background-color: #ED6454;
+}
+
+.btn-success {
+  background-color: #68D9A4;
+}
+
+.btn-primary {
+  background-color: #3282F7;
+}
+
+article {
+  min-width: 380px;
+  min-height: 364px;
+  background-color: #E7E7E7;
+  margin-bottom: 40px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.picture {
+  height: 178px;
+  background-color: #C7BEBE;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.ingredients {
+  height: 105px;
+  line-height: 14.4px;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+}
+
+.time {
+  font-weight: 700;
+}
+
+.descriptionRecipe {
+  height: 70px;
+  width: 171px;
+  padding: 0;
+  padding-left: 3px;
+  line-height: 12px;
+  font-family: "Roboto", sans-serif;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 6;
+  overflow: hidden;
+}
+
+.bottomCardInfos {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.logo {
+  width: 268px;
+}
+
+.form-control {
+  width: 1240px;
+  height: 69px;
+  border: none;
+  background-color: #E7E7E7;
+}
+
+#oSaisie {
+  background-color: #E7E7E7;
+}
+#oSaisie:focus {
+  outline: 0px;
+  -webkit-appearance: none;
+  box-shadow: none;
+  font-family: Lato;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: black;
+}
+
+.btn-valid-search {
+  padding: 0;
+  padding-right: 15px;
+  font-size: 32.06px;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  z-index: 100;
+  background-color: #E7E7E7;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 80px;
+}
+
+#dropdownMenuLink {
+  font-size: 18px;
+  margin-right: 30px;
+  width: 170px;
+  height: 69px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#dropdownMenuLink::after {
+  margin-left: 30px;
+}
+#dropdownMenuLink:focus, #dropdownMenuLink:hover {
+  outline: 0px;
+  -webkit-appearance: none;
+  box-shadow: none;
+}/*# sourceMappingURL=main.css.map */

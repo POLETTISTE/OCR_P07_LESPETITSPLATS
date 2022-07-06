@@ -1,9 +1,13 @@
-function Recipe {
-  const { id, name, servings, ingredients, time, decription, appliance, ustensils } = data
+//NOUVELLE FONCTION REMPLACE CLASS RECIPE
+
+
+function Recipe(data) {
+  
+  const { id, name, servings, ingredients, time, description, appliance, ustensils } = data;
 
 
 //CREATION DE LA CARTE RECETTE
-  getRecipeCard() {
+  function getRecipeCard() {
     const card = document.createElement('article');
     card.classList.add('col-3', 'p-0');
 
@@ -20,13 +24,13 @@ function Recipe {
     //NOM DE LA RECETTE
     const nameRecipe = document.createElement('h2');
     nameRecipe.classList.add('col-8','pl-0');
-    nameRecipe.textContent = this._name;
+    nameRecipe.textContent = name;
 
     //TEMPS PREPARATION DE LA RECETTE
     const timeRecipe = document.createElement('h2');
 
     timeRecipe.classList.add('time','col-4','pr-0','text-right')
-    timeRecipe.innerHTML =`<i class="fa-regular fa-clock"></i> ${this._time} min`;
+    timeRecipe.innerHTML =`<i class="fa-regular fa-clock"></i> ${time} min`;
 
     //BAS DE CARTE INGREDIENTS / DESCRIPTION DE LA RECETTE
 
@@ -36,7 +40,7 @@ function Recipe {
     //LISTE DES INGREDIENTS DE LA RECETTE
     const ingredientsRecipe = document.createElement('div');
     ingredientsRecipe.classList.add('ingredients','col-6')
-    this._ingredients.forEach(element => {
+    ingredients.forEach(element => {
       let liste = document.createElement('p');
       if (element.quantity === undefined) {
         element.quantity="";
@@ -53,7 +57,7 @@ function Recipe {
     //DESCRIPTION DE LA RECETTE
     const descriptionRecipe = document.createElement('p');
     descriptionRecipe.classList.add('descriptionRecipe','col-6');
-    descriptionRecipe.textContent = this._description;
+    descriptionRecipe.textContent = description;
   
 
     card.appendChild(pictureRecipe);
@@ -68,5 +72,6 @@ function Recipe {
 
     return (card);
   }
-  return {id, name, servings, ingredients, time, decription, appliance, ustensils}
+
+  return { id, name, servings, ingredients, time, description, appliance, ustensils, getRecipeCard }
 }
