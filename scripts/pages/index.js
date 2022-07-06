@@ -18,8 +18,6 @@
 
 // displayCards(recipes);
 
-let recipes;
-
 async function getRecipes() {
   await fetch('data/recipes.json')
     .then((res) => res.json())
@@ -31,7 +29,7 @@ async function getRecipes() {
   return { recipes };
 }
 
-async function displayData() {
+async function displayCards(recipes) {
   const RecipesSection = document.querySelector('.recipes');
 
   recipes.forEach((recipe) => {
@@ -43,7 +41,7 @@ async function displayData() {
 
 async function init() {
   await getRecipes();
-  await displayData();
+  displayCards(recipes);
 }
 
 init();
