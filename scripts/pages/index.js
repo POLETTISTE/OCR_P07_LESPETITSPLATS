@@ -17,20 +17,11 @@
 // })
 
 // displayCards(recipes);
+const RecipesSection = document.querySelector('.recipes');
 
-async function getRecipes() {
-  await fetch('data/recipes.json')
-    .then((res) => res.json())
-    .then((data) => {
-      recipes = data.recipes;
-    })
-    .catch((err) => err);
-
-  return { recipes };
-}
 
 async function init() {
-  const { recipes } = await getRecipes();
+  const { recipes, ingredients } = await getRecipes();
   displayCards(recipes);
 }
 
