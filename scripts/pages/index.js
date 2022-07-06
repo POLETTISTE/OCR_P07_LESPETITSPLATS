@@ -33,14 +33,14 @@ async function displayCards(recipes) {
   const RecipesSection = document.querySelector('.recipes');
 
   recipes.forEach((recipe) => {
-    const recipeModel = new Recipe(recipe);
+    const recipeModel = Recipe(recipe);
     const recipeCardDOM = recipeModel.getRecipeCard();
     RecipesSection.appendChild(recipeCardDOM);
   });
 }
 
 async function init() {
-  await getRecipes();
+  const { recipes } = await getRecipes();
   displayCards(recipes);
 }
 

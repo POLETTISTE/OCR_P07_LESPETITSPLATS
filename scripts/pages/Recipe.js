@@ -6,7 +6,7 @@ function Recipe(data) {
   const { id, name, servings, ingredients, time, description, appliance, ustensils } = data;
 
 
-//CREATION DE LA CARTE RECETTE
+  //CREATION DE LA CARTE RECETTE
   function getRecipeCard() {
     const card = document.createElement('article');
     card.classList.add('col-3', 'p-0');
