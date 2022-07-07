@@ -78,5 +78,21 @@ function Recipe(data) {
     return (item);
   }
 
-  return { id, name, servings, ingredients, time, description, appliance, ustensils, getRecipeCard, getIngredients }
+  function getAppareils(){
+    const item = document.createElement('li');
+    item.classList.add('appareilLi')
+    item.textContent = name;
+
+    return (item);
+  }
+
+  function getUstensiles(){
+    const item = document.createElement('li');
+    item.classList.add('ustensileLi')
+    item.textContent = name;
+
+    return (item);
+  }
+
+  return { id, name, servings, ingredients, time, description, appliance, ustensils, getRecipeCard, getIngredients, getAppareils, getUstensiles }
 }

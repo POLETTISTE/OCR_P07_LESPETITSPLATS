@@ -16,3 +16,21 @@ async function displayIngredients(recipes) {
   });
 }
 
+async function displayAppareils(recipes) {
+    
+  recipes.forEach((appareil) => {
+    const appareilModel = Recipe(appareil);
+    const appareilCardDOM = appareilModel.getAppareils();
+    appareilUl.appendChild(appareilCardDOM);
+  });
+}
+
+async function displayUstensiles(recipes) {
+    
+  recipes.forEach((ustensile) => {
+    const ustensileModel = Recipe(ustensile);
+    const ustensileCardDOM = ustensileModel.getAppareils();
+    ustensileUl.appendChild(ustensileCardDOM);
+  });
+}
+

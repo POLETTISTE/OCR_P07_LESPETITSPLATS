@@ -23,10 +23,17 @@ const hashtagDiv = document.querySelector('.hashtags')
 const btnIngredients = document.querySelector('.btn-primary');
 const btnAppareils = document.querySelector('.btn-success');
 const btnUstensiles = document.querySelector('.btn-danger');
-const dropdownPrimary = document.querySelector("body > main > div.container-fluid.filters > div.dropdown.dropdown-primary");
-const ingredientsDiv = document.querySelector("body > main > div.container-fluid.filters > div:nth-child(1) > div");
+const dropdownPrimary = document.querySelector(".dropdown-primary");
+const dropdownSuccess = document.querySelector(".dropdown-success");
+const dropdownDanger = document.querySelector(".dropdown-danger");
+const ingredientsDiv = document.querySelector(".ingredients-list");
+const appareilsDiv = document.querySelector(".appareils-list");
+const ustensilesDiv = document.querySelector(".ustensiles-list");
 const inputForm2 = document.querySelector("#SaisieRecherche2");
+const inputForm3 = document.querySelector("#SaisieRecherche3");
 const ingredientUl = document.querySelector('.ingredientUl');
+const appareilUl = document.querySelector('.appareilUl');
+const ustensileUl = document.querySelector('.ustensileUl');
 
 
 
@@ -34,6 +41,12 @@ const ingredientUl = document.querySelector('.ingredientUl');
 
 dropdownPrimary.addEventListener('click', (e)=> {
   e.preventDefault();
+
+  appareilsDiv.style.display = "none";
+  ustensilesDiv.style.display = "none";
+  btnAppareils.style.display = "block";
+  btnUstensiles.style.display = "block";
+
   if (ingredientsDiv.style.display === "none") {
     ingredientsDiv.style.display = "block";
     btnIngredients.style.display = "none";
@@ -44,17 +57,53 @@ dropdownPrimary.addEventListener('click', (e)=> {
     inputForm2.value ="";
     ingredientsDiv.style.display = "none";
     btnIngredients.style.display = "block";
+
   }
 });
 
-btnAppareils.addEventListener('click', (e)=> {
+dropdownSuccess.addEventListener('click', (e)=> {
   e.preventDefault();
-  // console.log('appareils');
+  ingredientsDiv.style.display = "none";
+  ustensilesDiv.style.display = "none";
+  btnIngredients.style.display = "block";
+  btnUstensiles.style.display = "block";
+
+  if (appareilsDiv.style.display === "none") {
+    appareilsDiv.style.display = "block";
+    btnAppareils.style.display = "none";
+
+    inputForm3.focus();
+    inputForm3.select();
+
+  } else {
+    inputForm3.value ="";
+    appareilsDiv.style.display = "none";
+    btnAppareils.style.display = "block";
+  }
 });
-btnUstensiles.addEventListener('click', (e)=> {
+
+dropdownDanger.addEventListener('click', (e)=> {
   e.preventDefault();
-  // console.log('ustensiles');
+  ingredientsDiv.style.display = "none";
+  appareilsDiv.style.display = "none";
+  btnIngredients.style.display = "block";
+  btnAppareils.style.display = "block";
+  if (ustensilesDiv.style.display === "none") {
+    ustensilesDiv.style.display = "block";
+    btnUstensiles.style.display = "none";
+
+    inputForm3.focus();
+    inputForm3.select();
+
+  } else {
+    inputForm3.value ="";
+    ustensilesDiv.style.display = "none";
+    btnUstensiles.style.display = "block";
+  }
 });
+
+
+
 
 
 
@@ -64,6 +113,8 @@ async function init() {
   const { recipes } = await getRecipes();
   displayCards(recipes);
   displayIngredients(recipes);
+  displayAppareils(recipes);
+  displayUstensiles(recipes);
 }
 
 init();
