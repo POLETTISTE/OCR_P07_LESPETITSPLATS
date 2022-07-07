@@ -2,6 +2,9 @@
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 80px;
+    position:absolute;
+    z-index:5;
+
 }
 
 #dropdownMenuLink{
@@ -9,9 +12,10 @@
     margin-right: 30px;
     width:170px;
     height:69px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    padding-top: 20px;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
     &::after{
         margin-left: 30px;
     }
@@ -27,4 +31,44 @@
     width: 100%;
     display: flex;
     justify-content: space-around;
+}
+
+#SaisieRecherche2 {
+    background-color: #3382F7;
+    color:white;
+    width:667px;
+    height: 69px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 21.6px;
+    &::placeholder {
+        color:white;
+        opacity: 50%;
+    }
+}
+
+.ingredients-list {
+    background-color: #3382F7;
+    color:white;
+    width:667px;
+    height:328px;
+    margin-right:40px;
+
+}
+
+.ingredientUl {
+    padding: 0.375rem 0.75rem;
+    margin:0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+
+}
+
+.ingredientLi {
+    font-size: 18px;
+    line-height: 21.6px;
+    margin-right:13px;
+    list-style: none;
+    width:fit-content;
 }

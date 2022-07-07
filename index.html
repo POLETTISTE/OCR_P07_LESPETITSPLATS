@@ -34,14 +34,20 @@
     </div>
     <div class="container-fluid filters">
       <!-- BOUTON FILTRE INGREDIENTS -->
-      <div class="dropdown">
+      <div class="dropdown dropdown-primary style='display:block">
         <a class="btn btn-primary" href="#" role="button" id="dropdownMenuLink">
           <div class="btn-title">
             <span>Ingredients</span> 
             <span><i class="fa-solid fa-chevron-down"></i></span>
           </div>
         </a>
+        <div class="ingredients-list" style="display:none">
+          <!-- formulaire -->
+            <input id="SaisieRecherche2" name="SaisieRecherche2" type="text" class="form-control " aria-label="Saisie de mots clés" placeholder="Rechercher un ingrédient" required="required">
+            <ul class="ingredientUl"></ul>
       </div>
+      </div>
+
 
       <!-- BOUTON FILTRE APPAREILS -->
       <div class="dropdown">
@@ -74,8 +80,8 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script type="text/javascript" src="scripts/pages/data.js"></script>
-    <script type="text/javascript" src="scripts/pages/index.js"></script>
     <script type="text/javascript" src="scripts/pages/Recipe.js"></script>
+    <script type="text/javascript" src="scripts/pages/index.js"></script>
     <script type="text/javascript" src="scripts/pages/display.js"></script>
   </body>
 </html>

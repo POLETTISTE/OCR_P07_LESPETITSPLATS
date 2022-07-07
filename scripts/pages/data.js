@@ -6,5 +6,5 @@ async function getRecipes() {
     })
     .catch((err) => err);
   
-  return { recipes };
+  return { recipes};
 }

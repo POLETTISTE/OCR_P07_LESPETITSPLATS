@@ -1,10 +1,6 @@
-//NOUVELLE FONCTION REMPLACE CLASS RECIPE
-
-
 function Recipe(data) {
   
   const { id, name, servings, ingredients, time, description, appliance, ustensils } = data;
-
 
   //CREATION DE LA CARTE RECETTE
   function getRecipeCard() {
@@ -73,5 +69,14 @@ function Recipe(data) {
     return (card);
   }
 
-  return { id, name, servings, ingredients, time, description, appliance, ustensils, getRecipeCard }
+  function getIngredients(){
+
+    const item = document.createElement('li');
+    item.classList.add('ingredientLi')
+    item.textContent = name;
+
+    return (item);
+  }
+
+  return { id, name, servings, ingredients, time, description, appliance, ustensils, getRecipeCard, getIngredients }
 }

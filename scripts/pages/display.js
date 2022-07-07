@@ -7,3 +7,12 @@ async function displayCards(recipes) {
   });
 }
 
+async function displayIngredients(recipes) {
+    
+  recipes.forEach((ingredient) => {
+    const ingredientModel = Recipe(ingredient);
+    const ingredientCardDOM = ingredientModel.getIngredients();
+    ingredientUl.appendChild(ingredientCardDOM);
+  });
+}
+
