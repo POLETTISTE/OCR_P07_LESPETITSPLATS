@@ -186,6 +186,11 @@ article {
   color: white;
   opacity: 50%;
 }
+#SaisieRecherche2:focus {
+  outline: 0px;
+  -webkit-appearance: none;
+  box-shadow: none;
+}
 
 .ingredients-list {
   background-color: #3382F7;
