@@ -31,6 +31,7 @@ const appareilsDiv = document.querySelector(".appareils-list");
 const ustensilesDiv = document.querySelector(".ustensiles-list");
 const inputForm2 = document.querySelector("#SaisieRecherche2");
 const inputForm3 = document.querySelector("#SaisieRecherche3");
+const inputForm4 = document.querySelector("#SaisieRecherche4");
 const ingredientUl = document.querySelector('.ingredientUl');
 const appareilUl = document.querySelector('.appareilUl');
 const ustensileUl = document.querySelector('.ustensileUl');
@@ -92,11 +93,11 @@ dropdownDanger.addEventListener('click', (e)=> {
     ustensilesDiv.style.display = "block";
     btnUstensiles.style.display = "none";
 
-    inputForm3.focus();
-    inputForm3.select();
+    inputForm4.focus();
+    inputForm4.select();
 
   } else {
-    inputForm3.value ="";
+    inputForm4.value ="";
     ustensilesDiv.style.display = "none";
     btnUstensiles.style.display = "block";
   }

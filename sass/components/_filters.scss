@@ -32,6 +32,8 @@
 }
 
 .saisie-recherche {
+    width:667px;
+    height: 69px;
     font-size: 18px;
     font-weight: 700;
     line-height: 21.6px;
@@ -43,30 +45,27 @@
         outline:0px;
         -webkit-appearance:none;
         box-shadow: none;
-        }
+    }
+    
 
 }
 
 #SaisieRecherche2 {
     background-color: #3382F7;
     color:white;
-    width:667px;
-    height: 69px;
 }
 
 
 #SaisieRecherche3 {
     background-color: #68D9A4;
     color:white;
-    width:667px;
-    height: 69px;
+
 }
 
 #SaisieRecherche4 {
     background-color: #ED6454;
     color:white;
-    width:667px;
-    height: 69px;
+
 }
 
 .search-list {
@@ -74,6 +73,7 @@
     height:328px;
     margin-right:40px;
     color:white;
+    overflow: hidden;
 }
 .ingredients-list {
     background-color: #3382F7;
@@ -94,6 +94,7 @@
     margin:0;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    flex-wrap: wrap;
 }
 
 .ingredientLi,

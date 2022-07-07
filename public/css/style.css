@@ -1,6 +1,7 @@
 body {
   box-sizing: border-box;
   font-family: Lato;
+  margin-top: 40px;
   margin-left: 20px;
   margin-right: 20px;
 }
@@ -106,6 +107,10 @@ article {
   width: 268px;
 }
 
+header {
+  margin-bottom: 20px;
+}
+
 .form-control {
   width: 1240px;
   height: 69px;
@@ -174,6 +179,8 @@ article {
 }
 
 .saisie-recherche {
+  width: 667px;
+  height: 69px;
   font-size: 18px;
   font-weight: 700;
   line-height: 21.6px;
@@ -191,22 +198,16 @@ article {
 #SaisieRecherche2 {
   background-color: #3382F7;
   color: white;
-  width: 667px;
-  height: 69px;
 }
 
 #SaisieRecherche3 {
   background-color: #68D9A4;
   color: white;
-  width: 667px;
-  height: 69px;
 }
 
 #SaisieRecherche4 {
   background-color: #ED6454;
   color: white;
-  width: 667px;
-  height: 69px;
 }
 
 .search-list {
@@ -214,6 +215,7 @@ article {
   height: 328px;
   margin-right: 40px;
   color: white;
+  overflow: hidden;
 }
 
 .ingredients-list {
@@ -235,6 +237,7 @@ article {
   margin: 0;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  flex-wrap: wrap;
 }
 
 .ingredientLi,
