@@ -135,6 +135,9 @@ article {
   z-index: 100;
   background-color: #E7E7E7;
 }
+.btn-valid-search:focus {
+  outline: none;
+}
 
 .filters {
   display: flex;

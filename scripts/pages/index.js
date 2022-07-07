@@ -6,9 +6,9 @@
 
 
 
-
-//let dataFiltres = [];
-//let tags = [];
+let recipes;
+let dataFiltres = [];
+let tags = [];
 
 // const input = document.getElementById('inputPrincipale');
 
@@ -17,11 +17,32 @@
 // })
 
 // displayCards(recipes);
-const RecipesSection = document.querySelector('.recipes');
+
+//DOM
+const recipesSection = document.querySelector('.recipes');
+const btnIngredients = document.querySelector('.btn-primary');
+const btnAppareils = document.querySelector('.btn-success');
+const btnUstensiles = document.querySelector('.btn-danger');
+
+
+btnIngredients.addEventListener('click', (e)=> {
+  e.preventDefault();
+  console.log('ingredients');
+});
+btnAppareils.addEventListener('click', (e)=> {
+  e.preventDefault();
+  console.log('appareils');
+});
+btnUstensiles.addEventListener('click', (e)=> {
+  e.preventDefault();
+  console.log('ustensiles');
+});
+
+
 
 
 async function init() {
-  const { recipes, ingredients } = await getRecipes();
+  const { recipes } = await getRecipes();
   displayCards(recipes);
 }
 

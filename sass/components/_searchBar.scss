@@ -36,4 +36,7 @@
     border:none;
     z-index: 100;
     background-color: #E7E7E7;
+    &:focus{
+        outline: none;
+     };
 }

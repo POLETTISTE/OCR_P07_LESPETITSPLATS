@@ -1,8 +1,9 @@
 async function displayCards(recipes) {
     
-      recipes.forEach((recipe) => {
-        const recipeModel = Recipe(recipe);
-        const recipeCardDOM = recipeModel.getRecipeCard();
-        RecipesSection.appendChild(recipeCardDOM);
-      });
-    }
+  recipes.forEach((recipe) => {
+    const recipeModel = Recipe(recipe);
+    const recipeCardDOM = recipeModel.getRecipeCard();
+    recipesSection.appendChild(recipeCardDOM);
+  });
+}
+
