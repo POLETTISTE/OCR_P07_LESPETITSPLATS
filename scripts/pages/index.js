@@ -7,6 +7,8 @@
 
 let filtreIngredientsDoublons =[]
 let dataFiltres = [];
+console.log(dataFiltres)
+
 let tags = [];
 
 
@@ -102,12 +104,6 @@ dropdownDanger.addEventListener('click', (e)=> {
     btnUstensiles.style.display = "block";
   }
 });
-
-
-
-
-
-
 
 
 async function init() {

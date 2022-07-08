@@ -29,7 +29,7 @@ async function displayUstensiles(recipes) {
     
   recipes.forEach((ustensile) => {
     const ustensileModel = Recipe(ustensile);
-    const ustensileCardDOM = ustensileModel.getAppareils();
+    const ustensileCardDOM = ustensileModel.getUstensiles();
     ustensileUl.appendChild(ustensileCardDOM);
   });
 }
