@@ -2,12 +2,17 @@ function Recipe(data) {
   
   const { id, name, servings, ingredients, time, description, appliance, ustensils } = data;
 
-
-
+  
+  // POUSSE LES DATAS DANS DES TABLEAUX INGREDIENTS / APPLIANCE / USTENSILS
   for (let ingredient of ingredients) {
-    console.log(ingredient['ingredient']);
-    // dataFiltres.push(ingredient['ingredient'])
+  
+    // console.log(ingredient.ingredient)
+
+    arrayOfBrutIngredients.push(ingredient.ingredient);
+
   }
+  arrayOfBrutAppliance.push(appliance);
+  arrayOfBrutUstensils.push(ustensils);
 
 
   //CREATION DE LA CARTE RECETTE
@@ -78,18 +83,19 @@ function Recipe(data) {
   }
 
   function getIngredients() {
-
-  const item = document.createElement('li');
-  item.classList.add('ingredientLi');
-  item.textContent = name;
-
+    let item;
+    arrayOfBrutIngredients.forEach((ingredient) =>{
+      item = document.createElement('li');
+      item.classList.add('ingredientLi');
+      item.textContent = ingredient;
+    })
   return (item);
   }
 
   function getAppareils(){
     const item = document.createElement('li');
     item.classList.add('appareilLi')
-    item.textContent = appliance;
+    item.textContent = arrayOfBrutAppliance;
 
     return (item);
   }

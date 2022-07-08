@@ -7,7 +7,17 @@
 
 let filtreIngredientsDoublons =[]
 let dataFiltres = [];
-console.log(dataFiltres)
+
+arrayOfBrutIngredients = [];
+console.log(arrayOfBrutIngredients);
+
+arrayOfBrutAppliance = [];
+console.log(arrayOfBrutAppliance);
+
+arrayOfBrutUstensils = [];
+console.log(arrayOfBrutUstensils);
+
+
 
 let tags = [];
 
