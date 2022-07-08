@@ -2,15 +2,30 @@ function Recipe(data) {
   
   const { id, name, servings, ingredients, time, description, appliance, ustensils } = data;
 
-  
   // POUSSE LES DATAS DANS DES TABLEAUX INGREDIENTS / APPLIANCE / USTENSILS
-  for (let ingredient of ingredients) {
+
+  // const ingredient = Object.values(ingredients);
+  // console.log(ingredient)
   
-    // console.log(ingredient.ingredient)
-
+  for (let ingredient of ingredients) {
+    // console.log(ingredient.ingredient);
+    // console.log(ingredient['ingredient'])
     arrayOfBrutIngredients.push(ingredient.ingredient);
-
+    // console.log(arrayTemporaire);
   }
+
+//   arrayTemporaire.forEach((element =>{
+//     arrayOfBrutIngredients.push(element);
+// }))
+
+
+  
+  
+  // arrayOfBrutIngredients.sort();
+  // filteredArray(arrayOfBrutIngredients);
+
+
+
   arrayOfBrutAppliance.push(appliance);
   arrayOfBrutUstensils.push(ustensils);
 
