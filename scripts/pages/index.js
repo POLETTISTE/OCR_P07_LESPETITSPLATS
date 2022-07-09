@@ -1,46 +1,15 @@
 // ***** JAVASCRIPT POUR LES ELEMENTS DE LA PAGE INDEX.HTML *****
 
-// import recipe from './data.js';
-// import { displayCards } from './display.js';
-// import { filteringByNameByDescriptionByIngredients } from './filters.js';
 
 
 let filtreIngredientsDoublons =[]
 let dataFiltres = [];
-
-let arrayTemporaire = [];
-console.log(arrayTemporaire);
-
-
+let tags = [];
 let arrayOfBrutIngredients = [];
 console.log(arrayOfBrutIngredients);
-arrayOfBrutIngredients.sort();
-console.log(arrayOfBrutIngredients);
 
-
-arrayOfBrutIngredients.unshift('hello');
-console.log(arrayOfBrutIngredients.length);
-arrayOfBrutIngredients.sort(function(a, b){return a-b});
-
-
-// var arrThree = ["Hello 1 ", " Hello 2 ", " Hello 2 ", "Welcome", "Hello 1 again", "Welcome", "Goodbye"]
-
-// function filterArray(inputArr){
-//     var found ={};
-//     var out = inputArr.filter(function(element){
-//         return found.hasOwnProperty(element)? false : (found[element]=true);
-//     });
-//     return out;
-// }
-
-// const outputArray = filterArray(arrThree);
-// console.log("Original Array",arrThree);
-// console.log("Filtered Array",outputArray);
-
-
-
-
-
+let arrayOfNetIngredients = [];
+console.log(arrayOfNetIngredients)
 
 
 arrayOfBrutAppliance = [];
@@ -48,11 +17,6 @@ console.log(arrayOfBrutAppliance);
 
 arrayOfBrutUstensils = [];
 console.log(arrayOfBrutUstensils);
-
-
-
-let tags = [];
-
 
 
 // const input = document.getElementById('inputPrincipale');
