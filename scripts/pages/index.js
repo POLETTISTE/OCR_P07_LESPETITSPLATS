@@ -1,10 +1,20 @@
 // ***** JAVASCRIPT POUR LES ELEMENTS DE LA PAGE INDEX.HTML *****
 
+// ESSAYER FLAT SUR OBJET / SPLIT / FILTER
+// SUR LES OBJETS : INGREDIENTS / APPLIANCE / USTENSILS
 
+// UNE FONCTION POUR TOUS DE CONVERSION OBJET / ARRAY
 
-let filtreIngredientsDoublons =[]
-let dataFiltres = [];
+let dataFiltrees = [];
 let tags = [];
+
+let arrTri = [];
+let dataUstensilsFiltrered = [];
+
+console.log(dataUstensilsFiltrered)
+
+
+
 let arrayOfBrutIngredients = [];
 console.log(arrayOfBrutIngredients);
 

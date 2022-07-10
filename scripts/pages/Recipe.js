@@ -1,30 +1,98 @@
 function Recipe(data) {
   
   const { id, name, servings, ingredients, time, description, appliance, ustensils } = data;
+  
 
-  // POUSSE LES DATAS DANS DES TABLEAUX INGREDIENTS / APPLIANCE / USTENSILS
+  const dataUstensils = ustensils;
+  console.log(dataUstensils);
 
-  // console.log(ingredients);
+  // RETOURNER UNE ARRAY UNIQUE DE STRINGS POUR POUVOIR FILTRER
+  dataUstensils.forEach((us) => {
+    console.log(us);
+    arrTri.push(us);
+  });
+  console.log(arrTri)
+  
+  // MODIF DES STRINGS EN MINUSCULE ET SANS CAPITALE ?
+
+
+  //FILTRER LES DOUBLONS:
+
+  dataUstensilsFiltrered = arrTri.filter(function(ele , pos){
+    return arrTri.indexOf(ele) === pos;
+  });
+
+  console.log("The filtered array ",dataUstensilsFiltrered);
+
+  
+
+
+
+  //  var arrTwo=["Hello 1 "," Hello 2 ","Hello 1 " , " Hello 2 ","Hello 1 again"]
+
+  // const filteredArray = arrTwo.filter(function(ele , pos){
+  //     return arrTwo.indexOf(ele) == pos;
+  // }) 
+
+  // tri.flat();
+  // console.log(tri);
+  
+  
+  
+  // const newArrTri = arrTri.map( x => x );
+  // console.log(newArrTri);
+  // newArrTri.flat();
+  
+  // arrTri.flat();
+  // console.log(arrTri);
+  // arrTri.push(tri);
+  
+  
+  
+
+
+
+  // CONST USTENSIL => ARRAY USTENSILS
+
+  // ustensils.forEach((item) => {
+  //   // console.log(item);
+  //   arrayOfBrutUstensils.push(item);
+  // });
+  // console.log(arrayOfBrutUstensils)
+  
+  // const filteredArrayUstensils = arrayOfBrutUstensils.filter(function(ele , pos){
+  //   return arrayOfBrutUstensils.indexOf(ele) === pos;
+  // }) 
+  // filteredArrayUstensils.flat();
+  // let newFilteredArrayUstensils = filteredArrayUstensils.map(x => x.split(","));
+
+
+
+
+
+  // CONST INGREDIENT => ARRAY INGREDIENTS
   for (const ing of ingredients){
     // console.log(ing.ingredient);
     // console.log(typeof ing.ingredient);
     arrayOfBrutIngredients.push(ing.ingredient);
   }
 
+
   arrayOfNetIngredients = Array.from(arrayOfBrutIngredients,x => x);
+    
   arrayOfNetIngredients.sort();
 
   let filteredArrayOfIngredients = arrayOfNetIngredients.filter(function(ele , pos){
-      return arrayOfNetIngredients.indexOf(ele) == pos;
-}) 
+    return arrayOfNetIngredients.indexOf(ele) === pos;
+  }) 
+  //il faut une array avec des arrays contenant un ingredient
 
-console.log("The filtered array ",filteredArrayOfIngredients);
+  // console.log("The filtered array ",filteredArrayOfIngredients);
 
 
-  console.log(arrayOfNetIngredients);
+  //   console.log(arrayOfNetIngredients);
 
   arrayOfBrutAppliance.push(appliance);
-  arrayOfBrutUstensils.push(ustensils);
 
 
   //CREATION DE LA CARTE RECETTE
@@ -94,31 +162,46 @@ console.log("The filtered array ",filteredArrayOfIngredients);
     return (card);
   }
 
-  console.log(filteredArrayOfIngredients);
+  // console.log(filteredArrayOfIngredients);
   function getIngredients() {
     let item;
 
+    arrayOfBrutIngredients.forEach((ingredient) => {
       item = document.createElement('li');
       item.classList.add('ingredientLi');
-      item.textContent = filteredArrayOfIngredients;
+      item.textContent = ingredient;
+    })
+    
 
-  return (item);
+    return (item);
   }
 
   function getAppareils(){
     const item = document.createElement('li');
     item.classList.add('appareilLi')
-    item.textContent = arrayOfBrutAppliance;
+    item.textContent = essai;
 
     return (item);
   }
 
   function getUstensiles(){
-    const item = document.createElement('li');
-    item.classList.add('ustensileLi')
-    item.textContent = ustensils;
 
+    let item;
+
+    //essayer for in ou for of 
+    // filteredArray.forEach((element) => { 
+      
+    item = document.createElement('li');
+    item.classList.add('ustensileLi');
+      
+    dataUstensils.forEach((element)=> {
+      console.log(element);
+      item.textContent = element;
+
+    })
+      
     return (item);
+      
   }
 
   return { id, name, servings, ingredients, time, description, appliance, ustensils, getRecipeCard, getIngredients, getAppareils, getUstensiles }
