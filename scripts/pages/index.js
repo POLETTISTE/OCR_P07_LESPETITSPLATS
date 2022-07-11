@@ -56,6 +56,18 @@ inputForm1.addEventListener(('input'), (e) => {
     // on recupere la value dans une variable
     let actualValueInput = inputForm1.value;
     console.log(actualValueInput);
+
+
+
+    console.log(recipesArray.length);
+    console.log(recipesArray);
+
+
+
+
+
+
+
     // on filtre les recettes en fn de la variable contenue dans ingredient / appliance ou ustensil
     // on filtre les recettes
 //ex if value input = ingredient.value || applince value
@@ -63,6 +75,8 @@ inputForm1.addEventListener(('input'), (e) => {
 
     // si OUI => alors,retourne la liste des recettes qui contiennent ce mot ou partie du mot
     // si NON => VIDE
+  }else{
+    // displayCards(recipes);
   }
 });
 
@@ -142,9 +156,9 @@ dropdownDanger.addEventListener('click', (e)=> {
 async function init() {
   const { recipes } = await getRecipes();
   await displayCards(recipes);
-  await displayIngredients(dataIngredientsFiltered);
-  await displayAppliances(dataAppliancesFiltered);
-  await displayUstensiles(dataUstensilsFiltered);
+  await displayIngredientsAppliancesUstensils(dataIngredientsFiltered, 'ingredientLi', 'ingredientTag', ingredientUl);
+  await displayIngredientsAppliancesUstensils(dataAppliancesFiltered, 'applianceLi', 'applianceTag', applianceUl);
+  await displayIngredientsAppliancesUstensils(dataIngredientsFiltered, 'ustensilLi', 'ustensilTag', ustensilUl);
 }
 
 init();
