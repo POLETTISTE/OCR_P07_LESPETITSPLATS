@@ -238,17 +238,17 @@ header {
   background-color: #3382F7;
 }
 
-.appareils-list {
+.appliances-list {
   background-color: #68D9A4;
 }
 
-.ustensiles-list {
+.ustensils-list {
   background-color: #ED6454;
 }
 
 .ingredientUl,
-.appareilUl,
-.ustensileUl {
+.applianceUl,
+.ustensilUl {
   padding: 0.375rem 0.75rem;
   margin: 0;
   display: grid;
@@ -257,8 +257,8 @@ header {
 }
 
 .ingredientLi,
-.appareilLi,
-.ustensileLi {
+.applianceLi,
+.ustensilLi {
   font-size: 18px;
   line-height: 21.6px;
   margin-right: 13px;

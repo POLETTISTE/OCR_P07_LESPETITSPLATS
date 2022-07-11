@@ -10,7 +10,7 @@ async function displayIngredients(dataIngredientsFiltered) {
 
   dataIngredientsFiltered.forEach((element) => {
     let item = document.createElement('li');
-    item.classList.add('ustensileLi', 'ustensileTag');
+    item.classList.add('ingredientLi', 'ingredienTag');
     item.textContent = element;
     ingredientUl.appendChild(item);
   })
@@ -20,9 +20,9 @@ async function displayAppliances(dataAppliancesFiltered) {
 
   dataAppliancesFiltered.forEach((element) => {
     let item = document.createElement('li');
-    item.classList.add('appareilLi', 'applianceTag');
+    item.classList.add('applianceLi', 'applianceTag');
     item.textContent = element;
-    appareilUl.appendChild(item);
+    applianceUl.appendChild(item);
   })
 }
 
@@ -30,8 +30,8 @@ async function displayUstensiles(dataUstensilsFiltered) {
 
   dataUstensilsFiltered.forEach((element) => {
     let item = document.createElement('li');
-    item.classList.add('ustensileLi', 'ustensileTag');
+    item.classList.add('ustensilLi', 'ustensilTag');
     item.textContent = element;
-    ustensileUl.appendChild(item);
+    ustensilUl.appendChild(item);
   })
 }

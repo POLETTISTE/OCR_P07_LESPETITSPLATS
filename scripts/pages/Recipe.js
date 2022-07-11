@@ -15,6 +15,8 @@ function Recipe(data) {
     return arrTriIngredients.indexOf(ele) === pos;
   });
 
+
+  
   //APPLIANCE
     arrTriAppliances.push(dataAppliances.toLowerCase());
   //FILTRER LES DOUBLONS:
