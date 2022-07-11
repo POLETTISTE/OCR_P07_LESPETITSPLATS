@@ -37,7 +37,7 @@ const ustensilUl = document.querySelector('.ustensilUl');
 
 
 
-
+// MENU DEROULANT RECHERCHE PAR INGREDIENT
 dropdownPrimary.addEventListener('click', (e)=> {
   e.preventDefault();
 
@@ -60,6 +60,7 @@ dropdownPrimary.addEventListener('click', (e)=> {
   }
 });
 
+// MENU DEROULANT RECHERCHE PAR APPAREIL
 dropdownSuccess.addEventListener('click', (e)=> {
   e.preventDefault();
   ingredientsDiv.style.display = "none";
@@ -81,6 +82,7 @@ dropdownSuccess.addEventListener('click', (e)=> {
   }
 });
 
+// MENU DEROULANT RECHERCHE PAR USTENSILE
 dropdownDanger.addEventListener('click', (e)=> {
   e.preventDefault();
   ingredientsDiv.style.display = "none";
@@ -89,7 +91,7 @@ dropdownDanger.addEventListener('click', (e)=> {
   btnAppliances.style.display = "block";
   if (ustensilsDiv.style.display === "none") {
     ustensilsDiv.style.display = "block";
-    btnUstensiles.style.display = "none";
+    btnUstensils.style.display = "none";
 
     inputForm4.focus();
     inputForm4.select();
@@ -102,6 +104,8 @@ dropdownDanger.addEventListener('click', (e)=> {
 });
 
 
+
+// INITIALISATION
 async function init() {
   const { recipes } = await getRecipes();
   displayCards(recipes);
