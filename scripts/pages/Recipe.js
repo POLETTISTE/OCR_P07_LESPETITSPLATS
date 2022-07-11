@@ -10,7 +10,7 @@ function Recipe(data) {
   //CREATION DE LA CARTE RECETTE
   function getRecipeCard() {
     const card = document.createElement('article');
-    card.classList.add('col-3', 'p-0');
+    card.classList.add('col-3', 'p-0', 'recipe-card');
   
     //IMAGE DE LA RECETTE
     const pictureRecipe = document.createElement('div');

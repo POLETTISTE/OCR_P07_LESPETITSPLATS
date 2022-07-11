@@ -118,10 +118,10 @@ header {
   background-color: #E7E7E7;
 }
 
-#oSaisie {
+#SaisieRecherche1 {
   background-color: #E7E7E7;
 }
-#oSaisie:focus {
+#SaisieRecherche1:focus {
   outline: 0px;
   -webkit-appearance: none;
   box-shadow: none;

@@ -26,6 +26,7 @@ let Tags = tagsIngredients.concat(tagsAppliances, tagsUstensils);
 
 //DOM
 const recipesSection = document.querySelector('.recipes');
+const recipeCard = document.querySelector('.recipe-card');
 const hashtagDiv = document.querySelector('.hashtags');
 const btnIngredients = document.querySelector('.btn-primary');
 const btnAppliances = document.querySelector('.btn-success');
@@ -48,62 +49,51 @@ const ustensilUl = document.querySelector('.ustensilUl');
 // RECHERCHE DANS LE FORMULAIRE PRINCIPAL
 inputForm1.addEventListener(('input'), (e) => {
   e.preventDefault();
-  // PLUS DE 3 CARACTERES
-  if (inputForm1.value.length > 2) {
-    console.log('changement input');
-    // recipesSection.innerHTML="";
-    // FAIRE UNE FONCTION DANS FILTER.JS
-    // on recupere la value dans une variable
-    let actualValueInput = inputForm1.value;
-    console.log(actualValueInput);
+  e.stopPropagation();
+  
+  //MOINS DE 3 CARACTERES
 
-
-
-    console.log(recipesArray.length);
-    console.log(recipesArray);
-
-
-
-
-
-
-
-    // on filtre les recettes en fn de la variable contenue dans ingredient / appliance ou ustensil
-    // on filtre les recettes
-//ex if value input = ingredient.value || applince value
-//  alors display recipe 
-
-    // si OUI => alors,retourne la liste des recettes qui contiennent ce mot ou partie du mot
-    // si NON => VIDE
-  }else{
+  if (inputForm1.value.length < 3) {
+    console.log('moins de 3 caractères');
+    // recipesSection.innerHTML = '';
     // displayCards(recipes);
   }
+  
+  // PLUS DE 2 CARACTERES
+  if (inputForm1.value.length > 2) {
+    let actualValueInput = inputForm1.value;
+    console.log('plus de 2 caractères');    
+    recipesSection.innerHTML = ' ';
+    console.log(recipesArray);
+  
+    
+    recipesArrayFiltered = recipesArray.filter(recipe => recipe.name.includes(actualValueInput));
+    displayCards(recipesArrayFiltered);
+  };
 });
-
-
-
+ 
 
 // MENU DEROULANT RECHERCHE PAR INGREDIENT
 dropdownPrimary.addEventListener('click', (e)=> {
-  e.preventDefault();
+e.preventDefault();
 
-  appliancesDiv.style.display = "none";
-  ustensilsDiv.style.display = "none";
-  btnAppliances.style.display = "block";
-  btnUstensils.style.display = "block";
+appliancesDiv.style.display = "none";
+ustensilsDiv.style.display = "none";
+btnAppliances.style.display = "block";
+btnUstensils.style.display = "block";
 
-  if (ingredientsDiv.style.display === "none") {
-    ingredientsDiv.style.display = "block";
-    btnIngredients.style.display = "none";
-    inputForm2.focus();
-    inputForm2.select();
+if (ingredientsDiv.style.display === "none") {
+  ingredientsDiv.style.display = "block";
+  btnIngredients.style.display = "none";
+  inputForm2.focus();
+  inputForm2.select();
 
-  } else {
-    inputForm2.value ="";
-    ingredientsDiv.style.display = "none";
-    btnIngredients.style.display = "block";
+} else {
+  inputForm2.value ="";
+  ingredientsDiv.style.display = "none";
+  btnIngredients.style.display = "block";
 
-  }
+}
 });
 
 // MENU DEROULANT RECHERCHE PAR APPAREIL

@@ -8,9 +8,10 @@
 
 }
 
-#oSaisie {
+#SaisieRecherche1 {
     background-color: #E7E7E7;
     &:focus{
+        
         outline:0px;
         -webkit-appearance:none;
         box-shadow: none;
@@ -23,8 +24,6 @@
         color: black;
     }
 }
-
-
 
 
 .btn-valid-search{
