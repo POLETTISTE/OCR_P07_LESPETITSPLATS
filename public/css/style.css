@@ -212,7 +212,7 @@ header {
 
 .search-list {
   width: 667px;
-  height: 328px;
+  max-height: 340px;
   margin-right: 40px;
   color: white;
   overflow: hidden;
@@ -246,10 +246,10 @@ header {
   font-size: 18px;
   line-height: 21.6px;
   margin-right: 13px;
+  margin-bottom: 5px;
   list-style: none;
   width: fit-content;
   cursor: pointer;
-  border: black 2px solid;
 }
 
 /*# sourceMappingURL=style.css.map */

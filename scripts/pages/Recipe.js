@@ -15,7 +15,6 @@ function Recipe(data) {
     return arrTriIngredients.indexOf(ele) === pos;
   });
 
-  
   //APPLIANCE
     arrTriAppliances.push(dataAppliances.toLowerCase());
   //FILTRER LES DOUBLONS:
@@ -23,7 +22,6 @@ function Recipe(data) {
     return arrTriAppliances.indexOf(ele) === pos;
   });
 
-  
   //USTENSILS
   dataUstensils.forEach((element) => {
     arrTriUstensils.push(element.toLowerCase());
@@ -32,8 +30,6 @@ function Recipe(data) {
   dataUstensilsFiltered = arrTriUstensils.filter(function(ele , pos){
     return arrTriUstensils.indexOf(ele) === pos;
   });
-
-
 
   //CREATION DE LA CARTE RECETTE
   function getRecipeCard() {
