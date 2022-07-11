@@ -3,11 +3,9 @@ function Recipe(data) {
   const { id, name, servings, ingredients, time, description, appliance, ustensils } = data;
   
   const dataIngredients = ingredients;
-  console.log(dataIngredients);
   const dataAppliances = appliance;
   const dataUstensils = ustensils;
 
-  
   // //INGREDIENTS
   dataIngredients.forEach((element) => {
     arrTriIngredients.push(element.ingredient.toLowerCase());
@@ -16,17 +14,14 @@ function Recipe(data) {
   dataIngredientsFiltered = arrTriIngredients.filter(function(ele , pos){
     return arrTriIngredients.indexOf(ele) === pos;
   });
-  console.log("The filtered array ",dataIngredientsFiltered);
 
-
-
+  
   //APPLIANCE
     arrTriAppliances.push(dataAppliances.toLowerCase());
   //FILTRER LES DOUBLONS:
   dataAppliancesFiltered = arrTriAppliances.filter(function(ele , pos){
     return arrTriAppliances.indexOf(ele) === pos;
   });
-  console.log("The filtered array ",dataAppliancesFiltered);
 
   
   //USTENSILS
@@ -37,7 +32,6 @@ function Recipe(data) {
   dataUstensilsFiltered = arrTriUstensils.filter(function(ele , pos){
     return arrTriUstensils.indexOf(ele) === pos;
   });
-  console.log("The filtered array ",dataUstensilsFiltered);
 
 
 
