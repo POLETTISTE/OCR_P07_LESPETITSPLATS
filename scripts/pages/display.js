@@ -6,34 +6,31 @@ async function displayCards(recipes) {
     recipesSection.appendChild(recipeCardDOM);
   });
 }
+async function displayIngredients(dataIngredientsFiltered) {
 
-// async function displayIngredients(recipes) {
-    
-//   recipes.forEach((ingredient) => {
-//     const ingredientModel = Recipe(ingredient);
-//     const ingredientCardDOM = ingredientModel.getIngredients();
-//     ingredientUl.appendChild(ingredientCardDOM);
-//   });
-// }
-
-async function displayAppareils(recipes) {
-    
-  recipes.forEach((appareil) => {
-    const appareilModel = Recipe(appareil);
-    const appareilCardDOM = appareilModel.getAppareils();
-    appareilUl.appendChild(appareilCardDOM);
-  });
+  dataIngredientsFiltered.forEach((element) => {
+    let item = document.createElement('li');
+    item.classList.add('ustensileLi', 'ustensileTag');
+    item.textContent = element;
+    ingredientUl.appendChild(item);
+  })
 }
 
-async function displayUstensiles() {
+async function displayAppliances(dataAppliancesFiltered) {
 
-  console.log(dataUstensilsFiltrered);
-
-  dataUstensilsFiltrered.forEach((element) => {
-    console.log(element);
-
+  dataAppliancesFiltered.forEach((element) => {
     let item = document.createElement('li');
-    item.classList.add('ustensileLi');
+    item.classList.add('appareilLi', 'applianceTag');
+    item.textContent = element;
+    appareilUl.appendChild(item);
+  })
+}
+
+async function displayUstensiles(dataUstensilsFiltered) {
+
+  dataUstensilsFiltered.forEach((element) => {
+    let item = document.createElement('li');
+    item.classList.add('ustensileLi', 'ustensileTag');
     item.textContent = element;
     ustensileUl.appendChild(item);
   })

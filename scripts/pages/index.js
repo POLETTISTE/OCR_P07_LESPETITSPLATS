@@ -1,17 +1,17 @@
 // ***** JAVASCRIPT POUR LES ELEMENTS DE LA PAGE INDEX.HTML *****
 
-// ESSAYER FLAT SUR OBJET / SPLIT / FILTER
-// SUR LES OBJETS : INGREDIENTS / APPLIANCE / USTENSILS
-
-// UNE FONCTION POUR TOUS DE CONVERSION OBJET / ARRAY
-
 let dataFiltrees = [];
 let tags = [];
 
-let arrTri = [];
-let dataUstensilsFiltrered = [];
+let arrTriIngredients = [];
+let dataIngredientsFiltered = [];
 
-console.log(dataUstensilsFiltrered)
+let arrTriAppliances = [];
+let dataAppliancesFiltered = [];
+
+let arrTriUstensils = [];
+let dataUstensilsFiltered = [];
+
 
 
 //DOM
@@ -104,8 +104,9 @@ dropdownDanger.addEventListener('click', (e)=> {
 async function init() {
   const { recipes } = await getRecipes();
   displayCards(recipes);
-  displayAppareils(recipes);
-  displayUstensiles();
+  displayIngredients(dataIngredientsFiltered);
+  displayAppliances(dataAppliancesFiltered);
+  displayUstensiles(dataUstensilsFiltered);
 }
 
 init();

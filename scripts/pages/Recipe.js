@@ -2,25 +2,42 @@ function Recipe(data) {
   
   const { id, name, servings, ingredients, time, description, appliance, ustensils } = data;
   
-
+  const dataIngredients = ingredients;
+  console.log(dataIngredients);
+  const dataAppliances = appliance;
   const dataUstensils = ustensils;
-  console.log(dataUstensils);
 
-  // RETOURNER UNE ARRAY UNIQUE DE STRINGS POUR POUVOIR FILTRER
-  dataUstensils.forEach((us) => {
-    arrTri.push(us);
-  });
-  console.log(arrTri);
   
-
-
-  //FILTRER LES DOUBLONS:
-
-  dataUstensilsFiltrered = arrTri.filter(function(ele , pos){
-    return arrTri.indexOf(ele) === pos;
+  // //INGREDIENTS
+  dataIngredients.forEach((element) => {
+    arrTriIngredients.push(element.ingredient.toLowerCase());
   });
+  // //FILTRER LES DOUBLONS:
+  dataIngredientsFiltered = arrTriIngredients.filter(function(ele , pos){
+    return arrTriIngredients.indexOf(ele) === pos;
+  });
+  console.log("The filtered array ",dataIngredientsFiltered);
 
-  console.log("The filtered array ",dataUstensilsFiltrered);
+
+
+  //APPLIANCE
+    arrTriAppliances.push(dataAppliances.toLowerCase());
+  //FILTRER LES DOUBLONS:
+  dataAppliancesFiltered = arrTriAppliances.filter(function(ele , pos){
+    return arrTriAppliances.indexOf(ele) === pos;
+  });
+  console.log("The filtered array ",dataAppliancesFiltered);
+
+  
+  //USTENSILS
+  dataUstensils.forEach((element) => {
+    arrTriUstensils.push(element.toLowerCase());
+  });
+  //FILTRER LES DOUBLONS:
+  dataUstensilsFiltered = arrTriUstensils.filter(function(ele , pos){
+    return arrTriUstensils.indexOf(ele) === pos;
+  });
+  console.log("The filtered array ",dataUstensilsFiltered);
 
 
 
@@ -91,18 +108,5 @@ function Recipe(data) {
     return (card);
   }
 
-
-  function getAppareils(){
-    const item = document.createElement('li');
-    item.classList.add('appareilLi')
-    item.textContent = essai;
-
-    return (item);
-  }
-
-
-
-
-
-  return { id, name, servings, ingredients, time, description, appliance, ustensils, getRecipeCard, getAppareils }
+  return { id, name, servings, ingredients, time, description, appliance, ustensils, getRecipeCard }
 }
