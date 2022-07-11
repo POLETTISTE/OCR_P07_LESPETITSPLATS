@@ -2,36 +2,43 @@ function Recipe(data) {
   
   const { id, name, servings, ingredients, time, description, appliance, ustensils } = data;
   
+  const dataRecipes = data;
   const dataIngredients = ingredients;
   const dataAppliances = appliance;
   const dataUstensils = ustensils;
 
-  // //INGREDIENTS
+  //PUSH TOUTES LES RECETTES DANS ARRAY RecipesArray
+    recipesArray.push(dataRecipes);
+    recipesArray.forEach((element) => {
+      console.log(element);
+    });
+    
+  // INGREDIENTS EN MINUSCULE SANS ESPACE DANS ARRAY arrTriIngredients
+  // //FILTRER LES DOUBLONS 
   dataIngredients.forEach((element) => {
-    arrTriIngredients.push(element.ingredient.toLowerCase());
+    arrTriIngredients.push(element.ingredient.trim().toLowerCase());
   });
-  // //FILTRER LES DOUBLONS:
   dataIngredientsFiltered = arrTriIngredients.filter(function(ele , pos){
     return arrTriIngredients.indexOf(ele) === pos;
   });
 
-
-  
-  //APPLIANCE
-    arrTriAppliances.push(dataAppliances.toLowerCase());
+  // APPLIANCE EN MINUSCULE SANS ESPACE DANS ARRAY arrTriAppliances
   //FILTRER LES DOUBLONS:
+  arrTriAppliances.push(dataAppliances.trim().toLowerCase());
+
   dataAppliancesFiltered = arrTriAppliances.filter(function(ele , pos){
     return arrTriAppliances.indexOf(ele) === pos;
   });
 
-  //USTENSILS
-  dataUstensils.forEach((element) => {
-    arrTriUstensils.push(element.toLowerCase());
-  });
+  // USTENSILS EN MINUSCULE SANS ESPACE DANS ARRAY arrTriUstensils
   //FILTRER LES DOUBLONS:
+  dataUstensils.forEach((element) => {
+    arrTriUstensils.push(element.trim().toLowerCase());
+  });
   dataUstensilsFiltered = arrTriUstensils.filter(function(ele , pos){
     return arrTriUstensils.indexOf(ele) === pos;
   });
+
 
   //CREATION DE LA CARTE RECETTE
   function getRecipeCard() {
@@ -43,7 +50,6 @@ function Recipe(data) {
     pictureRecipe.classList.add('picture');
 
     //MILIEU DE CARTE NOM / TEMPS DE PREPARATION DE LA RECETTE
-
     const middleCardInfos = document.createElement('div');
     middleCardInfos.classList.add('middleCardInfos','d-flex', 'justify-content-around', 'p-3');
     
@@ -55,12 +61,10 @@ function Recipe(data) {
 
     //TEMPS PREPARATION DE LA RECETTE
     const timeRecipe = document.createElement('h2');
-
     timeRecipe.classList.add('time','col-4','pr-0','text-right')
     timeRecipe.innerHTML =`<i class="fa-regular fa-clock"></i> ${time} min`;
 
     //BAS DE CARTE INGREDIENTS / DESCRIPTION DE LA RECETTE
-
     const bottomCardInfos = document.createElement('div');
     bottomCardInfos.classList.add('bottomCardInfos','d-flex','justify-content-between','pl-3','pr-3','pb-3', 'pt-0');
     
@@ -100,5 +104,5 @@ function Recipe(data) {
     return (card);
   }
 
-  return { id, name, servings, ingredients, time, description, appliance, ustensils, getRecipeCard }
+  return { id, name, servings, ingredients, time, description, appliance, ustensils, getRecipes, getRecipeCard }
 }

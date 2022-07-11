@@ -1,22 +1,32 @@
-// ***** JAVASCRIPT POUR LES ELEMENTS DE LA PAGE INDEX.HTML *****
+// ---------------------------INDEX.JS------------------------
 
+//CONTIENT TOUTES LES RECETTES
 
+let recipesArray = [];
+console.log(recipesArray);
+
+//CONTIENT TOUTES LES INGREDIENTS (ARRAY DE STRINGS) == TAGS
 let arrTriIngredients = [];
 let dataIngredientsFiltered = [];
 let tagsIngredients = [];
 
+//CONTIENT TOUTES LES APPAREILS (ARRAY DE STRINGS)== TAGS
 let arrTriAppliances = [];
 let dataAppliancesFiltered = [];
 let tagsAppliances = [];
 
+//CONTIENT TOUTES LES USTENSILES (ARRAY DE STRINGS)== TAGS
 let arrTriUstensils = [];
 let dataUstensilsFiltered = [];
 let tagsUstensils = [];
 
+// CONTIENT TOUS LES TAGS == TAGS
+let Tags = tagsIngredients.concat(tagsAppliances, tagsUstensils);
+
 
 //DOM
 const recipesSection = document.querySelector('.recipes');
-const hashtagDiv = document.querySelector('.hashtags')
+const hashtagDiv = document.querySelector('.hashtags');
 const btnIngredients = document.querySelector('.btn-primary');
 const btnAppliances = document.querySelector('.btn-success');
 const btnUstensils = document.querySelector('.btn-danger');
@@ -33,6 +43,28 @@ const inputForm4 = document.querySelector("#SaisieRecherche4");
 const ingredientUl = document.querySelector('.ingredientUl');
 const applianceUl = document.querySelector('.applianceUl');
 const ustensilUl = document.querySelector('.ustensilUl');
+
+
+// RECHERCHE DANS LE FORMULAIRE PRINCIPAL
+inputForm1.addEventListener(('input'), (e) => {
+  e.preventDefault();
+  // PLUS DE 3 CARACTERES
+  if (inputForm1.value.length > 2) {
+    console.log('changement input');
+    // recipesSection.innerHTML="";
+    // FAIRE UNE FONCTION DANS FILTER.JS
+    // on recupere la value dans une variable
+    let actualValueInput = inputForm1.value;
+    console.log(actualValueInput);
+    // on filtre les recettes en fn de la variable contenue dans ingredient / appliance ou ustensil
+    // on filtre les recettes
+//ex if value input = ingredient.value || applince value
+//  alors display recipe 
+
+    // si OUI => alors,retourne la liste des recettes qui contiennent ce mot ou partie du mot
+    // si NON => VIDE
+  }
+});
 
 
 
@@ -105,13 +137,14 @@ dropdownDanger.addEventListener('click', (e)=> {
 
 
 
+
 // INITIALISATION
 async function init() {
   const { recipes } = await getRecipes();
-  displayCards(recipes);
-  displayIngredients(dataIngredientsFiltered);
-  displayAppliances(dataAppliancesFiltered);
-  displayUstensiles(dataUstensilsFiltered);
+  await displayCards(recipes);
+  await displayIngredients(dataIngredientsFiltered);
+  await displayAppliances(dataAppliancesFiltered);
+  await displayUstensiles(dataUstensilsFiltered);
 }
 
 init();
