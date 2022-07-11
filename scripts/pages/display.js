@@ -7,14 +7,14 @@ async function displayCards(recipes) {
   });
 }
 
-async function displayIngredients(recipes) {
+// async function displayIngredients(recipes) {
     
-  recipes.forEach((ingredient) => {
-    const ingredientModel = Recipe(ingredient);
-    const ingredientCardDOM = ingredientModel.getIngredients();
-    ingredientUl.appendChild(ingredientCardDOM);
-  });
-}
+//   recipes.forEach((ingredient) => {
+//     const ingredientModel = Recipe(ingredient);
+//     const ingredientCardDOM = ingredientModel.getIngredients();
+//     ingredientUl.appendChild(ingredientCardDOM);
+//   });
+// }
 
 async function displayAppareils(recipes) {
     
@@ -25,12 +25,16 @@ async function displayAppareils(recipes) {
   });
 }
 
-async function displayUstensiles(recipes) {
-    
-  recipes.forEach((ustensile) => {
-    const ustensileModel = Recipe(ustensile);
-    const ustensileCardDOM = ustensileModel.getUstensiles();
-    ustensileUl.appendChild(ustensileCardDOM);
-  });
-}
+async function displayUstensiles() {
 
+  console.log(dataUstensilsFiltrered);
+
+  dataUstensilsFiltrered.forEach((element) => {
+    console.log(element);
+
+    let item = document.createElement('li');
+    item.classList.add('ustensileLi');
+    item.textContent = element;
+    ustensileUl.appendChild(item);
+  })
+}

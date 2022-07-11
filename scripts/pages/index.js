@@ -14,27 +14,6 @@ let dataUstensilsFiltrered = [];
 console.log(dataUstensilsFiltrered)
 
 
-
-let arrayOfBrutIngredients = [];
-console.log(arrayOfBrutIngredients);
-
-let arrayOfNetIngredients = [];
-console.log(arrayOfNetIngredients)
-
-
-arrayOfBrutAppliance = [];
-console.log(arrayOfBrutAppliance);
-
-arrayOfBrutUstensils = [];
-console.log(arrayOfBrutUstensils);
-
-
-// const input = document.getElementById('inputPrincipale');
-
-// input.addEventListener('input', (e)=>{
-// //si plus de 3 ...
-// })
-
 //DOM
 const recipesSection = document.querySelector('.recipes');
 const hashtagDiv = document.querySelector('.hashtags')
@@ -125,9 +104,8 @@ dropdownDanger.addEventListener('click', (e)=> {
 async function init() {
   const { recipes } = await getRecipes();
   displayCards(recipes);
-  displayIngredients(recipes);
   displayAppareils(recipes);
-  displayUstensiles(recipes);
+  displayUstensiles();
 }
 
 init();
