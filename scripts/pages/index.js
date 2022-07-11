@@ -13,7 +13,6 @@ let arrTriUstensils = [];
 let dataUstensilsFiltered = [];
 
 
-
 //DOM
 const recipesSection = document.querySelector('.recipes');
 const hashtagDiv = document.querySelector('.hashtags')
