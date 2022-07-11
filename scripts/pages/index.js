@@ -55,20 +55,25 @@ inputForm1.addEventListener(('input'), (e) => {
 
   if (inputForm1.value.length < 3) {
     console.log('moins de 3 caractères');
-    // recipesSection.innerHTML = '';
+
+    // recipesSection.innerHTML = ' ';
+
     // displayCards(recipes);
   }
   
   // PLUS DE 2 CARACTERES
   if (inputForm1.value.length > 2) {
-    let actualValueInput = inputForm1.value;
     console.log('plus de 2 caractères');    
-    recipesSection.innerHTML = ' ';
-    console.log(recipesArray);
-  
     
-    recipesArrayFiltered = recipesArray.filter(recipe => recipe.name.includes(actualValueInput));
-    displayCards(recipesArrayFiltered);
+    actualValueInput = inputForm1.value;
+    actualValueInput.toLowerCase();
+    result = recipesArray.filter(recipe => recipe.name.toLowerCase().includes(actualValueInput));
+    recipesSection.innerHTML = '';
+    
+    displayCards(result);
+    result=[];
+
+
   };
 });
  
