@@ -73,12 +73,8 @@ function Recipe(data) {
 
 
   //PUSH TOUTES LES RECETTES DANS ARRAY RecipesArray
-  // faire une fonction qui regarde si l'objet contient l'input?
-  // console.log(recipesArray);
   recipesArray.push(dataRecipes);
-  recipesArray.forEach((element) => {
-    // console.log(element);
-  });
+
     
   // INGREDIENTS EN MINUSCULE SANS ESPACE DANS ARRAY arrTriIngredients
   // //FILTRER LES DOUBLONS 

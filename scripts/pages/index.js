@@ -50,28 +50,27 @@ const ustensilUl = document.querySelector('.ustensilUl');
 inputForm1.addEventListener(('input'), (e) => {
   e.preventDefault();
   e.stopPropagation();
+  actualValueInput = inputForm1.value;
   
   //MOINS DE 3 CARACTERES
 
   if (inputForm1.value.length < 3) {
     console.log('moins de 3 caractères');
-
     // recipesSection.innerHTML = ' ';
-
     // displayCards(recipes);
   }
   
   // PLUS DE 2 CARACTERES
   if (inputForm1.value.length > 2) {
     console.log('plus de 2 caractères');    
+    console.log(actualValueInput.toLowerCase());    
+
     
-    actualValueInput = inputForm1.value;
     actualValueInput.toLowerCase();
-    result = recipesArray.filter(recipe => recipe.name.toLowerCase().includes(actualValueInput));
-    recipesSection.innerHTML = '';
+    result = recipesArray.filter(recipe => recipe.name.toLowerCase().includes(actualValueInput.toLowerCase()));
+    recipesSection.innerHTML = ' ';
     
     displayCards(result);
-    result=[];
 
 
   };
@@ -86,6 +85,7 @@ appliancesDiv.style.display = "none";
 ustensilsDiv.style.display = "none";
 btnAppliances.style.display = "block";
 btnUstensils.style.display = "block";
+
 
 if (ingredientsDiv.style.display === "none") {
   ingredientsDiv.style.display = "block";
