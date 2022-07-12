@@ -25,8 +25,22 @@ let Tags = tagsIngredients.concat(tagsAppliances, tagsUstensils);
 
 
 //DOM
-const recipesSection = document.querySelector('.recipes');
-const recipeCard = document.querySelector('.recipe-card');
+//CARD RECETTE
+const recipesSection = document.getElementById('recipes');
+const recipeCard = document.querySelectorAll("#recipes > article");
+const recipeCardPicture = document.querySelectorAll('#recipes > article > div.picture');
+
+const recipeCardIngredients = document.querySelectorAll(".ingredients");
+
+const middleCardInfos = document.querySelectorAll(".middleCardInfos");
+const middleCardInfosH2 = document.querySelectorAll("#recipes > article > div.middleCardInfos.d-flex.justify-content-around.p-3 > h2");
+const middleCardInfosH2i = document.querySelector("#recipes > article > div.middleCardInfos.d-flex.justify-content-around.p-3 > h2 > i")
+
+const bottomCardInfos = document.querySelectorAll(".bottomCardInfos");
+const recipeCardIngredientsItem = document.querySelectorAll("#recipes > article > div.bottomCardInfos.d-flex.justify-content-between.pl-3.pr-3.pb-3.pt-0 > div > p");
+const recipeCardIngredientsItemSpan = document.querySelectorAll("#recipes > article > div.bottomCardInfos.d-flex.justify-content-between.pl-3.pr-3.pb-3.pt-0 > div > p > span");
+const recipeCardDescription = document.querySelectorAll(".descriptionRecipe");
+
 const hashtagDiv = document.querySelector('.hashtags');
 const btnIngredients = document.querySelector('.btn-primary');
 const btnAppliances = document.querySelector('.btn-success');
@@ -45,34 +59,37 @@ const ingredientUl = document.querySelector('.ingredientUl');
 const applianceUl = document.querySelector('.applianceUl');
 const ustensilUl = document.querySelector('.ustensilUl');
 
+const pcardinfo = document.querySelectorAll("#recipes > article > div.bottomCardInfos.d-flex.justify-content-between.pl-3.pr-3.pb-3.pt-0 > div > p > span")
+const spaninfo = document.querySelectorAll("#recipes > article > div.bottomCardInfos.d-flex.justify-content-between.pl-3.pr-3.pb-3.pt-0 > div > p > span")
 
 // RECHERCHE DANS LE FORMULAIRE PRINCIPAL
 inputForm1.addEventListener(('input'), (e) => {
   e.preventDefault();
   e.stopPropagation();
   actualValueInput = inputForm1.value;
+  actualValueInput.toLowerCase();
+  recipesSection.innerHTML = '';
   
-  //MOINS DE 3 CARACTERES
+  result = recipesArray.filter(recipe => recipe.name.toLowerCase().includes(actualValueInput.toLowerCase()));
 
-  if (inputForm1.value.length < 3) {
-    console.log('moins de 3 caractères');
-    // recipesSection.innerHTML = ' ';
-    // displayCards(recipes);
-  }
-  
+//MOINS DE 3 CARACTERES
+
+if (inputForm1.value.length < 3) {
+  console.log('moins de 3 caractères');
+
+}
   // PLUS DE 2 CARACTERES
   if (inputForm1.value.length > 2) {
-    console.log('plus de 2 caractères');    
-    console.log(actualValueInput.toLowerCase());    
+    console.log('plus de 2 caractères');  
+    console.log(actualValueInput.toLowerCase()); 
+    
+    recipesSection.innerHTML = '';
 
-    
-    actualValueInput.toLowerCase();
-    result = recipesArray.filter(recipe => recipe.name.toLowerCase().includes(actualValueInput.toLowerCase()));
-    recipesSection.innerHTML = ' ';
-    
     displayCards(result);
 
-
+    
+    result=[];
+    console.log(result);
   };
 });
  
