@@ -68,20 +68,21 @@ inputForm1.addEventListener(('input'), (e) => {
   e.stopPropagation();
   actualValueInput = inputForm1.value;
   actualValueInput.toLowerCase();
-  recipesSection.innerHTML = '';
   
   result = recipesArray.filter(recipe => recipe.name.toLowerCase().includes(actualValueInput.toLowerCase()));
-
-//MOINS DE 3 CARACTERES
-
-if (inputForm1.value.length < 3) {
+  
+  //MOINS DE 3 CARACTERES
+  
+  if (inputForm1.value.length < 3) {
   console.log('moins de 3 caractères');
+  
 
 }
   // PLUS DE 2 CARACTERES
   if (inputForm1.value.length > 2) {
     console.log('plus de 2 caractères');  
     console.log(actualValueInput.toLowerCase()); 
+    recipesSection.innerHTML = '';
     
     recipesSection.innerHTML = '';
 
