@@ -51,7 +51,7 @@ span {
   background-color: #3282F7;
 }
 
-.recipes {
+#recipes {
   margin-top: 130px;
 }
 
@@ -151,7 +151,6 @@ header {
 .filters {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 80px;
   position: absolute;
   z-index: 5;
 }
