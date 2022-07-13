@@ -1,12 +1,11 @@
 // ---------------------------INDEX.JS------------------------
-
-//CONTIENT TOUTES LES RECETTES
 // debugger
 
-let recipesArray = []; // contient toutes les recettes d'origine (50)
+
+let recipesArray = []; // contient toutes les recettes d'origine (50);
 console.log(recipesArray);
 
-let fileredRecipes = []; // contient toutes les recettes filtrées par tag
+let fileredRecipes = []; // contient toutes les recettes filtrées des tags
 console.log(fileredRecipes);
 
 //CONTIENT TOUTES LES INGREDIENTS (ARRAY DE STRINGS) == TAGS
@@ -31,39 +30,35 @@ let Tags = tagsIngredients.concat(tagsAppliances, tagsUstensils);
 //DOM
 //CARD RECETTE
 const recipesSection = document.getElementById('recipes');
-const recipeCard = document.querySelectorAll("#recipes > article");
-const recipeCardPicture = document.querySelectorAll('#recipes > article > div.picture');
-const recipeCardIngredients = document.querySelectorAll(".ingredients");
-const middleCardInfos = document.querySelectorAll(".middleCardInfos");
-const middleCardInfosH2 = document.querySelectorAll("#recipes > article > div.middleCardInfos.d-flex.justify-content-around.p-3 > h2");
-const middleCardInfosH2i = document.querySelector("#recipes > article > div.middleCardInfos.d-flex.justify-content-around.p-3 > h2 > i");
-const bottomCardInfos = document.querySelectorAll(".bottomCardInfos");
-const recipeCardIngredientsItem = document.querySelectorAll("#recipes > article > div.bottomCardInfos.d-flex.justify-content-between.pl-3.pr-3.pb-3.pt-0 > div > p");
-const recipeCardIngredientsItemSpan = document.querySelectorAll("#recipes > article > div.bottomCardInfos.d-flex.justify-content-between.pl-3.pr-3.pb-3.pt-0 > div > p > span");
-const recipeCardDescription = document.querySelectorAll(".descriptionRecipe");
 
 const hashtagDiv = document.querySelector('.hashtags');
 const btnIngredients = document.querySelector('.btn-primary');
 const btnAppliances = document.querySelector('.btn-success');
 const btnUstensils = document.querySelector('.btn-danger');
+
+const ingredientLi = document.querySelectorAll("body > main > div.container-fluid.filters > div.dropdown.dropdown-primary.style\\=\\'display\\:block > div > ul > li");
 const dropdownPrimary = document.querySelector(".dropdown-primary");
 const dropdownSuccess = document.querySelector(".dropdown-success");
 const dropdownDanger = document.querySelector(".dropdown-danger");
+
 const ingredientsDiv = document.querySelector(".ingredients-list");
 const appliancesDiv = document.querySelector(".appliances-list");
 const ustensilsDiv = document.querySelector(".ustensils-list");
+
 const inputForm1 = document.querySelector("#SaisieRecherche1");
 const inputForm2 = document.querySelector("#SaisieRecherche2");
 const inputForm3 = document.querySelector("#SaisieRecherche3");
 const inputForm4 = document.querySelector("#SaisieRecherche4");
+
 const ingredientUl = document.querySelector('.ingredientUl');
 const applianceUl = document.querySelector('.applianceUl');
 const ustensilUl = document.querySelector('.ustensilUl');
 
-const pcardinfo = document.querySelectorAll("#recipes > article > div.bottomCardInfos.d-flex.justify-content-between.pl-3.pr-3.pb-3.pt-0 > div > p > span")
-const spaninfo = document.querySelectorAll("#recipes > article > div.bottomCardInfos.d-flex.justify-content-between.pl-3.pr-3.pb-3.pt-0 > div > p > span")
+
+
 
 // RECHERCHE DANS LE FORMULAIRE PRINCIPAL
+
 inputForm1.addEventListener(('input'), (e) => {
   e.preventDefault();
   e.stopPropagation();
@@ -108,6 +103,8 @@ inputForm1.addEventListener(('input'), (e) => {
 // MENU DEROULANT RECHERCHE PAR INGREDIENT
 dropdownPrimary.addEventListener('click', (e)=> {
 e.preventDefault();
+e.stopPropagation();
+
 
 appliancesDiv.style.display = "none";
 ustensilsDiv.style.display = "none";
@@ -172,6 +169,21 @@ dropdownDanger.addEventListener('click', (e)=> {
   }
 });
 
+// RECHERCHE MENU DEROULANT RECHERCHE PAR INGREDIENT / CREATION/SUPPRESSION DU TAG
+//INGREDIENT LI CREE UN INGREDIENT TAG
+
+ingredientLi.forEach((item) => {
+  item.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+  console.log("clic sur li ingredient");
+  })
+})
+// RECHERCHE MENU DEROULANT RECHERCHE PAR APPAREIL / CREATION/SUPPRESSION DU TAG
+
+// RECHERCHE MENU DEROULANT RECHERCHE PAR USTENSILE / CREATION/SUPPRESSION DU TAG
+
+
 
 
 
@@ -179,9 +191,7 @@ dropdownDanger.addEventListener('click', (e)=> {
 async function init() {
   const { recipes } = await getRecipes();
   await displayCards(recipes);
-  await displayIngredientsAppliancesUstensils(dataIngredientsFiltered, 'ingredientLi', 'ingredientTag', ingredientUl);
-  await displayIngredientsAppliancesUstensils(dataAppliancesFiltered, 'applianceLi', 'applianceTag', applianceUl);
-  await displayIngredientsAppliancesUstensils(dataIngredientsFiltered, 'ustensilLi', 'ustensilTag', ustensilUl);
+  await displayIngredientsAppliancesUstensils();
 }
 
 init();

@@ -12,17 +12,65 @@ async function displayCards(filteredData) {
   });
 }
 
-//AU CHARGEMENT DE LA PAGE ON RECUPERE TOUTES LES MOTS CLEFS
-async function displayIngredientsAppliancesUstensils(filteredData, classlist, classtag, parent) {
-  filteredData.forEach((element) => {
+//AU CHARGEMENT DE LA PAGE ON RECUPERE TOUTES LES MOTS CLEFS + ATTRIBUTION ADDEVENTLISTENER
+//INGREDIENTS
+
+function eventClickBtnPrimary() {
+  console.log(this.textContent);
+  dropdownPrimary.click();
+}
+
+async function displayIngredients() {
+  dataIngredientsFiltered.forEach((element) => {
     let item = document.createElement('li');
-    item.classList.add(classlist, classtag);
+    item.classList.add('ingredientLi');
     item.textContent = element;
-    parent.appendChild(item);
+    item.addEventListener(('click'), eventClickBtnPrimary);
+    ingredientUl.appendChild(item);
   })
 }
 
+//AU CHARGEMENT DE LA PAGE ON RECUPERE TOUTES LES MOTS CLEFS + ATTRIBUTION ADDEVENTLISTENER
+//APPAREIL
 
+function eventClickBtnSuccess() {
+  console.log(this.textContent);
+  dropdownSuccess.click();
+}
 
-// displayCards avec objets filtres ?
-// function displaycards(recipesArray)  ?
+async function displayAppliances() {
+  dataAppliancesFiltered.forEach((element) => {
+    let item = document.createElement('li');
+    item.classList.add('applianceLi');
+    item.textContent = element;
+    item.addEventListener(('click'), eventClickBtnSuccess);
+    applianceUl.appendChild(item);
+  })
+}
+
+//AU CHARGEMENT DE LA PAGE ON RECUPERE TOUTES LES MOTS CLEFS + ATTRIBUTION ADDEVENTLISTENER
+//APPAREIL
+
+function eventClickBtnDanger() {
+  console.log(this.textContent);
+  dropdownDanger.click();
+}
+
+async function displayUstensils() {
+  dataUstensilsFiltered.forEach((element) => {
+    let item = document.createElement('li');
+    item.classList.add('ustensilLi');
+    item.textContent = element;
+    item.addEventListener(('click'), eventClickBtnDanger);
+    ustensilUl.appendChild(item);
+  })
+}
+
+//INITIALISATION LANCEMENT DES 3 FONCTIONS 
+
+async function displayIngredientsAppliancesUstensils() {
+  displayIngredients();
+  displayAppliances();
+  displayUstensils();
+}
+

@@ -7,6 +7,9 @@ function Recipe(data) {
   const dataAppliances = appliance;
   const dataUstensils = ustensils;
   
+  //PUSH TOUTES LES RECETTES DANS ARRAY RecipesArray
+  recipesArray.push(dataRecipes);
+
   //CREATION DE LA CARTE RECETTE
   function getRecipeCard() {
     const card = document.createElement('article');
@@ -20,7 +23,6 @@ function Recipe(data) {
     const middleCardInfos = document.createElement('div');
     middleCardInfos.classList.add('middleCardInfos','d-flex', 'justify-content-around', 'p-3');
     
-  
     //NOM DE LA RECETTE
     const nameRecipe = document.createElement('h2');
     nameRecipe.classList.add('col-8','pl-0');
@@ -57,7 +59,6 @@ function Recipe(data) {
     descriptionRecipe.classList.add('descriptionRecipe','col-6');
     descriptionRecipe.textContent = description;
   
-  
     card.appendChild(pictureRecipe);
     card.appendChild(middleCardInfos);
     card.appendChild(bottomCardInfos);
@@ -70,11 +71,6 @@ function Recipe(data) {
   
     return (card);
   }
-
-
-  //PUSH TOUTES LES RECETTES DANS ARRAY RecipesArray
-  recipesArray.push(dataRecipes);
-
     
   // INGREDIENTS EN MINUSCULE SANS ESPACE DANS ARRAY arrTriIngredients
   // //FILTRER LES DOUBLONS 
@@ -103,7 +99,12 @@ function Recipe(data) {
 
 
   // CREER LA FONCTION getTagCards()
+function getTagCards(){
+  const card = document.createElement('article');
+  card.classList.add('card-tag');
 
+  return { card };
+}
 
-  return { id, name, servings, ingredients, time, description, appliance, ustensils, getRecipes, getRecipeCard }
+  return { id, name, servings, ingredients, time, description, appliance, ustensils, getRecipeCard, getTagCards }
 }
