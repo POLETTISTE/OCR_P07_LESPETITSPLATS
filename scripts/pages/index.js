@@ -69,6 +69,7 @@ inputForm1.addEventListener(('input'), (e) => {
   e.stopPropagation();
   actualValueInput = inputForm1.value;
   actualValueInput.toLowerCase();
+  let result = [];
   
   //MOINS DE 3 CARACTERES
   
@@ -81,7 +82,6 @@ inputForm1.addEventListener(('input'), (e) => {
   // PLUS DE 2 CARACTERES
   if (inputForm1.value.length > 2) {
 
-    let result = [];
 
     if (fileredRecipes.length === 0) {
       result = recipes.filter(recipe => recipe.name.toLowerCase().includes(actualValueInput.toLowerCase()));
