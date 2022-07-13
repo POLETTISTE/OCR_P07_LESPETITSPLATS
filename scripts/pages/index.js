@@ -1,8 +1,10 @@
 // ---------------------------INDEX.JS------------------------
 
 //CONTIENT TOUTES LES RECETTES
+// debugger
 
 let recipesArray = [];
+let fileredRecipes = [];
 console.log(recipesArray);
 
 //CONTIENT TOUTES LES INGREDIENTS (ARRAY DE STRINGS) == TAGS
@@ -29,13 +31,10 @@ let Tags = tagsIngredients.concat(tagsAppliances, tagsUstensils);
 const recipesSection = document.getElementById('recipes');
 const recipeCard = document.querySelectorAll("#recipes > article");
 const recipeCardPicture = document.querySelectorAll('#recipes > article > div.picture');
-
 const recipeCardIngredients = document.querySelectorAll(".ingredients");
-
 const middleCardInfos = document.querySelectorAll(".middleCardInfos");
 const middleCardInfosH2 = document.querySelectorAll("#recipes > article > div.middleCardInfos.d-flex.justify-content-around.p-3 > h2");
-const middleCardInfosH2i = document.querySelector("#recipes > article > div.middleCardInfos.d-flex.justify-content-around.p-3 > h2 > i")
-
+const middleCardInfosH2i = document.querySelector("#recipes > article > div.middleCardInfos.d-flex.justify-content-around.p-3 > h2 > i");
 const bottomCardInfos = document.querySelectorAll(".bottomCardInfos");
 const recipeCardIngredientsItem = document.querySelectorAll("#recipes > article > div.bottomCardInfos.d-flex.justify-content-between.pl-3.pr-3.pb-3.pt-0 > div > p");
 const recipeCardIngredientsItemSpan = document.querySelectorAll("#recipes > article > div.bottomCardInfos.d-flex.justify-content-between.pl-3.pr-3.pb-3.pt-0 > div > p > span");
@@ -69,28 +68,40 @@ inputForm1.addEventListener(('input'), (e) => {
   actualValueInput = inputForm1.value;
   actualValueInput.toLowerCase();
   
-  result = recipesArray.filter(recipe => recipe.name.toLowerCase().includes(actualValueInput.toLowerCase()));
-  
   //MOINS DE 3 CARACTERES
   
   if (inputForm1.value.length < 3) {
-  console.log('moins de 3 caractères');
-  
-
-}
+    console.log('moins de 3 caractères');
+    
+    
+  }
   // PLUS DE 2 CARACTERES
   if (inputForm1.value.length > 2) {
-    console.log('plus de 2 caractères');  
-    console.log(actualValueInput.toLowerCase()); 
-    recipesSection.innerHTML = '';
-    
-    recipesSection.innerHTML = '';
 
+    let result = [];
+
+    if (fileredRecipes.length === 0) {
+      result = recipes.filter(recipe => recipe.name.toLowerCase().includes(actualValueInput.toLowerCase()));
+    } else {
+       result = fileredRecipes.filter(recipe => recipe.name.toLowerCase().includes(actualValueInput.toLowerCase()));
+    }
+    
     displayCards(result);
+    
+    
+    
+    // si on a aucune donnee filtree, on prend recipes
+    // si on a deja des donnes filtrees dans recipearray, alors on prend recipes array pour e filter
+    // si un tag est coche
+    //  result = recipesArray.filter(recipe => recipe.name.toLowerCase().includes(actualValueInput.toLowerCase()));
+    // console.log('plus de 2 caractères');  
+    // console.log(actualValueInput.toLowerCase()); 
+
+
+    // displayCards(result);
 
     
-    result=[];
-    console.log(result);
+    // console.log(result);
   };
 });
  
