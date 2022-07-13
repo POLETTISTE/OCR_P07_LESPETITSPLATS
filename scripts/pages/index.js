@@ -71,40 +71,36 @@ inputForm1.addEventListener(('input'), (e) => {
   actualValueInput.toLowerCase();
   let result = [];
   
-  //MOINS DE 3 CARACTERES
   
+  //MOINS DE 3 CARACTERES
   if (inputForm1.value.length < 3) {
     console.log('moins de 3 caractères');
-    result = recipes.filter(recipe => recipe);
+    
+    // si on a aucune donnee filtree, on prend recipes
+    // si on a deja des donnes filtrees dans recipearray, alors on prend fileredRecipes pour filter
+    if (fileredRecipes.length === 0) {
+      result = recipes.filter(recipe => recipe);
+    } else {
+      result = fileredRecipes.filter(recipe => recipe);
+    }
     displayCards(result);
+    console.log(result);
 
   }
   // PLUS DE 2 CARACTERES
   if (inputForm1.value.length > 2) {
+    console.log('plus de 2 caractères');  
 
-
+    // si on a aucune donnee filtree, on prend recipes
+    // si on a deja des donnes filtrees dans recipearray, alors on prend fileredRecipes pour filter
     if (fileredRecipes.length === 0) {
       result = recipes.filter(recipe => recipe.name.toLowerCase().includes(actualValueInput.toLowerCase()));
     } else {
        result = fileredRecipes.filter(recipe => recipe.name.toLowerCase().includes(actualValueInput.toLowerCase()));
     }
-    
     displayCards(result);
     
-    
-    
-    // si on a aucune donnee filtree, on prend recipes
-    // si on a deja des donnes filtrees dans recipearray, alors on prend recipes array pour e filter
-    // si un tag est coche
-    //  result = recipesArray.filter(recipe => recipe.name.toLowerCase().includes(actualValueInput.toLowerCase()));
-    // console.log('plus de 2 caractères');  
-    // console.log(actualValueInput.toLowerCase()); 
-
-
-    // displayCards(result);
-
-    
-    // console.log(result);
+    console.log(result);
   };
 });
  
