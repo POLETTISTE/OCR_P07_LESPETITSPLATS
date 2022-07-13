@@ -3,9 +3,11 @@
 //CONTIENT TOUTES LES RECETTES
 // debugger
 
-let recipesArray = [];
-let fileredRecipes = [];
+let recipesArray = []; // contient toutes les recettes d'origine (50)
 console.log(recipesArray);
+
+let fileredRecipes = []; // contient toutes les recettes filtrées par tag
+console.log(fileredRecipes);
 
 //CONTIENT TOUTES LES INGREDIENTS (ARRAY DE STRINGS) == TAGS
 let arrTriIngredients = [];
@@ -72,8 +74,9 @@ inputForm1.addEventListener(('input'), (e) => {
   
   if (inputForm1.value.length < 3) {
     console.log('moins de 3 caractères');
-    
-    
+    result = recipes.filter(recipe => recipe);
+    displayCards(result);
+
   }
   // PLUS DE 2 CARACTERES
   if (inputForm1.value.length > 2) {
