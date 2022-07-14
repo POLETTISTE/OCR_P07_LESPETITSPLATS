@@ -12,15 +12,26 @@ async function displayCards(filteredData) {
   });
 }
 
-//AU CHARGEMENT DE LA PAGE ON RECUPERE TOUTES LES MOTS CLEFS + ATTRIBUTION ADDEVENTLISTENER
+
+//AU CHARGEMENT DE LA PAGE ON RECUPERE TOUTES LES MOTS CLEFS + ATTRIBUTION ADDEVENTLISTENER + creation tag
 //INGREDIENTS
 
 function eventClickBtnPrimary() {
-  console.log(this.textContent);
+  let clickedIngredient = this.textContent;
+  tagsIngredients.push(clickedIngredient);
+
+  let item = document.createElement('span');
+  item.classList.add('spantag');
+  item.textContent = this.textContent;
+  TagsDiv.appendChild(item);
+
+
+  console.log(tagsIngredients);
   dropdownPrimary.click();
 }
 
 async function displayIngredients() {
+  console.log(dataIngredientsFiltered);
   dataIngredientsFiltered.forEach((element) => {
     let item = document.createElement('li');
     item.classList.add('ingredientLi');

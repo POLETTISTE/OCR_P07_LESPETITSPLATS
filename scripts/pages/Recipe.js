@@ -98,13 +98,6 @@ function Recipe(data) {
   });
 
 
-  // CREER LA FONCTION getTagCards()
-function getTagCards(){
-  const card = document.createElement('article');
-  card.classList.add('card-tag');
 
-  return { card };
-}
-
-  return { id, name, servings, ingredients, time, description, appliance, ustensils, getRecipeCard, getTagCards }
+  return { id, name, servings, ingredients, time, description, appliance, ustensils, getRecipeCard }
 }

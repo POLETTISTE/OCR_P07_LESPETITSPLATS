@@ -31,7 +31,7 @@ let Tags = tagsIngredients.concat(tagsAppliances, tagsUstensils);
 //CARD RECETTE
 const recipesSection = document.getElementById('recipes');
 
-const hashtagDiv = document.querySelector('.hashtags');
+const TagsDiv = document.querySelector('.tags');
 const btnIngredients = document.querySelector('.btn-primary');
 const btnAppliances = document.querySelector('.btn-success');
 const btnUstensils = document.querySelector('.btn-danger');
