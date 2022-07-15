@@ -83,17 +83,24 @@ inputForm1.addEventListener(('input'), (e) => {
   // PLUS DE 2 CARACTERES
   if (inputForm1.value.length > 2) {
     console.log('plus de 2 caractères');  
-
+    
     // si on a aucune donnee filtree, on prend recipes
     // si on a deja des donnes filtrees dans recipearray, alors on prend fileredRecipes pour filter
+   
+    // function suffisammentGrand(element) {
+    //   return element >= 10;
+    // }
+    // var filtre = [12, 5, 8, 130, 44].filter(suffisammentGrand);
+    // // filtre vaut [12, 130, 44]
+    
     if (fileredRecipes.length === 0) {
       result = recipes.filter(recipe => recipe.name.toLowerCase().includes(actualValueInput.toLowerCase()));
+      console.log(result);
+
     } else {
        result = fileredRecipes.filter(recipe => recipe.name.toLowerCase().includes(actualValueInput.toLowerCase()));
     }
     displayCards(result);
-    
-    console.log(result);
   };
 });
  
