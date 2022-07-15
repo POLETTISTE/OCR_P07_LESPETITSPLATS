@@ -33,7 +33,7 @@ function eventClickBtnPrimary() {
   closeTag.classList.add('tag-close');
   closeTag.innerHTML = '<i class="fa-regular fa-circle-xmark"></i>';
   closeTag.addEventListener('click', () => {
-    console.log('ttt');
+    
     item.textContent='';
     item.remove();
   });
@@ -69,7 +69,7 @@ function eventClickBtnSuccess() {
   closeTag.classList.add('tag-close');
   closeTag.innerHTML = '<i class="fa-regular fa-circle-xmark"></i>';
   closeTag.addEventListener('click', () => {
-    console.log('ttt');
+    
     item.textContent='';
     item.remove();
   });
@@ -107,7 +107,7 @@ function eventClickBtnDanger() {
   closeTag.classList.add('tag-close');
   closeTag.innerHTML = '<i class="fa-regular fa-circle-xmark"></i>';
   closeTag.addEventListener('click', () => {
-    console.log('ttt');
+    
     item.textContent='';
     item.remove();
   });
