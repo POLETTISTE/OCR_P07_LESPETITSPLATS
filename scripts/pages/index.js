@@ -24,19 +24,18 @@ let dataUstensilsFiltered = [];
 let tagsUstensils = [];
 
 // CONTIENT TOUS LES TAGS == TAGS
-let Tags = tagsIngredients.concat(tagsAppliances, tagsUstensils);
+let tags = tagsIngredients.concat(tagsAppliances, tagsUstensils);
 
 
 //DOM
 //CARD RECETTE
 const recipesSection = document.getElementById('recipes');
+const tagsDiv = document.querySelector('.tags');
 
-const TagsDiv = document.querySelector('.tags');
 const btnIngredients = document.querySelector('.btn-primary');
 const btnAppliances = document.querySelector('.btn-success');
 const btnUstensils = document.querySelector('.btn-danger');
 
-const ingredientLi = document.querySelectorAll("body > main > div.container-fluid.filters > div.dropdown.dropdown-primary.style\\=\\'display\\:block > div > ul > li");
 const dropdownPrimary = document.querySelector(".dropdown-primary");
 const dropdownSuccess = document.querySelector(".dropdown-success");
 const dropdownDanger = document.querySelector(".dropdown-danger");
@@ -54,11 +53,10 @@ const ingredientUl = document.querySelector('.ingredientUl');
 const applianceUl = document.querySelector('.applianceUl');
 const ustensilUl = document.querySelector('.ustensilUl');
 
-
+const closeTag = document.querySelector('.tag-close');
 
 
 // RECHERCHE DANS LE FORMULAIRE PRINCIPAL
-
 inputForm1.addEventListener(('input'), (e) => {
   e.preventDefault();
   e.stopPropagation();
@@ -169,22 +167,13 @@ dropdownDanger.addEventListener('click', (e)=> {
   }
 });
 
-// RECHERCHE MENU DEROULANT RECHERCHE PAR INGREDIENT / CREATION/SUPPRESSION DU TAG
-//INGREDIENT LI CREE UN INGREDIENT TAG
-
-ingredientLi.forEach((item) => {
-  item.addEventListener('click', (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-  console.log("clic sur li ingredient");
-  })
-})
-// RECHERCHE MENU DEROULANT RECHERCHE PAR APPAREIL / CREATION/SUPPRESSION DU TAG
-
-// RECHERCHE MENU DEROULANT RECHERCHE PAR USTENSILE / CREATION/SUPPRESSION DU TAG
 
 
 
+//   closeTag.addEventListener('click', (e) => {
+//   e.preventDefault();
+//   console.log('click');
+// });
 
 
 // INITIALISATION

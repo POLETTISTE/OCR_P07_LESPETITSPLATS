@@ -1,0 +1,38 @@
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    height:auto;
+    padding-top:20px;
+    padding-bottom:20px;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+
+.tag{
+    margin-right: 5px;
+    margin-bottom: 5px;
+    padding:10px;
+    width: auto;
+    color:white;
+    line-height: 16.8px;
+}
+
+.tag-close {
+    font-size: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    padding:8px;
+}
+
+.tag-ingredient {
+    background-color: #3282F7;
+}
+
+.tag-appliance {
+    background-color: #68D9A4;
+}
+
+.tag-ustensil {
+    background-color: #ED6454;
+}

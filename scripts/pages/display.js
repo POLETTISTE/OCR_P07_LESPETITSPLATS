@@ -13,6 +13,11 @@ async function displayCards(filteredData) {
 }
 
 
+// FERMETURE TAG
+// function eventClickCloseTag() {
+//   console.log('clicked');
+// }
+
 //AU CHARGEMENT DE LA PAGE ON RECUPERE TOUTES LES MOTS CLEFS + ATTRIBUTION ADDEVENTLISTENER + creation tag
 //INGREDIENTS
 
@@ -20,17 +25,26 @@ function eventClickBtnPrimary() {
   let clickedIngredient = this.textContent;
   tagsIngredients.push(clickedIngredient);
 
-  let item = document.createElement('span');
-  item.classList.add('spantag');
+  let item = document.createElement('card');
+  item.classList.add('tag-ingredient', 'tag', 'rounded');
   item.textContent = this.textContent;
-  TagsDiv.appendChild(item);
+  
+  let closeTag = document.createElement('span');
+  closeTag.classList.add('tag-close');
+  closeTag.innerHTML = '<i class="fa-regular fa-circle-xmark"></i>';
+  closeTag.addEventListener('click', () => {
+    console.log('ttt');
+    item.textContent='';
+    item.remove();
 
+  })
 
-  console.log(tagsIngredients);
+  tagsDiv.appendChild(item);
+  item.appendChild(closeTag);
   dropdownPrimary.click();
 }
 
-async function displayIngredients() {
+function displayIngredients() {
   console.log(dataIngredientsFiltered);
   dataIngredientsFiltered.forEach((element) => {
     let item = document.createElement('li');
@@ -45,11 +59,27 @@ async function displayIngredients() {
 //APPAREIL
 
 function eventClickBtnSuccess() {
-  console.log(this.textContent);
+  let clickedAppliance = this.textContent;
+  tagsAppliances.push(clickedAppliance);
+  
+  let item = document.createElement('card');
+  item.classList.add('tag-appliance', 'tag', 'rounded');
+  item.textContent = this.textContent;
+  
+  let closeTag = document.createElement('span');
+  closeTag.classList.add('tag-close');
+  closeTag.innerHTML = '<i class="fa-regular fa-circle-xmark"></i>';
+  closeTag.addEventListener(('click'), eventClickCloseTag)
+
+
+  tagsDiv.appendChild(item);
+  item.appendChild(closeTag);
   dropdownSuccess.click();
 }
 
-async function displayAppliances() {
+function displayAppliances() {
+  console.log(dataAppliancesFiltered);
+
   dataAppliancesFiltered.forEach((element) => {
     let item = document.createElement('li');
     item.classList.add('applianceLi');
@@ -60,14 +90,28 @@ async function displayAppliances() {
 }
 
 //AU CHARGEMENT DE LA PAGE ON RECUPERE TOUTES LES MOTS CLEFS + ATTRIBUTION ADDEVENTLISTENER
-//APPAREIL
+//USTENSIL
 
 function eventClickBtnDanger() {
-  console.log(this.textContent);
+  let clickedUstensil = this.textContent;
+  tagsUstensils.push(clickedUstensil);
+  
+  let item = document.createElement('card');
+  item.classList.add('tag-ustensil', 'tag', 'rounded');
+  item.textContent = this.textContent;
+  
+  let closeTag = document.createElement('span');
+  closeTag.classList.add('tag-close');
+  closeTag.innerHTML = '<i class="fa-regular fa-circle-xmark"></i>';
+  closeTag.addEventListener(('click'), eventClickCloseTag)
+
+  tagsDiv.appendChild(item);
+  item.appendChild(closeTag);
   dropdownDanger.click();
 }
 
-async function displayUstensils() {
+function displayUstensils() {
+
   dataUstensilsFiltered.forEach((element) => {
     let item = document.createElement('li');
     item.classList.add('ustensilLi');
@@ -76,6 +120,8 @@ async function displayUstensils() {
     ustensilUl.appendChild(item);
   })
 }
+
+
 
 //INITIALISATION LANCEMENT DES 3 FONCTIONS 
 
