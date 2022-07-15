@@ -36,8 +36,7 @@ function eventClickBtnPrimary() {
     console.log('ttt');
     item.textContent='';
     item.remove();
-
-  })
+  });
 
   tagsDiv.appendChild(item);
   item.appendChild(closeTag);
@@ -69,7 +68,11 @@ function eventClickBtnSuccess() {
   let closeTag = document.createElement('span');
   closeTag.classList.add('tag-close');
   closeTag.innerHTML = '<i class="fa-regular fa-circle-xmark"></i>';
-  closeTag.addEventListener(('click'), eventClickCloseTag)
+  closeTag.addEventListener('click', () => {
+    console.log('ttt');
+    item.textContent='';
+    item.remove();
+  });
 
 
   tagsDiv.appendChild(item);
@@ -103,7 +106,11 @@ function eventClickBtnDanger() {
   let closeTag = document.createElement('span');
   closeTag.classList.add('tag-close');
   closeTag.innerHTML = '<i class="fa-regular fa-circle-xmark"></i>';
-  closeTag.addEventListener(('click'), eventClickCloseTag)
+  closeTag.addEventListener('click', () => {
+    console.log('ttt');
+    item.textContent='';
+    item.remove();
+  });
 
   tagsDiv.appendChild(item);
   item.appendChild(closeTag);
