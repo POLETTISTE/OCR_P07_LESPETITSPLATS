@@ -52,6 +52,7 @@ span {
 }
 
 #recipes {
+  width: fit-content;
   margin-top: 130px;
   padding: 0px;
 }
@@ -62,6 +63,7 @@ article {
   min-height: 364px;
   background-color: #E7E7E7;
   margin-bottom: 40px;
+  margin-right: 50px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-bottom-left-radius: 5px;
