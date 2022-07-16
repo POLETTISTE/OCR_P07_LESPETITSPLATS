@@ -83,7 +83,17 @@ inputForm1.addEventListener(('input'), (e) => {
   // PLUS DE 2 CARACTERES
   if (inputForm1.value.length > 2) {
     console.log('plus de 2 caractères');  
-    
+    console.log(recipes);
+    recipes.forEach((element) => {
+      console.log(element.name)
+    })
+    recipes.forEach((element) => {
+      // console.log(element.ingredients);
+      element.ingredients.forEach((element) => {
+        console.log(element.ingredient)
+      })
+    })
+
     // si on a aucune donnee filtree, on prend recipes
     // si on a deja des donnes filtrees dans recipearray, alors on prend fileredRecipes pour filter
    

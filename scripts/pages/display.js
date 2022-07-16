@@ -21,13 +21,13 @@ async function displayCards(filteredData) {
 //AU CHARGEMENT DE LA PAGE ON RECUPERE TOUTES LES MOTS CLEFS + ATTRIBUTION ADDEVENTLISTENER + creation tag
 //INGREDIENTS
 
-function eventClickBtnPrimary() {
-  let clickedIngredient = this.textContent;
+function eventClickBtnPrimary(e) {
+  let clickedIngredient = e.target.textContent;
   tagsIngredients.push(clickedIngredient);
 
   let item = document.createElement('card');
   item.classList.add('tag-ingredient', 'tag', 'rounded');
-  item.textContent = this.textContent;
+  item.textContent = e.target.textContent;
   
   let closeTag = document.createElement('span');
   closeTag.classList.add('tag-close');
@@ -57,13 +57,13 @@ function displayIngredients() {
 //AU CHARGEMENT DE LA PAGE ON RECUPERE TOUTES LES MOTS CLEFS + ATTRIBUTION ADDEVENTLISTENER
 //APPAREIL
 
-function eventClickBtnSuccess() {
-  let clickedAppliance = this.textContent;
+function eventClickBtnSuccess(e) {
+  let clickedAppliance = e.target.textContent;
   tagsAppliances.push(clickedAppliance);
   
   let item = document.createElement('card');
   item.classList.add('tag-appliance', 'tag', 'rounded');
-  item.textContent = this.textContent;
+  item.textContent = e.target.textContent;
   
   let closeTag = document.createElement('span');
   closeTag.classList.add('tag-close');
@@ -95,13 +95,13 @@ function displayAppliances() {
 //AU CHARGEMENT DE LA PAGE ON RECUPERE TOUTES LES MOTS CLEFS + ATTRIBUTION ADDEVENTLISTENER
 //USTENSIL
 
-function eventClickBtnDanger() {
-  let clickedUstensil = this.textContent;
+function eventClickBtnDanger(e) {
+  let clickedUstensil = e.target.textContent;
   tagsUstensils.push(clickedUstensil);
   
   let item = document.createElement('card');
   item.classList.add('tag-ustensil', 'tag', 'rounded');
-  item.textContent = this.textContent;
+  item.textContent = e.target.textContent;
   
   let closeTag = document.createElement('span');
   closeTag.classList.add('tag-close');
