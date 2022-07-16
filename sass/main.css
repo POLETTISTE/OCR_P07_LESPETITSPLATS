@@ -51,15 +51,21 @@ span {
   background-color: #3282F7;
 }
 
-.recipes {
+#recipes {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   margin-top: 130px;
+  padding: 0px;
 }
 
 article {
   min-width: 380px;
+  max-width: 380px;
   min-height: 364px;
   background-color: #E7E7E7;
   margin-bottom: 40px;
+  margin-right: 50px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-bottom-left-radius: 5px;
@@ -79,6 +85,10 @@ article {
   padding: 0;
   font-family: "Lato", sans-serif;
   font-weight: 700;
+}
+
+.ingredients-item-span {
+  margin-left: 5px;
 }
 
 .time {
@@ -111,6 +121,10 @@ header {
   margin-bottom: 20px;
 }
 
+.search {
+  padding: 0px;
+}
+
 .form-control {
   width: 1240px;
   height: 69px;
@@ -118,10 +132,10 @@ header {
   background-color: #E7E7E7;
 }
 
-#oSaisie {
+#SaisieRecherche1 {
   background-color: #E7E7E7;
 }
-#oSaisie:focus {
+#SaisieRecherche1:focus {
   outline: 0px;
   -webkit-appearance: none;
   box-shadow: none;
@@ -149,9 +163,9 @@ header {
 }
 
 .filters {
+  padding: 0px;
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 80px;
   position: absolute;
   z-index: 5;
 }
@@ -268,4 +282,43 @@ header {
   width: -moz-fit-content;
   width: fit-content;
   cursor: pointer;
+  z-index: 10;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  height: auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.tag {
+  margin-right: 5px;
+  margin-bottom: 5px;
+  padding: 10px;
+  width: auto;
+  color: white;
+  line-height: 16.8px;
+}
+
+.tag-close {
+  font-size: 20px;
+  margin-left: 10px;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.tag-ingredient {
+  background-color: #3282F7;
+}
+
+.tag-appliance {
+  background-color: #68D9A4;
+}
+
+.tag-ustensil {
+  background-color: #ED6454;
 }/*# sourceMappingURL=main.css.map */

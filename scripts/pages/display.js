@@ -13,10 +13,6 @@ async function displayCards(filteredData) {
 }
 
 
-// FERMETURE TAG
-// function eventClickCloseTag() {
-//   console.log('clicked');
-// }
 
 //AU CHARGEMENT DE LA PAGE ON RECUPERE TOUTES LES MOTS CLEFS + ATTRIBUTION ADDEVENTLISTENER + creation tag
 //INGREDIENTS

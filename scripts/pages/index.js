@@ -3,28 +3,27 @@
 
 
 let recipesArray = []; // contient toutes les recettes d'origine (50);
-console.log(recipesArray);
+let dataIngredientsFiltered = []; // contient toutes les recettes filtrées grace aux tags ingredients
+let dataAppliancesFiltered = []; // contient toutes les recettes filtrées grace aux tags appliances
+let dataUstensilsFiltered = []; // contient toutes les recettes filtrées grace aux tags ustensils
 
-let fileredRecipes = []; // contient toutes les recettes filtrées des tags
-console.log(fileredRecipes);
+let filteredRecipes = dataIngredientsFiltered.concat(dataAppliancesFiltered, dataUstensilsFiltered); 
+// contient toutes les recettes filtrées des tags (globale)
 
-//CONTIENT TOUTES LES INGREDIENTS (ARRAY DE STRINGS) == TAGS
-let arrTriIngredients = [];
-let dataIngredientsFiltered = [];
-let tagsIngredients = [];
+let arrTriIngredients = []; //CONTIENT TOUTES LES INGREDIENTS (ARRAY DE STRINGS) == TAGS
 
-//CONTIENT TOUTES LES APPAREILS (ARRAY DE STRINGS)== TAGS
-let arrTriAppliances = [];
-let dataAppliancesFiltered = [];
-let tagsAppliances = [];
+let tagsIngredients = []; //ajoute / supprime tag + stocke element dans array
 
-//CONTIENT TOUTES LES USTENSILES (ARRAY DE STRINGS)== TAGS
-let arrTriUstensils = [];
-let dataUstensilsFiltered = [];
-let tagsUstensils = [];
+let arrTriAppliances = [];//CONTIENT TOUTES LES APPAREILS (ARRAY DE STRINGS)== TAGS
 
-// CONTIENT TOUS LES TAGS == TAGS
-let tags = tagsIngredients.concat(tagsAppliances, tagsUstensils);
+let tagsAppliances = []; //ajoute / supprime tag + stocke element dans array
+
+let arrTriUstensils = [];//CONTIENT TOUTES LES USTENSILES (ARRAY DE STRINGS)== TAGS
+
+let tagsUstensils = []; //ajoute / supprime tag + stocke element dans array
+
+let tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
+
 
 
 //DOM
@@ -70,11 +69,11 @@ inputForm1.addEventListener(('input'), (e) => {
     console.log('moins de 3 caractères');
     
     // si on a aucune donnee filtree, on prend recipes
-    // si on a deja des donnes filtrees dans recipearray, alors on prend fileredRecipes pour filter
-    if (fileredRecipes.length === 0) {
+    // si on a deja des donnes filtrees dans recipearray, alors on prend filteredRecipes pour filter
+    if (filteredRecipes.length === 0) {
       result = recipes.filter(recipe => recipe);
     } else {
-      result = fileredRecipes.filter(recipe => recipe);
+      result = filteredRecipes.filter(recipe => recipe);
     }
     displayCards(result);
     console.log(result);
@@ -95,7 +94,7 @@ inputForm1.addEventListener(('input'), (e) => {
     })
 
     // si on a aucune donnee filtree, on prend recipes
-    // si on a deja des donnes filtrees dans recipearray, alors on prend fileredRecipes pour filter
+    // si on a deja des donnes filtrees dans recipearray, alors on prend filteredRecipes pour filter
    
     // function suffisammentGrand(element) {
     //   return element >= 10;
@@ -103,12 +102,12 @@ inputForm1.addEventListener(('input'), (e) => {
     // var filtre = [12, 5, 8, 130, 44].filter(suffisammentGrand);
     // // filtre vaut [12, 130, 44]
     
-    if (fileredRecipes.length === 0) {
+    if (filteredRecipes.length === 0) {
       result = recipes.filter(recipe => recipe.name.toLowerCase().includes(actualValueInput.toLowerCase()));
       console.log(result);
 
     } else {
-       result = fileredRecipes.filter(recipe => recipe.name.toLowerCase().includes(actualValueInput.toLowerCase()));
+       result = filteredRecipes.filter(recipe => recipe.name.toLowerCase().includes(actualValueInput.toLowerCase()));
     }
     displayCards(result);
   };

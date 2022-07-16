@@ -85,6 +85,10 @@ article {
   font-weight: 700;
 }
 
+.ingredients-item-span {
+  margin-left: 5px;
+}
+
 .time {
   font-weight: 700;
 }

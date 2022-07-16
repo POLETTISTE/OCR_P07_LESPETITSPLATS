@@ -42,15 +42,15 @@ function Recipe(data) {
     ingredientsRecipe.classList.add('ingredients','col-6')
     ingredients.forEach(element => {
       let liste = document.createElement('p');
+      liste.classList.add('ingredients-item')
       if (element.quantity === undefined) {
         element.quantity="";
-      }else{
-        element.quantity= `: ${element.quantity}`
       }
+ 
       if (element.unit === undefined) {
         element.unit="";
       }
-      liste.innerHTML = `${element.ingredient}<span>${element.quantity} ${element.unit}</span>`;
+      liste.innerHTML = `${element.ingredient}<span class='ingredients-item-span'>${element.quantity} ${element.unit}</span>`;
       ingredientsRecipe.appendChild(liste);
     });
   
