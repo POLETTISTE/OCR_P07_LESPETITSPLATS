@@ -2,8 +2,8 @@ body {
   box-sizing: border-box;
   font-family: Lato;
   margin-top: 40px;
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 70px;
+  margin-right: 70px;
 }
 
 h1 {
@@ -63,7 +63,6 @@ article {
   min-height: 364px;
   background-color: #E7E7E7;
   margin-bottom: 40px;
-  margin-right: 50px;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-bottom-left-radius: 5px;
