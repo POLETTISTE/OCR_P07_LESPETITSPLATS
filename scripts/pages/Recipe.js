@@ -50,7 +50,7 @@ function Recipe(data) {
       if (element.unit === undefined) {
         element.unit="";
       }
-      liste.innerHTML = `${element.ingredient}<span class='ingredients-item-span'>${element.quantity} ${element.unit}</span>`;
+      liste.innerHTML = `${element.ingredient}:<span class='ingredients-item-span'>${element.quantity} ${element.unit}</span>`;
       ingredientsRecipe.appendChild(liste);
     });
   
