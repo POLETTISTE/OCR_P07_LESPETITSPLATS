@@ -33,7 +33,15 @@ function eventClickBtnPrimary(e) {
   closeTag.classList.add('tag-close');
   closeTag.innerHTML = '<i class="fa-regular fa-circle-xmark"></i>';
   closeTag.addEventListener('click', () => {
-    
+
+    const index = tagsIngredients.indexOf(item.textContent);
+    if (index > -1) { // uniquement si l'élément du tableau est trouvé
+      tagsIngredients.splice(index, 1); // le 2ème paramètre signifie supprime un seul élément
+    }
+
+    console.log(tagsIngredients);
+
+    //remove physically tag button
     item.textContent='';
     item.remove();
   });
@@ -70,6 +78,15 @@ function eventClickBtnSuccess(e) {
   closeTag.innerHTML = '<i class="fa-regular fa-circle-xmark"></i>';
   closeTag.addEventListener('click', () => {
     
+
+    const index = tagsAppliances.indexOf(item.textContent);
+    if (index > -1) { // uniquement si l'élément du tableau est trouvé
+      tagsAppliances.splice(index, 1); // le 2ème paramètre signifie supprime un seul élément
+    }
+
+    console.log(tagsAppliances);
+    
+    //remove physically tag button
     item.textContent='';
     item.remove();
   });
@@ -108,6 +125,15 @@ function eventClickBtnDanger(e) {
   closeTag.innerHTML = '<i class="fa-regular fa-circle-xmark"></i>';
   closeTag.addEventListener('click', () => {
     
+
+    const index = tagsUstensils.indexOf(item.textContent);
+    if (index > -1) { // uniquement si l'élément du tableau est trouvé
+      tagsUstensils.splice(index, 1); // le 2ème paramètre signifie supprime un seul élément
+    }
+
+    console.log(tagsUstensils);
+    
+    //remove physically tag button
     item.textContent='';
     item.remove();
   });
