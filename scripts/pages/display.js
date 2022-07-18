@@ -73,7 +73,8 @@ function eventClickBtnSuccess(e) {
   tagsAppliances.push(clickedAppliance);
 
   // revoir pour cumuler les tags, ici annule et remplace le clicked tag
-  filteredRecipes = recipes.filter(recipe => recipe.appliance.toLowerCase().includes(clickedAppliance.toLowerCase()));
+  // filtrer sur array tagAplliance et non clicked Appliance pour cumuluer les elements dans la recherche
+  filteredRecipes = recipes.filter(recipe => recipe.appliance.toLowerCase() === clickedAppliance.toLowerCase());
 
   console.log(clickedAppliance);
   console.log(filteredRecipes);
