@@ -76,39 +76,23 @@ inputForm1.addEventListener(('input'), (e) => {
     displayCards(result);
 
   }
+
+
   // PLUS DE 2 CARACTERES
   if (inputForm1.value.length > 2) {
-
     recipes.forEach((element) => {
       console.log(element.name)
     })
 
-    recipes.forEach((element) => {
-      // console.log(element.ingredients);
-      element.ingredients.forEach((element) => {
-        console.log(element.ingredient)
-      })
-    })
-   
-    // function suffisammentGrand(element) {
-    //   return element >= 10;
-    // }
-    // var filtre = [12, 5, 8, 130, 44].filter(suffisammentGrand);
-    // // filtre vaut [12, 130, 44]
-    
     if (filteredRecipes.length === 0) {
-
-      // const results = people.filter(element => {
-      //   // 👇️ using OR (||) operator
-      //   return element.age === 40 || element.name === 'Carl';
-      // });
 
       // si on a aucune donnee filtree, on prend recipes
       result = recipes.filter(recipe => {
         return recipe.name.toLowerCase().includes(actualValueInput.toLowerCase()) || 
-        recipe.description.toLowerCase().includes(actualValueInput.toLowerCase())
+        recipe.description.toLowerCase().includes(actualValueInput.toLowerCase()) ||
+        recipe.ingredients.filter(element => {
+          return element.ingredient.includes(actualValueInput.toLowerCase())})
       })
-      
       // si on a deja des donnes filtrees dans recipearray, alors on prend filteredRecipes pour filter
     } else {
       result = filteredRecipes.filter(recipe => {
