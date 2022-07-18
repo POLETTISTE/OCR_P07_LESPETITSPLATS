@@ -80,9 +80,9 @@ inputForm1.addEventListener(('input'), (e) => {
 
   // PLUS DE 2 CARACTERES
   if (inputForm1.value.length > 2) {
-    recipes.forEach((element) => {
-      console.log(element.name)
-    })
+    // recipes.forEach((element) => {
+    //   console.log(element.name)
+    // })
 
     if (filteredRecipes.length === 0) {
 

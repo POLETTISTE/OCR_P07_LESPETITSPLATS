@@ -18,6 +18,9 @@ async function displayCards(filteredData) {
 function eventClickBtnPrimary(e) {
   let clickedIngredient = e.target.textContent;
   tagsIngredients.push(clickedIngredient);
+  console.log(tagsIngredients);
+  tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
+  console.log(tags)
 
 
   let item = document.createElement('card');
@@ -36,7 +39,8 @@ function eventClickBtnPrimary(e) {
       tagsIngredients.splice(index, 1); // le 2ème paramètre signifie supprime un seul élément
     }
     
-
+    tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
+    console.log(tags)
 
     //remove physically tag button
     item.textContent='';
@@ -64,6 +68,9 @@ function displayIngredients() {
 function eventClickBtnSuccess(e) {
   let clickedAppliance = e.target.textContent;
   tagsAppliances.push(clickedAppliance);
+  tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
+  console.log(tags)
+
 
   let item = document.createElement('card');
   item.classList.add('tag-appliance', 'tag', 'rounded');
@@ -80,7 +87,9 @@ function eventClickBtnSuccess(e) {
       tagsAppliances.splice(index, 1); // le 2ème paramètre signifie supprime un seul élément
     }
 
-    
+    tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
+    console.log(tags)
+
     //remove physically tag button
     item.textContent='';
     item.remove();
@@ -109,6 +118,9 @@ function displayAppliances() {
 function eventClickBtnDanger(e) {
   let clickedUstensil = e.target.textContent;
   tagsUstensils.push(clickedUstensil);
+  tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
+  console.log(tags)
+
   
   let item = document.createElement('card');
   item.classList.add('tag-ustensil', 'tag', 'rounded');
@@ -124,6 +136,8 @@ function eventClickBtnDanger(e) {
     if (index > -1) { // uniquement si l'élément du tableau est trouvé
       tagsUstensils.splice(index, 1); // le 2ème paramètre signifie supprime un seul élément
     }
+    tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
+    console.log(tags)
 
     
     //remove physically tag button
