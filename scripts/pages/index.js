@@ -90,8 +90,10 @@ inputForm1.addEventListener(('input'), (e) => {
       result = recipes.filter(recipe => {
         return recipe.name.toLowerCase().includes(actualValueInput.toLowerCase()) || 
         recipe.description.toLowerCase().includes(actualValueInput.toLowerCase()) ||
+
+        //code filter ingredient marche pas...
         recipe.ingredients.filter(element => {
-          return element.ingredient.includes(actualValueInput.toLowerCase())})
+          return element.ingredient}).includes(actualValueInput.toLowerCase())
       })
       // si on a deja des donnes filtrees dans recipearray, alors on prend filteredRecipes pour filter
     } else {
