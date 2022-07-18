@@ -3,27 +3,25 @@
 
 
 let recipesArray = []; // contient toutes les recettes d'origine (50);
-let dataIngredientsFiltered = []; // contient toutes les recettes filtrées grace aux tags ingredients
-let dataAppliancesFiltered = []; // contient toutes les recettes filtrées grace aux tags appliances
-let dataUstensilsFiltered = []; // contient toutes les recettes filtrées grace aux tags ustensils
 
-let filteredRecipes = dataIngredientsFiltered.concat(dataAppliancesFiltered, dataUstensilsFiltered); 
-// contient toutes les recettes filtrées des tags (globale)
+let arrTriIngredients = []; //contient toutes les noms des ingrédients avec doublons
+let arrTriAppliances = [];// contient toutes les noms des appareils avec doublons
+let arrTriUstensils = [];// contient toutes les noms des ustensiles sans doublons
 
-let arrTriIngredients = []; //CONTIENT TOUTES LES INGREDIENTS (ARRAY DE STRINGS) == TAGS
+let dataIngredientsFiltered = []; // contient toutes les noms des ingrédients sans doublons
+let dataAppliancesFiltered = []; // contient toutes les noms des appareils sans doublons
+let dataUstensilsFiltered = []; // contient toutes les noms des ustensiles sans doublons
 
 let tagsIngredients = []; //ajoute / supprime tag + stocke element dans array
-
-let arrTriAppliances = [];//CONTIENT TOUTES LES APPAREILS (ARRAY DE STRINGS)== TAGS
-
 let tagsAppliances = []; //ajoute / supprime tag + stocke element dans array
-
-let arrTriUstensils = [];//CONTIENT TOUTES LES USTENSILES (ARRAY DE STRINGS)== TAGS
-
 let tagsUstensils = []; //ajoute / supprime tag + stocke element dans array
+let tags = []; // contient tous les tags sélectionnés
+
+let filteredRecipes = [];
+// contient toutes les recettes filtrées par les tags (globale)
 
 
-let tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
+
 
 
 //DOM
@@ -62,12 +60,13 @@ inputForm1.addEventListener(('input'), (e) => {
   actualValueInput = inputForm1.value;
   actualValueInput.toLowerCase();
   let result = [];
+
   
   //MOINS DE 3 CARACTERES
   if (inputForm1.value.length < 3) {
     
     // si on a aucune donnee filtree, on prend recipes
-    if (filteredRecipes.length === 0) {
+    if (tags.length === 0) {
       result = recipes.filter(recipe => recipe);
       // si on a deja des donnes filtrees dans recipearray, alors on prend filteredRecipes pour filter
     } else {

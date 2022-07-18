@@ -18,9 +18,12 @@ async function displayCards(filteredData) {
 function eventClickBtnPrimary(e) {
   let clickedIngredient = e.target.textContent;
   tagsIngredients.push(clickedIngredient);
+  // filteredRecipes = recipes.filter(recipe => recipe.includes(clickedIngredient.toLowerCase()))
   console.log(tagsIngredients);
   tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
-  console.log(tags)
+  console.log(tags);
+  console.log(filteredRecipes);
+
 
 
   let item = document.createElement('card');
@@ -68,6 +71,16 @@ function displayIngredients() {
 function eventClickBtnSuccess(e) {
   let clickedAppliance = e.target.textContent;
   tagsAppliances.push(clickedAppliance);
+
+  // revoir pour cumuler les tags, ici annule et remplace le clicked tag
+  filteredRecipes = recipes.filter(recipe => recipe.appliance.toLowerCase().includes(clickedAppliance.toLowerCase()));
+
+  console.log(clickedAppliance);
+  console.log(filteredRecipes);
+
+  displayCards(filteredRecipes);
+
+
   tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
   console.log(tags)
 
