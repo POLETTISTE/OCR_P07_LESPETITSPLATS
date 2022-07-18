@@ -22,8 +22,8 @@ let arrTriUstensils = [];//CONTIENT TOUTES LES USTENSILES (ARRAY DE STRINGS)== T
 
 let tagsUstensils = []; //ajoute / supprime tag + stocke element dans array
 
-let tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
 
+let tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
 
 
 //DOM

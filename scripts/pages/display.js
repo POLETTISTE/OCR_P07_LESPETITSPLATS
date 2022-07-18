@@ -21,6 +21,7 @@ function eventClickBtnPrimary(e) {
   let clickedIngredient = e.target.textContent;
   tagsIngredients.push(clickedIngredient);
 
+
   let item = document.createElement('card');
   item.classList.add('tag-ingredient', 'tag', 'rounded');
   item.textContent = e.target.textContent;
@@ -28,14 +29,16 @@ function eventClickBtnPrimary(e) {
   let closeTag = document.createElement('span');
   closeTag.classList.add('tag-close');
   closeTag.innerHTML = '<i class="fa-regular fa-circle-xmark"></i>';
-  closeTag.addEventListener('click', () => {
 
+  
+  closeTag.addEventListener('click', () => {
+    
     const index = tagsIngredients.indexOf(item.textContent);
     if (index > -1) { // uniquement si l'élément du tableau est trouvé
       tagsIngredients.splice(index, 1); // le 2ème paramètre signifie supprime un seul élément
     }
+    
 
-    console.log(tagsIngredients);
 
     //remove physically tag button
     item.textContent='';
@@ -48,7 +51,6 @@ function eventClickBtnPrimary(e) {
 }
 
 function displayIngredients() {
-  console.log(dataIngredientsFiltered);
   dataIngredientsFiltered.forEach((element) => {
     let item = document.createElement('li');
     item.classList.add('ingredientLi');
@@ -64,7 +66,7 @@ function displayIngredients() {
 function eventClickBtnSuccess(e) {
   let clickedAppliance = e.target.textContent;
   tagsAppliances.push(clickedAppliance);
-  
+
   let item = document.createElement('card');
   item.classList.add('tag-appliance', 'tag', 'rounded');
   item.textContent = e.target.textContent;
@@ -80,7 +82,6 @@ function eventClickBtnSuccess(e) {
       tagsAppliances.splice(index, 1); // le 2ème paramètre signifie supprime un seul élément
     }
 
-    console.log(tagsAppliances);
     
     //remove physically tag button
     item.textContent='';
@@ -94,7 +95,6 @@ function eventClickBtnSuccess(e) {
 }
 
 function displayAppliances() {
-  console.log(dataAppliancesFiltered);
 
   dataAppliancesFiltered.forEach((element) => {
     let item = document.createElement('li');
@@ -127,7 +127,6 @@ function eventClickBtnDanger(e) {
       tagsUstensils.splice(index, 1); // le 2ème paramètre signifie supprime un seul élément
     }
 
-    console.log(tagsUstensils);
     
     //remove physically tag button
     item.textContent='';
