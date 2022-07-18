@@ -63,38 +63,32 @@ inputForm1.addEventListener(('input'), (e) => {
   actualValueInput.toLowerCase();
   let result = [];
   
-  
   //MOINS DE 3 CARACTERES
   if (inputForm1.value.length < 3) {
-    console.log('moins de 3 caractères');
     
     // si on a aucune donnee filtree, on prend recipes
-    // si on a deja des donnes filtrees dans recipearray, alors on prend filteredRecipes pour filter
     if (filteredRecipes.length === 0) {
       result = recipes.filter(recipe => recipe);
+      // si on a deja des donnes filtrees dans recipearray, alors on prend filteredRecipes pour filter
     } else {
       result = filteredRecipes.filter(recipe => recipe);
     }
     displayCards(result);
-    console.log(result);
 
   }
   // PLUS DE 2 CARACTERES
   if (inputForm1.value.length > 2) {
-    console.log('plus de 2 caractères');  
-    console.log(recipes);
+
     recipes.forEach((element) => {
       console.log(element.name)
     })
+
     recipes.forEach((element) => {
       // console.log(element.ingredients);
       element.ingredients.forEach((element) => {
         console.log(element.ingredient)
       })
     })
-
-    // si on a aucune donnee filtree, on prend recipes
-    // si on a deja des donnes filtrees dans recipearray, alors on prend filteredRecipes pour filter
    
     // function suffisammentGrand(element) {
     //   return element >= 10;
@@ -103,41 +97,54 @@ inputForm1.addEventListener(('input'), (e) => {
     // // filtre vaut [12, 130, 44]
     
     if (filteredRecipes.length === 0) {
-      result = recipes.filter(recipe => recipe.name.toLowerCase().includes(actualValueInput.toLowerCase()));
-      console.log(result);
 
+      // const results = people.filter(element => {
+      //   // 👇️ using OR (||) operator
+      //   return element.age === 40 || element.name === 'Carl';
+      // });
+
+      // si on a aucune donnee filtree, on prend recipes
+      result = recipes.filter(recipe => {
+        return recipe.name.toLowerCase().includes(actualValueInput.toLowerCase()) || 
+        recipe.description.toLowerCase().includes(actualValueInput.toLowerCase())
+      })
+      
+      // si on a deja des donnes filtrees dans recipearray, alors on prend filteredRecipes pour filter
     } else {
-       result = filteredRecipes.filter(recipe => recipe.name.toLowerCase().includes(actualValueInput.toLowerCase()));
+      result = filteredRecipes.filter(recipe => {
+        return recipe.name.toLowerCase().includes(actualValueInput.toLowerCase()) || 
+        recipe.description.toLowerCase().includes(actualValueInput.toLowerCase())
+      })    
     }
     displayCards(result);
-  };
+  }
 });
  
 
 // MENU DEROULANT RECHERCHE PAR INGREDIENT
 dropdownPrimary.addEventListener('click', (e)=> {
-e.preventDefault();
-e.stopPropagation();
+  e.preventDefault();
+  e.stopPropagation();
 
 
-appliancesDiv.style.display = "none";
-ustensilsDiv.style.display = "none";
-btnAppliances.style.display = "block";
-btnUstensils.style.display = "block";
+  appliancesDiv.style.display = "none";
+  ustensilsDiv.style.display = "none";
+  btnAppliances.style.display = "block";
+  btnUstensils.style.display = "block";
 
 
-if (ingredientsDiv.style.display === "none") {
-  ingredientsDiv.style.display = "block";
-  btnIngredients.style.display = "none";
-  inputForm2.focus();
-  inputForm2.select();
+  if (ingredientsDiv.style.display === "none") {
+    ingredientsDiv.style.display = "block";
+    btnIngredients.style.display = "none";
+    inputForm2.focus();
+    inputForm2.select();
 
-} else {
-  inputForm2.value ="";
-  ingredientsDiv.style.display = "none";
-  btnIngredients.style.display = "block";
+  } else {
+    inputForm2.value ="";
+    ingredientsDiv.style.display = "none";
+    btnIngredients.style.display = "block";
 
-}
+  }
 });
 
 // MENU DEROULANT RECHERCHE PAR APPAREIL
@@ -183,13 +190,6 @@ dropdownDanger.addEventListener('click', (e)=> {
   }
 });
 
-
-
-
-//   closeTag.addEventListener('click', (e) => {
-//   e.preventDefault();
-//   console.log('click');
-// });
 
 
 // INITIALISATION

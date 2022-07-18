@@ -12,8 +12,6 @@ async function displayCards(filteredData) {
   });
 }
 
-
-
 //AU CHARGEMENT DE LA PAGE ON RECUPERE TOUTES LES MOTS CLEFS + ATTRIBUTION ADDEVENTLISTENER + creation tag
 //INGREDIENTS
 
