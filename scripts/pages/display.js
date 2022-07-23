@@ -43,7 +43,7 @@ function getUstensilsList() {
   })
 }
 
-function getTagIngredientCard(e){
+function getIngredientTagCard(e){
   let item = document.createElement('card');
   item.classList.add('tag-ingredient', 'tag', 'rounded');
   item.textContent = e.target.textContent;
@@ -52,7 +52,7 @@ function getTagIngredientCard(e){
 }
 
 
-function getTagApplianceCard(e){
+function getApplianceTagCard(e){
   let item = document.createElement('card');
   item.classList.add('tag-appliance', 'tag', 'rounded');
   item.textContent = e.target.textContent;
@@ -60,7 +60,7 @@ function getTagApplianceCard(e){
   tagsDiv.appendChild(item);
 }
 
-function getTagUstensilCard(e){
+function getUstensilTagCard(e){
   let item = document.createElement('card');
   item.classList.add('tag-ustensil', 'tag', 'rounded');
   item.textContent = e.target.textContent;

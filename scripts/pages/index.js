@@ -134,9 +134,7 @@ dropdownDanger.addEventListener('click', (e)=> {
 });
 
 
-//AU CHARGEMENT DE LA PAGE ON RECUPERE TOUTES LES MOTS CLEFS + ATTRIBUTION ADDEVENTLISTENER + creation tag
-//INGREDIENTS
-
+//AJOUT TAG INGREDIENT
 function clickIngredient(e) {
   let clickedIngredient = e.target.textContent;
   tagsIngredients.push(clickedIngredient);
@@ -144,10 +142,11 @@ function clickIngredient(e) {
   console.log(tagsIngredients);
   tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
   console.log(tags);
-  getTagIngredientCard(e);
+  getIngredientTagCard(e);
   dropdownPrimary.click();
 }
 
+//AJOUT TAG APPLIANCE
 function clickAppliance(e) {
   let clickedAppliance = e.target.textContent;
   tagsAppliances.push(clickedAppliance);
@@ -160,23 +159,23 @@ function clickAppliance(e) {
   console.log(filteredRecipes);
   tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
   console.log(tags);
-  getTagApplianceCard(e);
+  getApplianceTagCard(e);
   dropdownSuccess.click();
 
 }
 
+//AJOUT TAG USTENSIL
 function clickUstensil(e) {
   let clickedUstensil = e.target.textContent;
   tagsUstensils.push(clickedUstensil);
   tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
   console.log(tags);
-  getTagUstensilCard(e);
+  getUstensilTagCard(e);
   dropdownDanger.click();
 
 }
 
 function closeTheTag(){
-
   const target = this.parentNode;
   const classTarget = target.className;
 
@@ -197,12 +196,9 @@ function closeTheTag(){
     console.log('error in switch');
   }
 
-
   tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
   console.log(tags);
-
   removeTag(target);
-
 };
 
 
