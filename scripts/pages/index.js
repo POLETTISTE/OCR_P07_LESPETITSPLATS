@@ -1,28 +1,20 @@
 // ---------------------------INDEX.JS------------------------
-// debugger
-
 
 let recipesArray = []; // contient toutes les recettes d'origine (50);
-
 let arrTriIngredients = []; //contient toutes les noms des ingrédients avec doublons
 let arrTriAppliances = [];// contient toutes les noms des appareils avec doublons
 let arrTriUstensils = [];// contient toutes les noms des ustensiles sans doublons
-
 let dataIngredientsFiltered = []; // contient toutes les noms des ingrédients sans doublons
 let dataAppliancesFiltered = []; // contient toutes les noms des appareils sans doublons
 let dataUstensilsFiltered = []; // contient toutes les noms des ustensiles sans doublons
-
 let tagsIngredients = []; //ajoute / supprime tag + stocke element dans array
 let tagsAppliances = []; //ajoute / supprime tag + stocke element dans array
 let tagsUstensils = []; //ajoute / supprime tag + stocke element dans array
 let tags = []; // contient tous les tags sélectionnés
-
-let filteredRecipes = [];
-// contient toutes les recettes filtrées par les tags (globale)
+let filteredRecipes = []; // contient toutes les recettes filtrées par les tags (globale)
 
 
 //DOM
-//CARD RECETTE
 const recipesSection = document.getElementById('recipes');
 const tagsDiv = document.querySelector('.tags');
 
@@ -59,7 +51,6 @@ async function displayCards(filteredData) {
     recipesSection.appendChild(recipeCardDOM);
   });
 }
-
 
 // RECHERCHE DANS LE FORMULAIRE PRINCIPAL
 inputForm1.addEventListener(('input'), (e) => {
@@ -146,41 +137,18 @@ dropdownDanger.addEventListener('click', (e)=> {
 //AU CHARGEMENT DE LA PAGE ON RECUPERE TOUTES LES MOTS CLEFS + ATTRIBUTION ADDEVENTLISTENER + creation tag
 //INGREDIENTS
 
-function eventClickBtnPrimary(e) {
+function clickIngredient(e) {
   let clickedIngredient = e.target.textContent;
   tagsIngredients.push(clickedIngredient);
   // filteredRecipes = recipes.filter(recipe => recipe.includes(clickedIngredient.toLowerCase()))
   console.log(tagsIngredients);
   tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
   console.log(tags);
-  console.log(filteredRecipes);
-  getTagCard(e);
+  getTagIngredientCard(e);
   dropdownPrimary.click();
 }
 
-
-
-function closeTheTag(){
-
-  const target = this.parentNode;
-
-  const index = tagsIngredients.indexOf(target.textContent);
-  if (index > -1) { // uniquement si l'élément du tableau est trouvé
-    tagsIngredients.splice(index, 1); // le 2ème paramètre signifie supprime un seul élément
-  }
-
-  tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
-  console.log(tags);
-
-  removeTag(target);
-
-};
-
-
-//AU CHARGEMENT DE LA PAGE ON RECUPERE TOUTES LES MOTS CLEFS + ATTRIBUTION ADDEVENTLISTENER
-//APPAREIL
-
-function eventClickBtnSuccess(e) {
+function clickAppliance(e) {
   let clickedAppliance = e.target.textContent;
   tagsAppliances.push(clickedAppliance);
 
@@ -190,99 +158,57 @@ function eventClickBtnSuccess(e) {
 
   console.log(clickedAppliance);
   console.log(filteredRecipes);
-
-  displayCards(filteredRecipes);
-
-
   tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
-  console.log(tags)
-
-
-  let item = document.createElement('card');
-  item.classList.add('tag-appliance', 'tag', 'rounded');
-  item.textContent = e.target.textContent;
-  
-  let closeTag = document.createElement('span');
-  closeTag.classList.add('tag-close');
-  closeTag.innerHTML = '<i class="fa-regular fa-circle-xmark"></i>';
-  closeTag.addEventListener('click', () => {
-    
-
-    const index = tagsAppliances.indexOf(item.textContent);
-    if (index > -1) { // uniquement si l'élément du tableau est trouvé
-      tagsAppliances.splice(index, 1); // le 2ème paramètre signifie supprime un seul élément
-    }
-
-    tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
-    console.log(tags)
-
-    removeTag(item);
-
-  });
-
-
-  tagsDiv.appendChild(item);
-  item.appendChild(closeTag);
+  console.log(tags);
+  getTagApplianceCard(e);
   dropdownSuccess.click();
+
 }
 
-function displayAppliances() {
-
-  dataAppliancesFiltered.forEach((element) => {
-    let item = document.createElement('li');
-    item.classList.add('applianceLi');
-    item.textContent = element;
-    item.addEventListener(('click'), eventClickBtnSuccess);
-    applianceUl.appendChild(item);
-  })
-}
-
-//AU CHARGEMENT DE LA PAGE ON RECUPERE TOUTES LES MOTS CLEFS + ATTRIBUTION ADDEVENTLISTENER
-//USTENSIL
-
-function eventClickBtnDanger(e) {
+function clickUstensil(e) {
   let clickedUstensil = e.target.textContent;
   tagsUstensils.push(clickedUstensil);
   tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
-  console.log(tags)
-
-  
-  let item = document.createElement('card');
-  item.classList.add('tag-ustensil', 'tag', 'rounded');
-  item.textContent = e.target.textContent;
-  
-  let closeTag = document.createElement('span');
-  closeTag.classList.add('tag-close');
-  closeTag.innerHTML = '<i class="fa-regular fa-circle-xmark"></i>';
-  closeTag.addEventListener('click', () => {
-    
-
-    const index = tagsUstensils.indexOf(item.textContent);
-    if (index > -1) { // uniquement si l'élément du tableau est trouvé
-      tagsUstensils.splice(index, 1); // le 2ème paramètre signifie supprime un seul élément
-    }
-    tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
-    console.log(tags)
-
-    removeTag(item);
-
-  });
-
-  tagsDiv.appendChild(item);
-  item.appendChild(closeTag);
+  console.log(tags);
+  getTagUstensilCard(e);
   dropdownDanger.click();
+
 }
 
-function displayUstensils() {
+function closeTheTag(){
 
-  dataUstensilsFiltered.forEach((element) => {
-    let item = document.createElement('li');
-    item.classList.add('ustensilLi');
-    item.textContent = element;
-    item.addEventListener(('click'), eventClickBtnDanger);
-    ustensilUl.appendChild(item);
-  })
-}
+  const target = this.parentNode;
+  const classTarget = target.className;
+
+  switch(classTarget) {
+    case 'tag-ingredient tag rounded' : 
+      index = tagsIngredients.indexOf(target.textContent);
+      tagsIngredients.splice(index, 1)
+    break;
+    case 'tag-appliance tag rounded' : 
+      index = tagsAppliances.indexOf(target.textContent);
+      tagsAppliances.splice(index, 1)
+    break;
+    case 'tag-ustensil tag rounded' : 
+      index = tagsUstensils.indexOf(target.textContent);
+      tagsUstensils.splice(index, 1)
+    break;
+    default:
+    console.log('error in switch');
+  }
+
+
+  tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
+  console.log(tags);
+
+  removeTag(target);
+
+};
+
+
+
+
+
 
 
 
