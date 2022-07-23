@@ -47,8 +47,6 @@ const ingredientUl = document.querySelector('.ingredientUl');
 const applianceUl = document.querySelector('.applianceUl');
 const ustensilUl = document.querySelector('.ustensilUl');
 
-// const closeTheTag = document.querySelector('.tag-close');
-
 
 //AU CHARGEMENT DE LA PAGE ON RECUPERE TOUTES LES RECETTES
 async function displayCards(filteredData) {
@@ -163,22 +161,21 @@ function eventClickBtnPrimary(e) {
 
 
 function closeTheTag(){
-  console.log(this.previousSibling.textContent)
+
   const target = this.parentNode;
 
-  console.log(target);
   const index = tagsIngredients.indexOf(target.textContent);
   if (index > -1) { // uniquement si l'élément du tableau est trouvé
     tagsIngredients.splice(index, 1); // le 2ème paramètre signifie supprime un seul élément
   }
-  
+
   tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
   console.log(tags);
 
-  //must remove element
   removeTag(target);
 
 };
+
 
 //AU CHARGEMENT DE LA PAGE ON RECUPERE TOUTES LES MOTS CLEFS + ATTRIBUTION ADDEVENTLISTENER
 //APPAREIL
