@@ -47,7 +47,7 @@ const ingredientUl = document.querySelector('.ingredientUl');
 const applianceUl = document.querySelector('.applianceUl');
 const ustensilUl = document.querySelector('.ustensilUl');
 
-const closeTheTag = document.querySelector('.tag-close');
+// const closeTheTag = document.querySelector('.tag-close');
 
 
 //AU CHARGEMENT DE LA PAGE ON RECUPERE TOUTES LES RECETTES
@@ -62,6 +62,89 @@ async function displayCards(filteredData) {
   });
 }
 
+
+// RECHERCHE DANS LE FORMULAIRE PRINCIPAL
+inputForm1.addEventListener(('input'), (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+  actualValueInput = inputForm1.value;
+  actualValueInput.toLowerCase();
+
+  searchInputBar();
+
+});
+
+
+// MENU DEROULANT RECHERCHE PAR INGREDIENT
+dropdownPrimary.addEventListener('click', (e)=> {
+  e.preventDefault();
+  e.stopPropagation();
+
+
+  appliancesDiv.style.display = "none";
+  ustensilsDiv.style.display = "none";
+  btnAppliances.style.display = "block";
+  btnUstensils.style.display = "block";
+
+
+  if (ingredientsDiv.style.display === "none") {
+    ingredientsDiv.style.display = "block";
+    btnIngredients.style.display = "none";
+    inputForm2.focus();
+    inputForm2.select();
+
+  } else {
+    inputForm2.value ="";
+    ingredientsDiv.style.display = "none";
+    btnIngredients.style.display = "block";
+
+  }
+});
+
+// MENU DEROULANT RECHERCHE PAR APPAREIL
+dropdownSuccess.addEventListener('click', (e)=> {
+  e.preventDefault();
+  ingredientsDiv.style.display = "none";
+  ustensilsDiv.style.display = "none";
+  btnIngredients.style.display = "block";
+  btnUstensils.style.display = "block";
+
+  if (appliancesDiv.style.display === "none") {
+    appliancesDiv.style.display = "block";
+    btnAppliances.style.display = "none";
+
+    inputForm3.focus();
+    inputForm3.select();
+
+  } else {
+    inputForm3.value ="";
+    appliancesDiv.style.display = "none";
+    btnAppliances.style.display = "block";
+  }
+});
+
+// MENU DEROULANT RECHERCHE PAR USTENSILE
+dropdownDanger.addEventListener('click', (e)=> {
+  e.preventDefault();
+  ingredientsDiv.style.display = "none";
+  appliancesDiv.style.display = "none";
+  btnIngredients.style.display = "block";
+  btnAppliances.style.display = "block";
+  if (ustensilsDiv.style.display === "none") {
+    ustensilsDiv.style.display = "block";
+    btnUstensils.style.display = "none";
+
+    inputForm4.focus();
+    inputForm4.select();
+
+  } else {
+    inputForm4.value ="";
+    ustensilsDiv.style.display = "none";
+    btnUstensils.style.display = "block";
+  }
+});
+
+
 //AU CHARGEMENT DE LA PAGE ON RECUPERE TOUTES LES MOTS CLEFS + ATTRIBUTION ADDEVENTLISTENER + creation tag
 //INGREDIENTS
 
@@ -73,42 +156,29 @@ function eventClickBtnPrimary(e) {
   tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
   console.log(tags);
   console.log(filteredRecipes);
-
-  let item = document.createElement('card');
-  item.classList.add('tag-ingredient', 'tag', 'rounded');
-  item.textContent = e.target.textContent;
-  
-  let closeTag = document.createElement('span');
-  closeTag.classList.add('tag-close');
-  closeTag.innerHTML = '<i class="fa-regular fa-circle-xmark"></i>';
-
-  
-  closeTag.addEventListener('click', () => {
-    
-    const index = tagsIngredients.indexOf(item.textContent);
-    if (index > -1) { // uniquement si l'élément du tableau est trouvé
-      tagsIngredients.splice(index, 1); // le 2ème paramètre signifie supprime un seul élément
-    }
-    
-    tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
-    console.log(tags);
-    removeTag(item);
-  });
-
-  tagsDiv.appendChild(item);
-  item.appendChild(closeTag);
+  getTagCard(e);
   dropdownPrimary.click();
 }
 
-function displayIngredients() {
-  dataIngredientsFiltered.forEach((element) => {
-    let item = document.createElement('li');
-    item.classList.add('ingredientLi');
-    item.textContent = element;
-    item.addEventListener(('click'), eventClickBtnPrimary);
-    ingredientUl.appendChild(item);
-  })
-}
+
+
+function closeTheTag(){
+  console.log(this.previousSibling.textContent)
+  const target = this.parentNode;
+
+  console.log(target);
+  const index = tagsIngredients.indexOf(target.textContent);
+  if (index > -1) { // uniquement si l'élément du tableau est trouvé
+    tagsIngredients.splice(index, 1); // le 2ème paramètre signifie supprime un seul élément
+  }
+  
+  tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
+  console.log(tags);
+
+  //must remove element
+  removeTag(target);
+
+};
 
 //AU CHARGEMENT DE LA PAGE ON RECUPERE TOUTES LES MOTS CLEFS + ATTRIBUTION ADDEVENTLISTENER
 //APPAREIL
@@ -227,89 +297,6 @@ function displayUstensils() {
 
 
 
-
-// RECHERCHE DANS LE FORMULAIRE PRINCIPAL
-inputForm1.addEventListener(('input'), (e) => {
-  e.preventDefault();
-  e.stopPropagation();
-  actualValueInput = inputForm1.value;
-  actualValueInput.toLowerCase();
-
-  searchInputBar();
-
-});
-
-
- 
-
-// MENU DEROULANT RECHERCHE PAR INGREDIENT
-dropdownPrimary.addEventListener('click', (e)=> {
-  e.preventDefault();
-  e.stopPropagation();
-
-
-  appliancesDiv.style.display = "none";
-  ustensilsDiv.style.display = "none";
-  btnAppliances.style.display = "block";
-  btnUstensils.style.display = "block";
-
-
-  if (ingredientsDiv.style.display === "none") {
-    ingredientsDiv.style.display = "block";
-    btnIngredients.style.display = "none";
-    inputForm2.focus();
-    inputForm2.select();
-
-  } else {
-    inputForm2.value ="";
-    ingredientsDiv.style.display = "none";
-    btnIngredients.style.display = "block";
-
-  }
-});
-
-// MENU DEROULANT RECHERCHE PAR APPAREIL
-dropdownSuccess.addEventListener('click', (e)=> {
-  e.preventDefault();
-  ingredientsDiv.style.display = "none";
-  ustensilsDiv.style.display = "none";
-  btnIngredients.style.display = "block";
-  btnUstensils.style.display = "block";
-
-  if (appliancesDiv.style.display === "none") {
-    appliancesDiv.style.display = "block";
-    btnAppliances.style.display = "none";
-
-    inputForm3.focus();
-    inputForm3.select();
-
-  } else {
-    inputForm3.value ="";
-    appliancesDiv.style.display = "none";
-    btnAppliances.style.display = "block";
-  }
-});
-
-// MENU DEROULANT RECHERCHE PAR USTENSILE
-dropdownDanger.addEventListener('click', (e)=> {
-  e.preventDefault();
-  ingredientsDiv.style.display = "none";
-  appliancesDiv.style.display = "none";
-  btnIngredients.style.display = "block";
-  btnAppliances.style.display = "block";
-  if (ustensilsDiv.style.display === "none") {
-    ustensilsDiv.style.display = "block";
-    btnUstensils.style.display = "none";
-
-    inputForm4.focus();
-    inputForm4.select();
-
-  } else {
-    inputForm4.value ="";
-    ustensilsDiv.style.display = "none";
-    btnUstensils.style.display = "block";
-  }
-});
 
 
 
