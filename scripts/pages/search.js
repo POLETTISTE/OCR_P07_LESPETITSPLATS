@@ -1,3 +1,21 @@
+function formatText(string){
+  return string
+  .normalize('NFD')
+  .replace(/[\u0300-\u036f]/g,"")
+  .toLowerCase();
+}
+
+function searchInputDatas(data) {
+  let resultIng = (item) => formatText(item.ingredient).includes(formatText(actualValueInput));
+
+  result = data.filter(element => {
+    return formatText(element.name).includes(formatText(actualValueInput)) || 
+           formatText(element.description).includes(formatText(actualValueInput)) ||
+           element.ingredients.some(resultIng)
+  })
+}
+
+
 function searchInputBar() {
 
   //MOINS DE 3 CARACTERES
@@ -6,7 +24,8 @@ function searchInputBar() {
     // si on a aucune donnee filtree, on prend recipes
     if (tags.length === 0) {
       result = recipes.filter(recipe => recipe);
-      // si on a deja des donnes filtrees dans recipearray, alors on prend filteredRecipes pour filter
+
+      // si on a deja des donnes filtrees dans recipearray, alors on prend filteredRecipes pour filtrer
     } else {
       result = filteredRecipes.filter(recipe => recipe);
     }
@@ -15,30 +34,15 @@ function searchInputBar() {
 
   // PLUS DE 2 CARACTERES
   if (inputForm1.value.length > 2) {
-
-    let resultIng = (item) => item.ingredient.toLowerCase().includes(actualValueInput.toLowerCase());
     
+    // si on a aucune donnee filtree, on prend recipes
     if (filteredRecipes.length === 0) {
-
-      // si on a aucune donnee filtree, on prend recipes
-        
-        
-      result = recipes.filter(recipe => {
-        return recipe.name.toLowerCase().includes(actualValueInput.toLowerCase()) || 
-               recipe.description.toLowerCase().includes(actualValueInput.toLowerCase()) ||
-               recipe.ingredients.some(resultIng)
-
-      })
-      // si on a deja des donnes filtrees dans recipearray, alors on prend filteredRecipes pour filter
+      searchInputDatas(recipes);
+      // si on a deja des donnes filtrees dans recipearray, alors on prend filteredRecipes pour filtrer
     }else {
-      result = filteredRecipes.filter(recipe => {
-        return recipe.name.toLowerCase().includes(actualValueInput.toLowerCase()) || 
-        recipe.description.toLowerCase().includes(actualValueInput.toLowerCase()) ||
-        recipe.ingredients.some(resultIng)
+      searchInputDatas(filteredRecipes);
 
-      })    
     }
     displayCards(result);
-    console.log(result)
   }
 }
