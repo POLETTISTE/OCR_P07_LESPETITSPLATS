@@ -181,23 +181,23 @@ function closeTheTag(){
     case 'tag-ingredient tag rounded' : 
       index = tagsIngredients.indexOf(target.textContent);
       tagsIngredients.splice(index, 1)
-    break;
+      break;
     case 'tag-appliance tag rounded' : 
       index = tagsAppliances.indexOf(target.textContent);
       tagsAppliances.splice(index, 1)
-    break;
+      break;
     case 'tag-ustensil tag rounded' : 
       index = tagsUstensils.indexOf(target.textContent);
       tagsUstensils.splice(index, 1)
-    break;
+      break;
     default:
-    console.log('error in switch');
+      console.log('error in switch');
   }
 
   tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
   console.log(tags);
   removeTag(target);
-};
+}
 
 
 

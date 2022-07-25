@@ -1,6 +1,6 @@
- function searchInputBar() {
+function searchInputBar() {
 
-    //MOINS DE 3 CARACTERES
+  //MOINS DE 3 CARACTERES
   if (inputForm1.value.length < 3) {
     
     // si on a aucune donnee filtree, on prend recipes
@@ -15,24 +15,27 @@
 
   // PLUS DE 2 CARACTERES
   if (inputForm1.value.length > 2) {
+
+    let resultIng = (item) => item.ingredient.toLowerCase().includes(actualValueInput.toLowerCase());
     
     if (filteredRecipes.length === 0) {
 
-        // si on a aucune donnee filtree, on prend recipes
+      // si on a aucune donnee filtree, on prend recipes
         
-        resultIng = (item) => item.ingredient.toLowerCase().includes(actualValueInput.toLowerCase());
         
-        result = recipes.filter(recipe => {
+      result = recipes.filter(recipe => {
         return recipe.name.toLowerCase().includes(actualValueInput.toLowerCase()) || 
                recipe.description.toLowerCase().includes(actualValueInput.toLowerCase()) ||
-               recipe.ingredients.some(resultIng);
+               recipe.ingredients.some(resultIng)
 
       })
       // si on a deja des donnes filtrees dans recipearray, alors on prend filteredRecipes pour filter
     }else {
       result = filteredRecipes.filter(recipe => {
         return recipe.name.toLowerCase().includes(actualValueInput.toLowerCase()) || 
-        recipe.description.toLowerCase().includes(actualValueInput.toLowerCase())
+        recipe.description.toLowerCase().includes(actualValueInput.toLowerCase()) ||
+        recipe.ingredients.some(resultIng)
+
       })    
     }
     displayCards(result);
