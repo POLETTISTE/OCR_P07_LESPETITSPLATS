@@ -142,7 +142,7 @@ function clickIngredient(e) {
   console.log(tagsIngredients);
   tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
   console.log(tags);
-  getIngredientTagCard(e);
+  getTagCard(e, 'tag-ingredient');
   dropdownPrimary.click();
 }
 
@@ -159,7 +159,7 @@ function clickAppliance(e) {
   console.log(filteredRecipes);
   tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
   console.log(tags);
-  getApplianceTagCard(e);
+  getTagCard(e, 'tag-appliance');
   dropdownSuccess.click();
 
 }
@@ -170,7 +170,7 @@ function clickUstensil(e) {
   tagsUstensils.push(clickedUstensil);
   tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
   console.log(tags);
-  getUstensilTagCard(e);
+  getTagCard(e, 'tag-ustensil');
   dropdownDanger.click();
 
 }

@@ -13,6 +13,10 @@ function getTagCloseButton(item) {
   closeTag.addEventListener('click', closeTheTag); 
 }
 
+function getList(){
+  
+}
+
 function getIngredientsList() {
   dataIngredientsFiltered.forEach((element) => {
     let item = document.createElement('li');
@@ -43,26 +47,9 @@ function getUstensilsList() {
   })
 }
 
-function getIngredientTagCard(e){
+function getTagCard(e, tag){
   let item = document.createElement('card');
-  item.classList.add('tag-ingredient', 'tag', 'rounded');
-  item.textContent = e.target.textContent;
-  getTagCloseButton(item);
-  tagsDiv.appendChild(item);
-}
-
-
-function getApplianceTagCard(e){
-  let item = document.createElement('card');
-  item.classList.add('tag-appliance', 'tag', 'rounded');
-  item.textContent = e.target.textContent;
-  getTagCloseButton(item);
-  tagsDiv.appendChild(item);
-}
-
-function getUstensilTagCard(e){
-  let item = document.createElement('card');
-  item.classList.add('tag-ustensil', 'tag', 'rounded');
+  item.classList.add(tag, 'tag', 'rounded');
   item.textContent = e.target.textContent;
   getTagCloseButton(item);
   tagsDiv.appendChild(item);
