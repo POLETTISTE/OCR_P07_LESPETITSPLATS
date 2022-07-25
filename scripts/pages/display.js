@@ -13,37 +13,13 @@ function getTagCloseButton(item) {
   closeTag.addEventListener('click', closeTheTag); 
 }
 
-function getList(){
-  
-}
-
-function getIngredientsList() {
-  dataIngredientsFiltered.forEach((element) => {
+function getList(list, classlist, clickeditem, dom){
+  list.forEach(element => {
     let item = document.createElement('li');
-    item.classList.add('ingredientLi');
+    item.classList.add(classlist);
     item.textContent = element;
-    item.addEventListener(('click'), clickIngredient);
-    ingredientUl.appendChild(item);
-  })
-}
-
-function getAppliancesList() {
-  dataAppliancesFiltered.forEach((element) => {
-    let item = document.createElement('li');
-    item.classList.add('applianceLi');
-    item.textContent = element;
-    item.addEventListener(('click'), clickAppliance);
-    applianceUl.appendChild(item);
-  })
-}
-
-function getUstensilsList() {
-  dataUstensilsFiltered.forEach((element) => {
-    let item = document.createElement('li');
-    item.classList.add('ustensilLi');
-    item.textContent = element;
-    item.addEventListener(('click'), clickUstensil);
-    ustensilUl.appendChild(item);
+    item.addEventListener(('click'), clickeditem);
+    dom.appendChild(item);
   })
 }
 
@@ -58,8 +34,8 @@ function getTagCard(e, tag){
 
 //INITIALISATION LANCEMENT DES 3 FONCTIONS 
 async function displayIngredientsAppliancesUstensils() {
-  getIngredientsList();
-  getAppliancesList();
-  getUstensilsList();
+  getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
+  getList(dataAppliancesFiltered,'applianceLi', clickAppliance, applianceUl );
+  getList(dataUstensilsFiltered,'ustensilLi', clickUstensil, ustensilUl );
 }
 
