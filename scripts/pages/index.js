@@ -1,9 +1,10 @@
 // ---------------------------INDEX.JS------------------------
+let result = [];
 
 let recipesArray = []; // contient toutes les recettes d'origine (50);
-let arrTriIngredients = []; //contient toutes les noms des ingrédients avec doublons
-let arrTriAppliances = [];// contient toutes les noms des appareils avec doublons
-let arrTriUstensils = [];// contient toutes les noms des ustensiles sans doublons
+let arrTriIngredients = []; //TEMP contient toutes les noms des ingrédients avec doublons
+let arrTriAppliances = [];// TEMP contient toutes les noms des appareils avec doublons
+let arrTriUstensils = [];// TEMP contient toutes les noms des ustensiles sans doublons
 let dataIngredientsFiltered = []; // contient toutes les noms des ingrédients sans doublons
 let dataAppliancesFiltered = []; // contient toutes les noms des appareils sans doublons
 let dataUstensilsFiltered = []; // contient toutes les noms des ustensiles sans doublons
