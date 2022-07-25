@@ -13,7 +13,6 @@ let tagsUstensils = []; //ajoute / supprime tag + stocke element dans array
 let tags = []; // contient tous les tags sélectionnés
 let filteredRecipes = []; // contient toutes les recettes filtrées par les tags (globale)
 
-
 //DOM
 const recipesSection = document.getElementById('recipes');
 const tagsDiv = document.querySelector('.tags');
@@ -134,14 +133,20 @@ dropdownDanger.addEventListener('click', (e)=> {
 });
 
 
+//AJOUT TAG
+function pushAndConcatItem(clickedItem,tag){
+  console.log(clickedItem);
+  console.log(tag);
+  tag.push(clickedItem);
+  tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
+  console.log(tags);
+}
+
+
 //AJOUT TAG INGREDIENT
 function clickIngredient(e) {
   let clickedIngredient = e.target.textContent;
-  tagsIngredients.push(clickedIngredient);
-  // filteredRecipes = recipes.filter(recipe => recipe.includes(clickedIngredient.toLowerCase()))
-  console.log(tagsIngredients);
-  tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
-  console.log(tags);
+  pushAndConcatItem(clickedIngredient, tagsIngredients)
   getTagCard(e, 'tag-ingredient');
   dropdownPrimary.click();
 }
@@ -149,27 +154,19 @@ function clickIngredient(e) {
 //AJOUT TAG APPLIANCE
 function clickAppliance(e) {
   let clickedAppliance = e.target.textContent;
-  tagsAppliances.push(clickedAppliance);
+  pushAndConcatItem(clickedAppliance, tagsAppliances)
 
   // revoir pour cumuler les tags, ici annule et remplace le clicked tag
   // filtrer sur array tagAplliance et non clicked Appliance pour cumuluer les elements dans la recherche
   filteredRecipes = recipes.filter(recipe => recipe.appliance.toLowerCase() === clickedAppliance.toLowerCase());
-
-  console.log(clickedAppliance);
-  console.log(filteredRecipes);
-  tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
-  console.log(tags);
   getTagCard(e, 'tag-appliance');
   dropdownSuccess.click();
-
 }
 
 //AJOUT TAG USTENSIL
 function clickUstensil(e) {
   let clickedUstensil = e.target.textContent;
-  tagsUstensils.push(clickedUstensil);
-  tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
-  console.log(tags);
+  pushAndConcatItem(clickedUstensil, tagsUstensils)
   getTagCard(e, 'tag-ustensil');
   dropdownDanger.click();
 
