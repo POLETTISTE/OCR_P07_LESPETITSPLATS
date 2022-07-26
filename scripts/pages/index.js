@@ -17,6 +17,11 @@ let tagsUstensils = []; //ajoute / supprime tag + stocke element dans array
 let tags = []; // contient tous les tags sélectionnés
 let filteredRecipes = []; // contient toutes les recettes filtrées par les tags (globale)
 
+let actualValueInput1;
+let actualValueInput2;
+let actualValueInput3;
+let actualValueInput4;
+
 //DOM
 const recipesSection = document.getElementById('recipes');
 const tagsDiv = document.querySelector('.tags');
@@ -59,13 +64,49 @@ async function displayCards(filteredData) {
 inputForm1.addEventListener(('input'), (e) => {
   e.preventDefault();
   e.stopPropagation();
-  actualValueInput = inputForm1.value;
-  actualValueInput.toLowerCase();
+  actualValueInput1 = inputForm1.value;
+  actualValueInput1.toLowerCase();
 
   searchInputBar();
 
 });
 
+inputForm2.addEventListener('input', (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+
+  actualValueInput2 = inputForm2.value;
+  actualValueInput2.toLowerCase();
+  console.log(actualValueInput2);
+
+  if (tags.length === 0 && actualValueInput2.length === 0) {
+    // ingredientUl.textContent = '';
+
+    getInitialList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
+    console.log('affiche la liste initiale avec tous les ingredients ')
+
+  }
+  else if(tags.length > 0 && actualValueInput2.length === 0) {
+    console.log('nouvelle liste sans les articles absents des recettes ')
+
+  }
+
+  else if (actualValueInput2.length > 0) {
+    // ingredientUl.textContent = '';
+    // fonction qui filtre suivant l'input
+    // dataIngredientsFiltered.forEach((li) => {
+    //   console.log(li);
+    // })
+    console.log('affiche les matchs avec la saisie ')
+  }
+  else{
+    // ingredientUl.textContent = '';
+
+    console.log('nouvelle liste sans les articles absents des recettes')
+    // mettre autres en display none ?
+  }
+
+})
 
 // MENU DEROULANT RECHERCHE PAR INGREDIENT
 dropdownPrimary.addEventListener('click', (e)=> {
@@ -93,38 +134,6 @@ dropdownPrimary.addEventListener('click', (e)=> {
   }
 });
 
-inputForm2.addEventListener('input', (e) => {
-  e.preventDefault();
-  e.stopPropagation();
-
-  actualValueInput2 = inputForm2.value;
-  actualValueInput2.toLowerCase();
-  console.log(actualValueInput2);
-
-  if (tags.length === 0 && actualValueInput2.length === 0) {
-    // ingredientUl.textContent = '';
-
-    getInitialList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
-    console.log('affiche la liste initiale avec tous les ingredients ')
-
-  }
-
-  else if (actualValueInput2.length > 0) {
-    // ingredientUl.textContent = '';
-    // fonction qui filtre suivant l'input
-    // dataIngredientsFiltered.forEach((li) => {
-    //   console.log(li);
-    // })
-    console.log('affiche les matchs avec la saisie ')
-  }
-  else{
-    // ingredientUl.textContent = '';
-
-    console.log('nouvelle liste sans les articles absents des recettes')
-    // mettre autres en display none ?
-  }
-
-})
 // MENU DEROULANT RECHERCHE PAR APPAREIL
 dropdownSuccess.addEventListener('click', (e)=> {
   e.preventDefault();
@@ -232,6 +241,12 @@ function closeTheTag(){
   tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
   console.log(tags);
   removeTag(target);
+
+  if (tags.length === 0 && actualValueInput2 === 0) {
+    console.log('pas de tag');
+    getInitialList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
+
+  }
 }
 
 

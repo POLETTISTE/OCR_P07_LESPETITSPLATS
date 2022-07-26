@@ -6,11 +6,11 @@ function formatText(string){
 }
 
 function searchInputDatas(data) {
-  let resultIng = (item) => formatText(item.ingredient).includes(formatText(actualValueInput));
+  let resultIng = (item) => formatText(item.ingredient).includes(formatText(actualValueInput1));
 
   result = data.filter(element => {
-    return formatText(element.name).includes(formatText(actualValueInput)) || 
-           formatText(element.description).includes(formatText(actualValueInput)) ||
+    return formatText(element.name).includes(formatText(actualValueInput1)) || 
+           formatText(element.description).includes(formatText(actualValueInput1)) ||
            element.ingredients.some(resultIng)
   })
 }
@@ -48,6 +48,6 @@ function searchInputBar() {
 }
 
 function searchInput234(list) {
-  
+
   // filtrer dataIngredientsFiltered suivant input
 }
