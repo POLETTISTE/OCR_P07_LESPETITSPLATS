@@ -5,7 +5,7 @@ function formatText(string){
   .toLowerCase();
 }
 
-function searchInputDatas(data) {
+function searchInput1Datas(data) {
   let resultIng = (item) => formatText(item.ingredient).includes(formatText(actualValueInput1));
 
   result = data.filter(element => {
@@ -37,10 +37,10 @@ function searchInputBar() {
     
     // si on a aucune donnee filtree, on prend recipes
     if (filteredRecipes.length === 0) {
-      searchInputDatas(recipes);
+      searchInput1Datas(recipes);
       // si on a deja des donnes filtrees dans recipearray, alors on prend filteredRecipes pour filtrer
     }else {
-      searchInputDatas(filteredRecipes);
+      searchInput1Datas(filteredRecipes);
 
     }
     displayCards(result);
