@@ -19,8 +19,6 @@ function getList(list, classlist, clickeditem, dom){
     item.classList.add(classlist);
     item.textContent = element;
     item.addEventListener(('click'), clickeditem);
- 
-
     dom.appendChild(item);
   })
 }

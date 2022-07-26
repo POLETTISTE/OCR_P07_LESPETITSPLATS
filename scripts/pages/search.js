@@ -48,10 +48,19 @@ function searchInputBar() {
 }
 
 function searchInputIngredient(dataIngredientsFiltered) {
-
-  // filtrer dataIngredientsFiltered suivant input
   filteredListIngredients = dataIngredientsFiltered.filter(element => {
     return formatText(element).includes(formatText(actualValueInput2))
   });
+}
 
+function searchInputAppliance(dataAppliancesFiltered) {
+  filteredListAppliances = dataAppliancesFiltered.filter(element => {
+    return formatText(element).includes(formatText(actualValueInput3))
+  });
+}
+
+function searchInputUstensil(dataUstensilsFiltered) {
+  filteredListUstensils = dataUstensilsFiltered.filter(element => {
+    return formatText(element).includes(formatText(actualValueInput4))
+  });
 }

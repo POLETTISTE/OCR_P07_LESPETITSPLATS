@@ -18,11 +18,14 @@ let tags = []; // contient tous les tags sélectionnés
 let filteredRecipes = []; // contient toutes les recettes filtrées par les tags (globale)
 
 let filteredListIngredients = [];
+let filteredListAppliances = [];
+let filteredListUstensils = [];
 
 let actualValueInput1;
 let actualValueInput2;
 let actualValueInput3;
 let actualValueInput4;
+
 
 //DOM
 const recipesSection = document.getElementById('recipes');
@@ -82,40 +85,83 @@ inputForm2.addEventListener('input', (e) => {
   actualValueInput2 = inputForm2.value;
 
   if (tags.length === 0 && actualValueInput2 === '') {
-    console.log('affiche la liste initiale avec tous les ingredients ')
-    actualValueInput2.textContent ='';
     ingredientUl.textContent = '';
+    searchInputIngredient(dataIngredientsFiltered);
     getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
 
-
-
-  }
-  else if(tags.length !== 0 && actualValueInput2 === '') {
-    console.log('nouvelle liste sans les articles absents des recettes ')
-    console.log("filteredListIngredients")
-    actualValueInput2.textContent ='';
-    ingredientUl.textContent = '';
-    getList(filteredListIngredients, 'ingredientLi', clickIngredient, ingredientUl);
-
-
-  }
-
-  else if (actualValueInput2.length !== 0) {
-    console.log('affiche les matchs avec la saisie ');
+  } else if (tags.length !== 0 && actualValueInput2 === '') {
     ingredientUl.textContent = '';
     searchInputIngredient(dataIngredientsFiltered);
     getList(filteredListIngredients, 'ingredientLi', clickIngredient, ingredientUl);
 
-
-  }
-  else{
-    console.log('nouvelle liste sans les articles absents des recettes')
-    console.log("filteredListIngredients")
+  } else if (actualValueInput2.length !== 0) {
     ingredientUl.textContent = '';
+    searchInputIngredient(dataIngredientsFiltered);
     getList(filteredListIngredients, 'ingredientLi', clickIngredient, ingredientUl);
 
-  }
+  } else {
+    console.log('ok')
 
+    ingredientUl.textContent = '';
+    getList(filteredListIngredients, 'ingredientLi', clickIngredient, ingredientUl);
+  }
+})
+
+inputForm3.addEventListener('input', (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+
+  actualValueInput3 = inputForm3.value;
+
+  if (tags.length === 0 && actualValueInput3 === '') {
+    applianceUl.textContent = '';
+    searchInputAppliance(dataAppliancesFiltered);
+    getList(filteredListAppliances,'applianceLi', clickAppliance, applianceUl );
+
+  } else if (tags.length !== 0 && actualValueInput3 === '') {
+    applianceUl.textContent = '';
+    searchInputAppliance(dataAppliancesFiltered);
+    getList(filteredListAppliances,'applianceLi', clickAppliance, applianceUl );
+
+  } else if (actualValueInput3.length !== 0) {
+
+    applianceUl.textContent = '';
+    searchInputAppliance(dataAppliancesFiltered);
+    getList(filteredListAppliances,'applianceLi', clickAppliance, applianceUl );
+
+  } else {
+
+    applianceUl.textContent = '';
+    getList(filteredListAppliances,'applianceLi', clickAppliance, applianceUl );
+  }
+})
+
+inputForm4.addEventListener('input', (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+
+  actualValueInput4 = inputForm4.value;
+
+  if (tags.length === 0 && actualValueInput4 === '') {
+    ustensilUl.textContent = '';
+    searchInputUstensil(dataUstensilsFiltered);
+    getList(filteredListUstensils,'ustensilLi', clickUstensil, ustensilUl );
+
+  } else if (tags.length !== 0 && actualValueInput4 === '') {
+    ustensilUl.textContent = '';
+    searchInputUstensil(dataUstensilsFiltered);
+    getList(filteredListUstensils,'ustensilLi', clickUstensil, ustensilUl );
+
+  } else if (actualValueInput4.length !== 0) {
+
+    ustensilUl.textContent = '';
+    searchInputUstensil(dataUstensilsFiltered);
+    getList(filteredListUstensils,'ustensilLi', clickUstensil, ustensilUl );
+
+  } else {
+    ustensilUl.textContent = '';
+    getList(filteredListUstensils,'ustensilLi', clickUstensil, ustensilUl );
+  }
 })
 
 // MENU DEROULANT RECHERCHE PAR INGREDIENT
@@ -137,7 +183,7 @@ dropdownPrimary.addEventListener('click', (e)=> {
     inputForm2.select();
 
   } else {
-    inputForm2.value ="";
+    // inputForm2.value ="";
     ingredientsDiv.style.display = "none";
     btnIngredients.style.display = "block";
 
@@ -211,6 +257,8 @@ function clickIngredient(e) {
 
 //AJOUT TAG APPLIANCE
 function clickAppliance(e) {
+  e.target.classList.add('selected'); 
+
   let clickedAppliance = e.target.textContent;
   pushAndConcatItem(clickedAppliance, tagsAppliances)
 
@@ -223,6 +271,8 @@ function clickAppliance(e) {
 
 //AJOUT TAG USTENSIL
 function clickUstensil(e) {
+  e.target.classList.add('selected'); 
+
   let clickedUstensil = e.target.textContent;
   pushAndConcatItem(clickedUstensil, tagsUstensils)
   getTagCard(e, 'tag-ustensil');
