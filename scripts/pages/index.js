@@ -17,6 +17,8 @@ let tagsUstensils = []; //ajoute / supprime tag + stocke element dans array
 let tags = []; // contient tous les tags sélectionnés
 let filteredRecipes = []; // contient toutes les recettes filtrées par les tags (globale)
 
+let filteredListIngredients = [];
+
 let actualValueInput1;
 let actualValueInput2;
 let actualValueInput3;
@@ -60,12 +62,14 @@ async function displayCards(filteredData) {
   });
 }
 
+
+
 // RECHERCHE DANS LE FORMULAIRE PRINCIPAL
 inputForm1.addEventListener(('input'), (e) => {
   e.preventDefault();
   e.stopPropagation();
   actualValueInput1 = inputForm1.value;
-  actualValueInput1.toLowerCase();
+  formatText(actualValueInput1);
 
   searchInputBar();
 
@@ -76,33 +80,46 @@ inputForm2.addEventListener('input', (e) => {
   e.stopPropagation();
 
   actualValueInput2 = inputForm2.value;
-  actualValueInput2.toLowerCase();
+  formatText(actualValueInput2);
   console.log(actualValueInput2);
 
   if (tags.length === 0 && actualValueInput2.length === 0) {
-    // ingredientUl.textContent = '';
+    actualValueInput2 ='';
+    ingredientUl.textContent = '';
+    getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
 
-    getInitialList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
     console.log('affiche la liste initiale avec tous les ingredients ')
 
   }
-  else if(tags.length > 0 && actualValueInput2.length === 0) {
+  else if(tags.length !== 0 && actualValueInput2.length === 0) {
+    actualValueInput2 ='';
+    ingredientUl.textContent = '';
+    getList(filteredListIngredients, 'ingredientLi', clickIngredient, ingredientUl)
+
     console.log('nouvelle liste sans les articles absents des recettes ')
+    console.log("filteredListIngredients")
+
+
 
   }
 
-  else if (actualValueInput2.length > 0) {
-    // ingredientUl.textContent = '';
+  else if (actualValueInput2.length !== 0) {
+    ingredientUl.textContent = '';
+    searchInputIngredient(dataIngredientsFiltered);
+    getList(filteredListIngredients, 'ingredientLi', clickIngredient, ingredientUl)
+    console.log('affiche les matchs avec la saisie ');
     // fonction qui filtre suivant l'input
     // dataIngredientsFiltered.forEach((li) => {
     //   console.log(li);
     // })
-    console.log('affiche les matchs avec la saisie ')
   }
   else{
     // ingredientUl.textContent = '';
+    getList(filteredListIngredients, 'ingredientLi', clickIngredient, ingredientUl)
 
     console.log('nouvelle liste sans les articles absents des recettes')
+    console.log("filteredListIngredients")
+
     // mettre autres en display none ?
   }
 
@@ -190,9 +207,13 @@ function pushAndConcatItem(clickedItem,tag){
 
 //AJOUT TAG INGREDIENT
 function clickIngredient(e) {
+  console.log(e.target);
+  e.target.classList.add('selected'); 
+
   let clickedIngredient = e.target.textContent;
   pushAndConcatItem(clickedIngredient, tagsIngredients)
   getTagCard(e, 'tag-ingredient');
+
   dropdownPrimary.click();
 }
 

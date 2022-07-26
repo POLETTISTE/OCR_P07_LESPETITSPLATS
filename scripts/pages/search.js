@@ -47,7 +47,11 @@ function searchInputBar() {
   }
 }
 
-function searchInput234(list) {
+function searchInputIngredient(dataIngredientsFiltered) {
 
   // filtrer dataIngredientsFiltered suivant input
+  filteredListIngredients = dataIngredientsFiltered.filter(element => {
+    return formatText(element).includes(formatText(actualValueInput2))
+  });
+
 }
