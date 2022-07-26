@@ -281,7 +281,12 @@ function clickUstensil(e) {
 }
 
 function closeTheTag(){
+
+
   const target = this.parentNode;
+  console.log(target.textContent)
+// if console.log(target.textContent) === element dans liste alors annuler classe selected;
+
   const classTarget = target.className;
 
   switch(classTarget) {
@@ -304,12 +309,6 @@ function closeTheTag(){
   tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
   console.log(tags);
   removeTag(target);
-
-  if (tags.length === 0 && actualValueInput2 === 0) {
-    console.log('pas de tag');
-    getInitialList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
-
-  }
 }
 
 
