@@ -13,7 +13,7 @@ function getTagCloseButton(item) {
   closeTag.addEventListener('click', closeTheTag); 
 }
 
-function getList(list, classlist, clickeditem, dom){
+function getInitialList(list, classlist, clickeditem, dom){
   list.forEach(element => {
     let item = document.createElement('li');
     item.classList.add(classlist);
@@ -34,8 +34,8 @@ function getTagCard(e, tag){
 
 //INITIALISATION LANCEMENT DES 3 FONCTIONS 
 async function displayIngredientsAppliancesUstensils() {
-  getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
-  getList(dataAppliancesFiltered,'applianceLi', clickAppliance, applianceUl );
-  getList(dataUstensilsFiltered,'ustensilLi', clickUstensil, ustensilUl );
+  getInitialList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
+  getInitialList(dataAppliancesFiltered,'applianceLi', clickAppliance, applianceUl );
+  getInitialList(dataUstensilsFiltered,'ustensilLi', clickUstensil, ustensilUl );
 }
 

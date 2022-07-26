@@ -5,9 +5,12 @@ let recipesArray = []; // contient toutes les recettes d'origine (50);
 let arrTriIngredients = []; //TEMP contient toutes les noms des ingrédients avec doublons
 let arrTriAppliances = [];// TEMP contient toutes les noms des appareils avec doublons
 let arrTriUstensils = [];// TEMP contient toutes les noms des ustensiles sans doublons
+
 let dataIngredientsFiltered = []; // contient toutes les noms des ingrédients sans doublons
 let dataAppliancesFiltered = []; // contient toutes les noms des appareils sans doublons
 let dataUstensilsFiltered = []; // contient toutes les noms des ustensiles sans doublons
+
+
 let tagsIngredients = []; //ajoute / supprime tag + stocke element dans array
 let tagsAppliances = []; //ajoute / supprime tag + stocke element dans array
 let tagsUstensils = []; //ajoute / supprime tag + stocke element dans array
@@ -68,14 +71,14 @@ inputForm1.addEventListener(('input'), (e) => {
 dropdownPrimary.addEventListener('click', (e)=> {
   e.preventDefault();
   e.stopPropagation();
-
-
+  
+  
   appliancesDiv.style.display = "none";
   ustensilsDiv.style.display = "none";
   btnAppliances.style.display = "block";
   btnUstensils.style.display = "block";
-
-
+  
+  
   if (ingredientsDiv.style.display === "none") {
     ingredientsDiv.style.display = "block";
     btnIngredients.style.display = "none";
@@ -90,6 +93,38 @@ dropdownPrimary.addEventListener('click', (e)=> {
   }
 });
 
+inputForm2.addEventListener('input', (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+
+  actualValueInput2 = inputForm2.value;
+  actualValueInput2.toLowerCase();
+  console.log(actualValueInput2);
+
+  if (tags.length === 0 && actualValueInput2.length === 0) {
+    // ingredientUl.textContent = '';
+
+    getInitialList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
+    console.log('affiche la liste initiale avec tous les ingredients ')
+
+  }
+
+  else if (actualValueInput2.length > 0) {
+    // ingredientUl.textContent = '';
+    // fonction qui filtre suivant l'input
+    // dataIngredientsFiltered.forEach((li) => {
+    //   console.log(li);
+    // })
+    console.log('affiche les matchs avec la saisie ')
+  }
+  else{
+    // ingredientUl.textContent = '';
+
+    console.log('nouvelle liste sans les articles absents des recettes')
+    // mettre autres en display none ?
+  }
+
+})
 // MENU DEROULANT RECHERCHE PAR APPAREIL
 dropdownSuccess.addEventListener('click', (e)=> {
   e.preventDefault();
@@ -97,7 +132,7 @@ dropdownSuccess.addEventListener('click', (e)=> {
   ustensilsDiv.style.display = "none";
   btnIngredients.style.display = "block";
   btnUstensils.style.display = "block";
-
+  
   if (appliancesDiv.style.display === "none") {
     appliancesDiv.style.display = "block";
     btnAppliances.style.display = "none";

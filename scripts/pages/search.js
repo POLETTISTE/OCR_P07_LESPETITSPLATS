@@ -46,3 +46,8 @@ function searchInputBar() {
     displayCards(result);
   }
 }
+
+function searchInput234(list) {
+  
+  // filtrer dataIngredientsFiltered suivant input
+}
