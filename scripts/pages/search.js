@@ -5,6 +5,8 @@ function formatText(string){
   .toLowerCase();
 }
 
+// INPUTS
+
 function searchInput1Datas(data) {
   let resultIng = (item) => formatText(item.ingredient).includes(formatText(actualValueInput1));
 
@@ -65,14 +67,20 @@ function searchInputUstensil(dataUstensilsFiltered) {
   });
 }
 
+// MISE A JOUR DE LA LISTE ARTICLE APRES CREATION D'UN TAG
+function searchWithTagIngredient(clickedIngredient){
+  let resultIng = (item) => formatText(item.ingredient).includes(formatText(clickedIngredient));
 
-
-
-function filteringWithTags(){
-  //si tags=0 alors rien
-
-  //si au moins 1 tag alors
-  // on prend toutes les recettes
-  //on les filtre avec l'array tags
-  // on retourne le resultat dans filteredRecipes
+  if(tags.length ===0){
+    filteredRecipes = recipes.filter(recipe => recipe);
+  }
+  else if (tags.length ===1){
+    filteredRecipes = recipes.filter(element => {
+      return element.ingredients.some(resultIng)
+    })
+  }else if(tags.length >1) {
+    filteredRecipes = filteredRecipes.filter(element => {
+      return element.ingredients.some(resultIng)
+    })
+  }
 }

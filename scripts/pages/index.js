@@ -95,6 +95,7 @@ inputForm2.addEventListener('input', (e) => {
   } else if (tags.length !== 0 && actualValueInput2 === '') {
     ingredientUl.textContent = '';
     searchInputIngredient(dataIngredientsFiltered);
+    
     getList(filteredListIngredients, 'ingredientLi', clickIngredient, ingredientUl);
 
   } else if (actualValueInput2.length !== 0) {
@@ -103,7 +104,6 @@ inputForm2.addEventListener('input', (e) => {
     getList(filteredListIngredients, 'ingredientLi', clickIngredient, ingredientUl);
 
   } else {
-    console.log('ok')
 
     ingredientUl.textContent = '';
     getList(filteredListIngredients, 'ingredientLi', clickIngredient, ingredientUl);
@@ -225,7 +225,7 @@ dropdownDanger.addEventListener('click', (e)=> {
   if (ustensilsDiv.style.display === "none") {
     ustensilsDiv.style.display = "block";
     btnUstensils.style.display = "none";
-
+    
     inputForm4.focus();
     inputForm4.select();
 
@@ -237,23 +237,30 @@ dropdownDanger.addEventListener('click', (e)=> {
 });
 
 
-//AJOUT TAG
+//AJOUT TAG DANS ARRAY TAGS
 function pushAndConcatItem(clickedItem,tag){
-  console.log(clickedItem);
-  console.log(tag);
+  console.log(clickedItem)
   tag.push(clickedItem);
   tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
-  console.log(tags);
-}
 
+
+
+  
+
+
+}
 
 //AJOUT TAG INGREDIENT
 function clickIngredient(e) {
   addDisplayNoneWhenCreateTag(e);
   let clickedIngredient = e.target.textContent;
-  pushAndConcatItem(clickedIngredient, tagsIngredients)
   getTagCard(e, 'tag-ingredient');
-
+  // refilter filteredListIngredients avec ce tag 
+  //if tag ingredient
+  pushAndConcatItem(clickedIngredient, tagsIngredients)
+  searchWithTagIngredient(clickedIngredient);
+  displayCards(filteredRecipes);
+  
   dropdownPrimary.click();
 }
 
@@ -273,7 +280,6 @@ function clickUstensil(e) {
   pushAndConcatItem(clickedUstensil, tagsUstensils)
   getTagCard(e, 'tag-ustensil');
   dropdownDanger.click();
-
 }
 
 
@@ -305,28 +311,9 @@ function closeTheTag(){
   }
 
   tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
-  console.log(tags);
 
   removeTag(target);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // INITIALISATION
