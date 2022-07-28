@@ -302,24 +302,30 @@ function closeTheTag(){
       index = tagsIngredients.indexOf(target.textContent);
       tagsIngredients.splice(index, 1)
       removeDisplayNoneWhenCloseTheTag(item, ingredientUl);
+
       break;
     case 'tag-appliance tag rounded' : 
       index = tagsAppliances.indexOf(target.textContent);
       tagsAppliances.splice(index, 1)
       removeDisplayNoneWhenCloseTheTag(item, applianceUl);
+
       break;
     case 'tag-ustensil tag rounded' : 
       index = tagsUstensils.indexOf(target.textContent);
       tagsUstensils.splice(index, 1)
       removeDisplayNoneWhenCloseTheTag(item, ustensilUl);
+
       break;
     default:
       console.log('error in switch');
   }
 
+
   tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
 
   removeTag(target);
+
+// faire une boucle pour redefinir a nouveau la filteredrecipe
 }
 
 
