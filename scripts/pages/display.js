@@ -31,6 +31,17 @@ function getTagCard(e, tag){
   tagsDiv.appendChild(item);
 }
 
+function removeDisplayNoneWhenCloseTheTag(item, source) {
+  
+  const elements = source.childNodes
+ 
+  elements.forEach(element => {
+    if (element.textContent === item) {
+      element.classList.remove('tagged');
+    }
+  })
+}
+
 
 //INITIALISATION LANCEMENT DES 3 FONCTIONS 
 async function displayIngredientsAppliancesUstensils() {

@@ -7,8 +7,8 @@ function Recipe(data) {
   const dataAppliances = appliance;
   const dataUstensils = ustensils;
   
-  //PUSH TOUTES LES RECETTES DANS ARRAY RecipesArray
-  recipesArray.push(dataRecipes);
+  // //PUSH TOUTES LES RECETTES DANS ARRAY RecipesArray
+  // recipesArray.push(dataRecipes);
 
   //CREATION DE LA CARTE RECETTE
   function getRecipeCard() {

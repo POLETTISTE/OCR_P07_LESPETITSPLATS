@@ -64,3 +64,15 @@ function searchInputUstensil(dataUstensilsFiltered) {
     return formatText(element).includes(formatText(actualValueInput4))
   });
 }
+
+
+
+
+function filteringWithTags(){
+  //si tags=0 alors rien
+
+  //si au moins 1 tag alors
+  // on prend toutes les recettes
+  //on les filtre avec l'array tags
+  // on retourne le resultat dans filteredRecipes
+}

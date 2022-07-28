@@ -1,7 +1,8 @@
 // ---------------------------INDEX.JS------------------------
 let result = [];
 
-let recipesArray = []; // contient toutes les recettes d'origine (50);
+// let recipesArray = []; // contient toutes les recettes d'origine (50);
+
 let arrTriIngredients = []; //TEMP contient toutes les noms des ingrédients avec doublons
 let arrTriAppliances = [];// TEMP contient toutes les noms des appareils avec doublons
 let arrTriUstensils = [];// TEMP contient toutes les noms des ustensiles sans doublons
@@ -10,11 +11,12 @@ let dataIngredientsFiltered = []; // contient toutes les noms des ingrédients s
 let dataAppliancesFiltered = []; // contient toutes les noms des appareils sans doublons
 let dataUstensilsFiltered = []; // contient toutes les noms des ustensiles sans doublons
 
-
 let tagsIngredients = []; //ajoute / supprime tag + stocke element dans array
 let tagsAppliances = []; //ajoute / supprime tag + stocke element dans array
 let tagsUstensils = []; //ajoute / supprime tag + stocke element dans array
 let tags = []; // contient tous les tags sélectionnés
+
+
 let filteredRecipes = []; // contient toutes les recettes filtrées par les tags (globale)
 
 let filteredListIngredients = [];
@@ -51,6 +53,7 @@ const inputForm4 = document.querySelector("#SaisieRecherche4");
 const ingredientUl = document.querySelector('.ingredientUl');
 const applianceUl = document.querySelector('.applianceUl');
 const ustensilUl = document.querySelector('.ustensilUl');
+
 
 
 //AU CHARGEMENT DE LA PAGE ON RECUPERE TOUTES LES RECETTES
@@ -246,7 +249,7 @@ function pushAndConcatItem(clickedItem,tag){
 
 //AJOUT TAG INGREDIENT
 function clickIngredient(e) {
-  e.target.classList.add('selected'); 
+  e.target.classList.add('tagged'); 
 
   let clickedIngredient = e.target.textContent;
   pushAndConcatItem(clickedIngredient, tagsIngredients)
@@ -257,7 +260,7 @@ function clickIngredient(e) {
 
 //AJOUT TAG APPLIANCE
 function clickAppliance(e) {
-  e.target.classList.add('selected'); 
+  e.target.classList.add('tagged'); 
 
   let clickedAppliance = e.target.textContent;
   pushAndConcatItem(clickedAppliance, tagsAppliances)
@@ -271,7 +274,7 @@ function clickAppliance(e) {
 
 //AJOUT TAG USTENSIL
 function clickUstensil(e) {
-  e.target.classList.add('selected'); 
+  e.target.classList.add('tagged'); 
 
   let clickedUstensil = e.target.textContent;
   pushAndConcatItem(clickedUstensil, tagsUstensils)
@@ -280,12 +283,11 @@ function clickUstensil(e) {
 
 }
 
+
 function closeTheTag(){
 
-
   const target = this.parentNode;
-  console.log(target.textContent)
-// if console.log(target.textContent) === element dans liste alors annuler classe selected;
+  let item = target.textContent;
 
   const classTarget = target.className;
 
@@ -293,14 +295,17 @@ function closeTheTag(){
     case 'tag-ingredient tag rounded' : 
       index = tagsIngredients.indexOf(target.textContent);
       tagsIngredients.splice(index, 1)
+      removeDisplayNoneWhenCloseTheTag(item, ingredientUl);
       break;
     case 'tag-appliance tag rounded' : 
       index = tagsAppliances.indexOf(target.textContent);
       tagsAppliances.splice(index, 1)
+      removeDisplayNoneWhenCloseTheTag(item, applianceUl);
       break;
     case 'tag-ustensil tag rounded' : 
       index = tagsUstensils.indexOf(target.textContent);
       tagsUstensils.splice(index, 1)
+      removeDisplayNoneWhenCloseTheTag(item, ustensilUl);
       break;
     default:
       console.log('error in switch');
@@ -308,6 +313,7 @@ function closeTheTag(){
 
   tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
   console.log(tags);
+
   removeTag(target);
 }
 
