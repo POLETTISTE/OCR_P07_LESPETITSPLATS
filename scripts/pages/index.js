@@ -260,7 +260,7 @@ function clickIngredient(e) {
   pushAndConcatItem(clickedIngredient, tagsIngredients)
   searchWithTagIngredient(clickedIngredient);
   displayCards(filteredRecipes);
-  
+
   dropdownPrimary.click();
 }
 
@@ -268,8 +268,12 @@ function clickIngredient(e) {
 function clickAppliance(e) {
   addDisplayNoneWhenCreateTag(e);
   let clickedAppliance = e.target.textContent;
-  pushAndConcatItem(clickedAppliance, tagsAppliances)
   getTagCard(e, 'tag-appliance');
+  pushAndConcatItem(clickedAppliance, tagsAppliances);
+  searchWithTagAppliance(clickedAppliance);
+
+  displayCards(filteredRecipes);
+
   dropdownSuccess.click();
 }
 
@@ -277,8 +281,11 @@ function clickAppliance(e) {
 function clickUstensil(e) {
   addDisplayNoneWhenCreateTag(e);
   let clickedUstensil = e.target.textContent;
-  pushAndConcatItem(clickedUstensil, tagsUstensils)
   getTagCard(e, 'tag-ustensil');
+  pushAndConcatItem(clickedUstensil, tagsUstensils)
+  searchWithTagUstensils(clickedUstensil);
+  displayCards(filteredRecipes);
+
   dropdownDanger.click();
 }
 
