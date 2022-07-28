@@ -31,6 +31,11 @@ function getTagCard(e, tag){
   tagsDiv.appendChild(item);
 }
 
+function addDisplayNoneWhenCreateTag(e) {
+  e.target.classList.add('tagged'); 
+}
+
+
 function removeDisplayNoneWhenCloseTheTag(item, source) {
   
   const elements = source.childNodes

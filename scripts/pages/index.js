@@ -249,8 +249,7 @@ function pushAndConcatItem(clickedItem,tag){
 
 //AJOUT TAG INGREDIENT
 function clickIngredient(e) {
-  e.target.classList.add('tagged'); 
-
+  addDisplayNoneWhenCreateTag(e);
   let clickedIngredient = e.target.textContent;
   pushAndConcatItem(clickedIngredient, tagsIngredients)
   getTagCard(e, 'tag-ingredient');
@@ -260,22 +259,16 @@ function clickIngredient(e) {
 
 //AJOUT TAG APPLIANCE
 function clickAppliance(e) {
-  e.target.classList.add('tagged'); 
-
+  addDisplayNoneWhenCreateTag(e);
   let clickedAppliance = e.target.textContent;
   pushAndConcatItem(clickedAppliance, tagsAppliances)
-
-  // revoir pour cumuler les tags, ici annule et remplace le clicked tag
-  // filtrer sur array tagAplliance et non clicked Appliance pour cumuluer les elements dans la recherche
-  filteredRecipes = recipes.filter(recipe => recipe.appliance.toLowerCase() === clickedAppliance.toLowerCase());
   getTagCard(e, 'tag-appliance');
   dropdownSuccess.click();
 }
 
 //AJOUT TAG USTENSIL
 function clickUstensil(e) {
-  e.target.classList.add('tagged'); 
-
+  addDisplayNoneWhenCreateTag(e);
   let clickedUstensil = e.target.textContent;
   pushAndConcatItem(clickedUstensil, tagsUstensils)
   getTagCard(e, 'tag-ustensil');
