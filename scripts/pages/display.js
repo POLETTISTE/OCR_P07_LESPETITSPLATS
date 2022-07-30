@@ -23,6 +23,22 @@ function getList(list, classlist, clickeditem, dom){
   })
 }
 
+// getList en forEach sur liste ingredient à jour pour garder event listen
+  
+
+
+
+
+
+// function getListFiltered(list, classList, dom){
+//   list.forEach(element => {
+//     let item = document.createElement('li');
+//     item.classList.add(classList);
+//     item.textContent = element;
+//     dom.appendChild(item);
+//   })
+// }
+
 function getTagCard(e, tag){
   let item = document.createElement('card');
   item.classList.add(tag, 'tag', 'rounded');

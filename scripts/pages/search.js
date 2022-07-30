@@ -1,8 +1,8 @@
 function formatText(string){
   return string
-  .normalize('NFD')
-  .replace(/[\u0300-\u036f]/g,"")
-  .toLowerCase();
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g,"")
+    .toLowerCase();
 }
 
 // INPUTS
@@ -67,7 +67,9 @@ function searchInputUstensil(dataUstensilsFiltered) {
   });
 }
 
-// MISE A JOUR DE LA LISTE ARTICLE APRES CREATION D'UN TAG
+
+
+// MISE A JOUR DE LA LISTE DES RECETTES APRES CREATION D'UN TAG
 
 function searchWithTagIngredient(clickedIngredient){
   let resultIng = (item) => formatText(item.ingredient).includes(formatText(clickedIngredient));
@@ -76,6 +78,7 @@ function searchWithTagIngredient(clickedIngredient){
     filteredRecipes = recipes.filter(recipe => recipe);
   }
   else if (tags.length ===1){
+    
     filteredRecipes = recipes.filter(element => {
       return element.ingredients.some(resultIng)
     })
@@ -120,3 +123,25 @@ function searchWithTagUstensils(clickedUstensil){
     })
   }
 }
+
+function filteringListWithTagsIngredients(){
+
+  // recuperer la liste ingredients
+  ingredientUl.textContent='';
+  
+  // if ingredient est present dans tag, alors on refiat un filtrage de filteredRecipes pour chaque tag;
+  tags.forEach(tag => {
+    let resultIng = (item) => formatText(item.ingredient).includes(formatText(tag));
+
+    dataIngredientsFiltered = filteredRecipes.filter(element => {
+      element.ingredients.forEach(element => {
+        filteredListIngredients.push(element.ingredient)
+      })
+      element.ingredients.some(resultIng);        
+    })
+      
+  })
+  return  dataIngredientsFiltered = [...new Set(filteredListIngredients)];
+
+}
+

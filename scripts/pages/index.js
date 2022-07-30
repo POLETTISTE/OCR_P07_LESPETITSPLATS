@@ -11,6 +11,12 @@ let dataIngredientsFiltered = []; // contient toutes les noms des ingrédients s
 let dataAppliancesFiltered = []; // contient toutes les noms des appareils sans doublons
 let dataUstensilsFiltered = []; // contient toutes les noms des ustensiles sans doublons
 
+let filteredListIngredients = [];
+let filteredListAppliances = [];
+let filteredListUstensils = [];
+let uniqueArr = [];
+
+
 let tagsIngredients = []; //ajoute / supprime tag + stocke element dans array
 let tagsAppliances = []; //ajoute / supprime tag + stocke element dans array
 let tagsUstensils = []; //ajoute / supprime tag + stocke element dans array
@@ -18,11 +24,6 @@ let tags = []; // contient tous les tags sélectionnés
 
 
 let filteredRecipes = []; // contient toutes les recettes filtrées par les tags (globale)
-
-let filteredListIngredients = [];
-let filteredListAppliances = [];
-let filteredListUstensils = [];
-
 let actualValueInput1;
 let actualValueInput2;
 let actualValueInput3;
@@ -94,9 +95,12 @@ inputForm2.addEventListener('input', (e) => {
 
   } else if (tags.length !== 0 && actualValueInput2 === '') {
     ingredientUl.textContent = '';
-    searchInputIngredient(dataIngredientsFiltered);
-    
-    getList(filteredListIngredients, 'ingredientLi', clickIngredient, ingredientUl);
+    // searchInputIngredient(dataIngredientsFiltered);
+    console.log('il y a au moins un tag et input 2 vide')
+    // filteringListWithTagsIngredients();
+    // getList(uniqueArr,'ingredientLi', clickIngredient, ingredientUl );
+    console.log('il y a au moins un tag et input 2 vide ___ liste ingredient display creee')
+
 
   } else if (actualValueInput2.length !== 0) {
     ingredientUl.textContent = '';
@@ -243,12 +247,10 @@ function pushAndConcatItem(clickedItem,tag){
   tag.push(clickedItem);
   tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
 
-
-
-  
-
-
 }
+
+// ARRAY INGREDIENTS FILTREE AVEC TAGS
+
 
 //AJOUT TAG INGREDIENT
 function clickIngredient(e) {
@@ -260,8 +262,14 @@ function clickIngredient(e) {
   pushAndConcatItem(clickedIngredient, tagsIngredients)
   searchWithTagIngredient(clickedIngredient);
   displayCards(filteredRecipes);
+  console.log(tagsIngredients);
 
-  dropdownPrimary.click();
+
+  filteringListWithTagsIngredients();
+  console.log(dataIngredientsFiltered)
+  getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
+
+  dropdownPrimary.click();  
 }
 
 //AJOUT TAG APPLIANCE
@@ -321,12 +329,33 @@ function closeTheTag(){
   }
 
 
-  tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
-
   removeTag(target);
+  tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
+  
+  // AFFICHE LA LISTE COMPLETE
+  if (tags.length === 0) {
+    console.log('zéro tag')
 
-// faire une boucle pour redefinir a nouveau la filteredrecipe
+    displayCards(recipes);
+    
+    // AFFICHE LES INGREDIENTS DES RECETTES RESTANTES
+    // faire une boucle pour redefinir a nouveau la filteredrecipe avec les différents tags
+    // faire une boucle pour redefinir a nouveau la liste ingrédients si les ingredients sont presents dans les recettes
+  }else if (tags.length !== 0){
+    console.log('au moins un tag');
+    filteringListWithTagsIngredients();
+    console.log(uniqueArr);
+
+
+  } 
 }
+
+
+
+
+
+
+
 
 
 // INITIALISATION
