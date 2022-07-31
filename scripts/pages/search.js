@@ -69,23 +69,29 @@ function searchInputUstensil(dataUstensilsFiltered) {
 
 
 
-// MISE A JOUR DE LA LISTE DES RECETTES APRES CREATION D'UN TAG
-
+// MISE A JOUR DE LA LISTE DES RECETTES APRES AJOUT D'UN TAG
+//ok------------------fonctionne bien
 function searchWithTagIngredient(clickedIngredient){
   let resultIng = (item) => formatText(item.ingredient).includes(formatText(clickedIngredient));
 
   if(tags.length ===0){
     filteredRecipes = recipes.filter(recipe => recipe);
+    console.log(filteredRecipes);
+    console.log(dataIngredientsFiltered);
   }
   else if (tags.length ===1){
     
     filteredRecipes = recipes.filter(element => {
       return element.ingredients.some(resultIng)
     })
-  }else if(tags.length >1) {
+    console.log(filteredRecipes); // OK 
+  }
+  else if (tags.length >1){
     filteredRecipes = filteredRecipes.filter(element => {
       return element.ingredients.some(resultIng)
     })
+    console.log(filteredRecipes); //ok
+
   }
 }
 
@@ -124,24 +130,30 @@ function searchWithTagUstensils(clickedUstensil){
   }
 }
 
-function filteringListWithTagsIngredients(){
 
-  // recuperer la liste ingredients
+// a revoir tri en fonction du tag entré-------------------
+
+function filteringListWithTagsIngredients(filteredListIngredients){
+  // on vide la liste ingredients
   ingredientUl.textContent='';
   
-  // if ingredient est present dans tag, alors on refiat un filtrage de filteredRecipes pour chaque tag;
-  tags.forEach(tag => {
-    let resultIng = (item) => formatText(item.ingredient).includes(formatText(tag));
+  // if ingredient est present dans tag, alors on refait un filtrage de filteredRecipes pour chaque tag;
 
-    dataIngredientsFiltered = filteredRecipes.filter(element => {
-      element.ingredients.forEach(element => {
-        filteredListIngredients.push(element.ingredient)
+    tags.forEach(tag => {
+      let resultIng = (item) => formatText(item.ingredient).includes(formatText(tag));
+      dataIngredientsFiltered = filteredRecipes.filter(element => {
+        element.ingredients.forEach(element => {
+          filteredListIngredients.push(element.ingredient);
+        })
+        
+        
+        element.ingredients.some(resultIng);        
       })
-      element.ingredients.some(resultIng);        
+      dataIngredientsFiltered = [...new Set(filteredListIngredients)];
+      console.log(dataIngredientsFiltered);
     })
-      
-  })
-  return  dataIngredientsFiltered = [...new Set(filteredListIngredients)];
 
+  return dataIngredientsFiltered
+  
 }
 

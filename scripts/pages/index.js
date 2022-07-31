@@ -89,22 +89,26 @@ inputForm2.addEventListener('input', (e) => {
   actualValueInput2 = inputForm2.value;
 
   if (tags.length === 0 && actualValueInput2 === '') {
+    console.log('il y a zéro tag et input 2 vide')
+
     ingredientUl.textContent = '';
     searchInputIngredient(dataIngredientsFiltered);
     getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
 
   } else if (tags.length !== 0 && actualValueInput2 === '') {
+    console.log('il y a au moins un tag et input 2 vide ___ liste ingredient display creee');
+
     ingredientUl.textContent = '';
-    // searchInputIngredient(dataIngredientsFiltered);
-    console.log('il y a au moins un tag et input 2 vide')
-    // filteringListWithTagsIngredients();
-    // getList(uniqueArr,'ingredientLi', clickIngredient, ingredientUl );
-    console.log('il y a au moins un tag et input 2 vide ___ liste ingredient display creee')
+    searchInputIngredient(dataIngredientsFiltered);
+    filteringListWithTagsIngredients();
+    getList(filteredListIngredients,'ingredientLi', clickIngredient, ingredientUl );
 
 
   } else if (actualValueInput2.length !== 0) {
     ingredientUl.textContent = '';
     searchInputIngredient(dataIngredientsFiltered);
+    filteringListWithTagsIngredients();
+
     getList(filteredListIngredients, 'ingredientLi', clickIngredient, ingredientUl);
 
   } else {
@@ -243,7 +247,7 @@ dropdownDanger.addEventListener('click', (e)=> {
 
 //AJOUT TAG DANS ARRAY TAGS
 function pushAndConcatItem(clickedItem,tag){
-  console.log(clickedItem)
+
   tag.push(clickedItem);
   tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
 
@@ -256,17 +260,29 @@ function pushAndConcatItem(clickedItem,tag){
 function clickIngredient(e) {
   addDisplayNoneWhenCreateTag(e);
   let clickedIngredient = e.target.textContent;
+
+  //on cree le tag
   getTagCard(e, 'tag-ingredient');
-  // refilter filteredListIngredients avec ce tag 
-  //if tag ingredient
-  pushAndConcatItem(clickedIngredient, tagsIngredients)
-  searchWithTagIngredient(clickedIngredient);
+
+  //on rajoute le nom du tag dans la liste des tags ingredients
+  pushAndConcatItem(clickedIngredient, tagsIngredients);
+
+ // on filtre les recettes en fonction du tag ajouté
+ //================a revoir ne marche pas prend uniquement le tag cliqué et pas ceux d'avant ==========
+ tags.forEach(tag => {
+
+   searchWithTagIngredient(tag);
+   console.log(tag)
+  })
+  
+  // on affiche les recettes triées
   displayCards(filteredRecipes);
-  console.log(tagsIngredients);
+  filteringListWithTagsIngredients(tags);
+  console.log(dataIngredientsFiltered);
+  // console.log(tagsIngredients);
 
 
-  filteringListWithTagsIngredients();
-  console.log(dataIngredientsFiltered)
+
   getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
 
   dropdownPrimary.click();  
@@ -275,7 +291,7 @@ function clickIngredient(e) {
 //AJOUT TAG APPLIANCE
 function clickAppliance(e) {
   addDisplayNoneWhenCreateTag(e);
-  let clickedAppliance = e.target.textContent;
+  let clickedAppliance = e.target.textContent();
   getTagCard(e, 'tag-appliance');
   pushAndConcatItem(clickedAppliance, tagsAppliances);
   searchWithTagAppliance(clickedAppliance);
@@ -300,6 +316,7 @@ function clickUstensil(e) {
 
 function closeTheTag(){
 
+  //on récupère le nom du tag
   const target = this.parentNode;
   let item = target.textContent;
 
@@ -310,43 +327,56 @@ function closeTheTag(){
       index = tagsIngredients.indexOf(target.textContent);
       tagsIngredients.splice(index, 1)
       removeDisplayNoneWhenCloseTheTag(item, ingredientUl);
-
       break;
+
     case 'tag-appliance tag rounded' : 
       index = tagsAppliances.indexOf(target.textContent);
       tagsAppliances.splice(index, 1)
       removeDisplayNoneWhenCloseTheTag(item, applianceUl);
-
       break;
+
     case 'tag-ustensil tag rounded' : 
       index = tagsUstensils.indexOf(target.textContent);
       tagsUstensils.splice(index, 1)
       removeDisplayNoneWhenCloseTheTag(item, ustensilUl);
-
       break;
+      
     default:
       console.log('error in switch');
   }
 
 
   removeTag(target);
+
   tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
   
   // AFFICHE LA LISTE COMPLETE
   if (tags.length === 0) {
     console.log('zéro tag')
-
+    console.log(tags);
+    // on affiche toutes les recettes existantes
     displayCards(recipes);
+
+    //on affiche la liste complète des ingrédients
+    filteringListWithTagsIngredients(dataIngredientsFiltered);
+
     
-    // AFFICHE LES INGREDIENTS DES RECETTES RESTANTES
-    // faire une boucle pour redefinir a nouveau la filteredrecipe avec les différents tags
-    // faire une boucle pour redefinir a nouveau la liste ingrédients si les ingredients sont presents dans les recettes
-  }else if (tags.length !== 0){
+
+  }else if (tags.length > 0){
     console.log('au moins un tag');
+    console.log(tags);
+
+    
+    // on affiche toutes les recettes existantes
+    displayCards(filteredRecipes);
+
+    //on affiche la liste triée des ingrédients
+    tagsIngredients.forEach(tag => {
+      console.log(tag)
+    })
     filteringListWithTagsIngredients();
-    console.log(uniqueArr);
 
-
+    console.log(filteringListWithTagsIngredients());
   } 
 }
 

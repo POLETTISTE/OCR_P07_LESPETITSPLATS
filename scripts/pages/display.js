@@ -17,32 +17,16 @@ function getList(list, classlist, clickeditem, dom){
   list.forEach(element => {
     let item = document.createElement('li');
     item.classList.add(classlist);
-    item.textContent = element;
+    item.textContent = element[0].toUpperCase() + element.substring(1);
     item.addEventListener(('click'), clickeditem);
     dom.appendChild(item);
   })
 }
 
-// getList en forEach sur liste ingredient à jour pour garder event listen
-  
-
-
-
-
-
-// function getListFiltered(list, classList, dom){
-//   list.forEach(element => {
-//     let item = document.createElement('li');
-//     item.classList.add(classList);
-//     item.textContent = element;
-//     dom.appendChild(item);
-//   })
-// }
-
 function getTagCard(e, tag){
   let item = document.createElement('card');
   item.classList.add(tag, 'tag', 'rounded');
-  item.textContent = e.target.textContent;
+  item.textContent = e.target.textContent[0].toUpperCase() + e.target.textContent.substring(1);
   getTagCloseButton(item);
   tagsDiv.appendChild(item);
 }
