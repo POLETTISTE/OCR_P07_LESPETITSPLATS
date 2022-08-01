@@ -233,11 +233,9 @@ function pushAndConcatItem(clickedItem,tag){
 
 }
 
-// ARRAY INGREDIENTS FILTREE AVEC TAGS
-
-
 //AJOUT TAG INGREDIENT
 function clickIngredient(e) {
+
   inputForm1.value = '';
   addDisplayNoneWhenCreateTag(e);
   let clickedIngredient = e.target.textContent;
@@ -251,10 +249,29 @@ function clickIngredient(e) {
   console.log(filteredRecipes);
   console.log(dataIngredientsFiltered);
   inputForm2.value='';
+
+  ingredientUl.textContent='';
+  applianceUl.textContent='';
+
+  
+  filteringListWithTagsIngredients(filteredRecipes);
+  filteringListWithTagsAppliances(filteredRecipes);
+
+
+  if (filteredRecipes.length !== 1) {
+    getList(dataAppliancesFiltered,'applianceLi', clickAppliance, applianceUl );
+    getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
+  } else {
+    ingredientUl.textContent='';
+    applianceUl.textContent='';
+  }
+
 }
 
 //AJOUT TAG APPLIANCE
 function clickAppliance(e) {
+
+
   inputForm1.value = '';
   addDisplayNoneWhenCreateTag(e);
   let clickedAppliance = e.target.textContent;
@@ -263,6 +280,22 @@ function clickAppliance(e) {
   searchWithTagAppliance(clickedAppliance);
   displayCards(filteredRecipes);
   inputForm3.value='';
+  
+  ingredientUl.textContent='';
+  applianceUl.textContent='';
+
+  filteringListWithTagsAppliances(filteredRecipes);
+  filteringListWithTagsIngredients(filteredRecipes);
+
+
+  if (filteredRecipes.length !== 1) {
+    getList(dataAppliancesFiltered,'applianceLi', clickAppliance, applianceUl );
+    getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
+  } else {
+
+    ingredientUl.textContent='';
+    applianceUl.textContent='';
+  }
 
 }
 
