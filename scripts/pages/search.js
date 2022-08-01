@@ -141,13 +141,28 @@ function filteringListWithTagsIngredients(filteredRecipes){
     tagsIngredients.forEach(tag => {
       result = filteredRecipes.filter(element => {
         let resultIng = (item) => formatText(item.ingredient).includes(formatText(tag));
-        element.ingredients.some(resultIng);        
+        element.ingredients.some(resultIng);   
+             
         element.ingredients.forEach(element => {
 
           //IF ELEMENT EST DANS TAGINGREDIENT ALORS DISPLAY NONE
-          if (element.ingredient !== tag) {
-          filteredListIngredients.push(element.ingredient);
+          console.log(tagsIngredients);
+          if (tagsIngredients.includes((element.ingredient))){
+              console.log('deja dans la liste');
+              
+                const index = filteredListIngredients.indexOf(formatText(tag));
+                // if (index > -1) { // only splice array when item is found
+                  filteredListIngredients.splice(index, 1); // 2nd parameter means remove one item only
+                // }
           }
+          else {
+            console.log(`on rajoute ${element.ingredient} dans la liste`)
+            
+            filteredListIngredients.push(element.ingredient);
+
+          } 
+          
+
         })
       })
       dataIngredientsFiltered = [...new Set(filteredListIngredients)];
@@ -169,7 +184,7 @@ function filteringListWithTagsAppliances(filteredRecipes){
       result = filteredRecipes.filter(element => {
         element.appliance.includes(formatText(tag))
         //IF ELEMENT EST DANS TAGINGREDIENT ALORS DISPLAY NONE
-        if (element.appliance !== tag) {
+        if (formatText(element.appliance) !== formatText(tag)) {
         filteredListAppliances.push(element.appliance);
         }
       })
@@ -179,3 +194,37 @@ function filteringListWithTagsAppliances(filteredRecipes){
   return dataAppliancesFiltered
 }
 
+function filteringListWithTagsUstensils(filteredRecipes){
+
+  // let resultUst = (item) => formatText(item).includes(formatText(clickedUstensil));
+
+  console.log(filteredListUstensils);
+  filteredListUstensils=[];
+
+    tagsUstensils.forEach(tag => {
+
+      result = filteredRecipes.filter(element => {
+        let resultUst = (item) => formatText(item).includes(formatText(tag));
+        element.ustensils.some(resultUst);   
+        
+        
+        console.log(element.ustensils)
+
+        element.ustensils.forEach(el => {
+          console.log(el)
+
+          //IF ELEMENT EST DANS TAGINGREDIENT ALORS DISPLAY NONE
+          if (formatText(el) !== formatText(tag)) {
+            console.log(tag)
+          filteredListUstensils.push(el);
+          console.log(filteredListUstensils)
+          }
+        })
+      })
+      dataUstensilsFiltered = [...new Set(filteredListUstensils)];
+      console.log(dataUstensilsFiltered);
+
+    })
+    return dataUstensilsFiltered
+
+}

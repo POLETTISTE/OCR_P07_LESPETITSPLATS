@@ -308,8 +308,22 @@ function clickUstensil(e) {
   pushAndConcatItem(clickedUstensil, tagsUstensils)
   searchWithTagUstensils(clickedUstensil);
   displayCards(filteredRecipes);
+
   inputForm4.value='';
 
+  ustensilUl.textContent='';
+  filteringListWithTagsUstensils(filteredRecipes);
+
+
+  if (filteredRecipes.length !== 1) {
+    getList(dataUstensilsFiltered,'ustensilLi', clickUstensil, ustensilUl );
+  } else {
+
+    ingredientUl.textContent='';
+    applianceUl.textContent='';
+    ustensilUl.textContent='';
+  }
+  // filteringListWithTagsUstensils(filteredRecipes)
 }
 
 
