@@ -140,14 +140,17 @@ function filteringListWithTagsIngredients(filteredRecipes){
 
     tagsIngredients.forEach(tag => {
       result = filteredRecipes.filter(element => {
+
         let resultIng = (item) => formatText(item.ingredient).includes(formatText(tag));
         element.ingredients.some(resultIng);   
              
         element.ingredients.forEach(element => {
 
-          //IF ELEMENT EST DANS TAGINGREDIENT ALORS DISPLAY NONE
+          //IF ELEMENT EST DANS TAGINGREDIENT ALORS ON ENLEVE
           console.log(tagsIngredients);
-          if (tagsIngredients.includes((element.ingredient))){
+          
+          if (tagsIngredients.includes(element.ingredient)){
+            
               console.log('deja dans la liste');
               
                 const index = filteredListIngredients.indexOf(formatText(tag));
@@ -156,21 +159,14 @@ function filteringListWithTagsIngredients(filteredRecipes){
                 // }
           }
           else {
-            console.log(`on rajoute ${element.ingredient} dans la liste`)
-            
+            console.log(`on rajoute ${element.ingredient} dans la liste`);
             filteredListIngredients.push(element.ingredient);
-
           } 
-          
-
         })
       })
       dataIngredientsFiltered = [...new Set(filteredListIngredients)];
       console.log(dataIngredientsFiltered);
 
-
-
-      
     })
   return dataIngredientsFiltered
 }
@@ -183,41 +179,61 @@ function filteringListWithTagsAppliances(filteredRecipes){
     tagsAppliances.forEach(tag => {
       result = filteredRecipes.filter(element => {
         element.appliance.includes(formatText(tag))
-        //IF ELEMENT EST DANS TAGINGREDIENT ALORS DISPLAY NONE
-        if (formatText(element.appliance) !== formatText(tag)) {
-        filteredListAppliances.push(element.appliance);
-        }
+        //IF ELEMENT EST DANS TAGAPPLIANCE ALORS ON ENLEVE
+
+        if (tagsAppliances.includes((element.appliance))){
+          console.log('deja dans la liste');
+          
+            const index = filteredListAppliances.indexOf(formatText(tag));
+            // if (index > -1) { // only splice array when item is found
+            filteredListAppliances.splice(index, 1); // 2nd parameter means remove one item only
+            // }
+          } else {
+          console.log(`on rajoute ${element.appliance} dans la liste`);
+          filteredListAppliances.push(element.appliance);
+        } 
       })
       dataAppliancesFiltered = [...new Set(filteredListAppliances)];
       console.log(dataAppliancesFiltered);
+      console.log(tagsAppliances);
     })
   return dataAppliancesFiltered
 }
 
 function filteringListWithTagsUstensils(filteredRecipes){
 
-  // let resultUst = (item) => formatText(item).includes(formatText(clickedUstensil));
-
-  console.log(filteredListUstensils);
   filteredListUstensils=[];
 
     tagsUstensils.forEach(tag => {
-
+      
       result = filteredRecipes.filter(element => {
         let resultUst = (item) => formatText(item).includes(formatText(tag));
         element.ustensils.some(resultUst);   
         
-        
-        console.log(element.ustensils)
+
+
+
 
         element.ustensils.forEach(el => {
           console.log(el)
+          console.log(tag)
+          // console.log(formatText(el));
+          // console.log(formatText(tag))
+          //IF ELEMENT EST DANS TAGINGREDIENT ALORS ON ENLEVE
+          console.log(tagsUstensils);
 
-          //IF ELEMENT EST DANS TAGINGREDIENT ALORS DISPLAY NONE
-          if (formatText(el) !== formatText(tag)) {
-            console.log(tag)
-          filteredListUstensils.push(el);
-          console.log(filteredListUstensils)
+          if (formatText(tag) ===formatText (el)){
+            
+            console.log(tagsUstensils);
+              console.log(`${el} deja dans la liste`);
+                const index = filteredListUstensils.indexOf(formatText(tag));
+                // if (index > -1) { // only splice array when item is found
+                filteredListUstensils.splice(index, 1); // 2nd parameter means remove one item only
+                // }
+          }
+          else {
+            console.log(`on rajoute ${el} dans la liste`);
+            filteredListUstensils.push(el);
           }
         })
       })

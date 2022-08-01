@@ -14,6 +14,7 @@ let dataUstensilsFiltered = []; // contient toutes les noms des ustensiles sans 
 let filteredListIngredients = [];
 let filteredListAppliances = [];
 let filteredListUstensils = [];
+
 let uniqueArr = [];
 
 
@@ -312,9 +313,9 @@ function clickUstensil(e) {
   inputForm4.value='';
 
   ustensilUl.textContent='';
+
   filteringListWithTagsUstensils(filteredRecipes);
-
-
+console.log('liste recreee')
   if (filteredRecipes.length !== 1) {
     getList(dataUstensilsFiltered,'ustensilLi', clickUstensil, ustensilUl );
   } else {
