@@ -133,15 +133,13 @@ function searchWithTagUstensils(clickedUstensil){
 
 // a revoir tri en fonction du tag entré-------------------
 
-function filteringListWithTagsIngredients(filteredListIngredients){
-  // on vide la liste ingredients
-  ingredientUl.textContent='';
-  
-  // if ingredient est present dans tag, alors on refait un filtrage de filteredRecipes pour chaque tag;
+function filteringListWithTagsIngredients(tagsIngredients){
+  console.log(filteredListIngredients);
+    tagsIngredients.forEach(tag => {
 
-    tags.forEach(tag => {
-      let resultIng = (item) => formatText(item.ingredient).includes(formatText(tag));
-      dataIngredientsFiltered = filteredRecipes.filter(element => {
+      
+      result = filteredRecipes.filter(element => {
+        let resultIng = (item) => formatText(item.ingredient).includes(formatText(tag));
         element.ingredients.forEach(element => {
           filteredListIngredients.push(element.ingredient);
         })
@@ -152,7 +150,7 @@ function filteringListWithTagsIngredients(filteredListIngredients){
       dataIngredientsFiltered = [...new Set(filteredListIngredients)];
       console.log(dataIngredientsFiltered);
     })
-
+    
   return dataIngredientsFiltered
   
 }

@@ -88,35 +88,15 @@ inputForm2.addEventListener('input', (e) => {
 
   actualValueInput2 = inputForm2.value;
 
-  if (tags.length === 0 && actualValueInput2 === '') {
-    console.log('il y a zéro tag et input 2 vide')
+  ingredientUl.textContent = '';
 
-    ingredientUl.textContent = '';
-    searchInputIngredient(dataIngredientsFiltered);
-    getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
-
-  } else if (tags.length !== 0 && actualValueInput2 === '') {
-    console.log('il y a au moins un tag et input 2 vide ___ liste ingredient display creee');
-
-    ingredientUl.textContent = '';
-    searchInputIngredient(dataIngredientsFiltered);
-    filteringListWithTagsIngredients();
-    getList(filteredListIngredients,'ingredientLi', clickIngredient, ingredientUl );
-
-
-  } else if (actualValueInput2.length !== 0) {
-    ingredientUl.textContent = '';
-    searchInputIngredient(dataIngredientsFiltered);
-    filteringListWithTagsIngredients();
-
-    getList(filteredListIngredients, 'ingredientLi', clickIngredient, ingredientUl);
-
-  } else {
-
-    ingredientUl.textContent = '';
-    getList(filteredListIngredients, 'ingredientLi', clickIngredient, ingredientUl);
-  }
+  //filtre la liste pendant la saisie
+  searchInputIngredient(dataIngredientsFiltered);
+  getList(filteredListIngredients, 'ingredientLi', clickIngredient, ingredientUl);
+  
 })
+
+
 
 inputForm3.addEventListener('input', (e) => {
   e.preventDefault();
@@ -258,59 +238,45 @@ function pushAndConcatItem(clickedItem,tag){
 
 //AJOUT TAG INGREDIENT
 function clickIngredient(e) {
+  inputForm1.value = '';
   addDisplayNoneWhenCreateTag(e);
   let clickedIngredient = e.target.textContent;
-
   //on cree le tag
   getTagCard(e, 'tag-ingredient');
-
   //on rajoute le nom du tag dans la liste des tags ingredients
   pushAndConcatItem(clickedIngredient, tagsIngredients);
-
- // on filtre les recettes en fonction du tag ajouté
- //================a revoir ne marche pas prend uniquement le tag cliqué et pas ceux d'avant ==========
- tags.forEach(tag => {
-
-   searchWithTagIngredient(tag);
-   console.log(tag)
-  })
-  
+  searchWithTagIngredient(clickedIngredient);
   // on affiche les recettes triées
   displayCards(filteredRecipes);
-  filteringListWithTagsIngredients(tags);
+  console.log(filteredRecipes);
   console.log(dataIngredientsFiltered);
-  // console.log(tagsIngredients);
-
-
-
-  getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
-
-  dropdownPrimary.click();  
+  inputForm2.value='';
 }
 
 //AJOUT TAG APPLIANCE
 function clickAppliance(e) {
+  inputForm1.value = '';
   addDisplayNoneWhenCreateTag(e);
-  let clickedAppliance = e.target.textContent();
+  let clickedAppliance = e.target.textContent;
   getTagCard(e, 'tag-appliance');
   pushAndConcatItem(clickedAppliance, tagsAppliances);
   searchWithTagAppliance(clickedAppliance);
-
   displayCards(filteredRecipes);
+  inputForm3.value='';
 
-  dropdownSuccess.click();
 }
 
 //AJOUT TAG USTENSIL
 function clickUstensil(e) {
+  inputForm1.value = '';
   addDisplayNoneWhenCreateTag(e);
   let clickedUstensil = e.target.textContent;
   getTagCard(e, 'tag-ustensil');
   pushAndConcatItem(clickedUstensil, tagsUstensils)
   searchWithTagUstensils(clickedUstensil);
   displayCards(filteredRecipes);
+  inputForm4.value='';
 
-  dropdownDanger.click();
 }
 
 
