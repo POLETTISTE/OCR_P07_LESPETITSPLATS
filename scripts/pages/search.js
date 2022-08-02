@@ -146,16 +146,17 @@ function filteringListWithTagsIngredients(filteredRecipes){
           
           if (tagsIngredients.includes(element.ingredient)){
             
-              console.log('deja dans la liste');
+              console.log(`${element.ingredient} déja dans la liste`);
               
-                const index = filteredListIngredients.indexOf(formatText(tag));
+                // const index = filteredListIngredients.indexOf(formatText(tag));
                 // if (index > -1) { // only splice array when item is found
-                  filteredListIngredients.splice(index, 1); // 2nd parameter means remove one item only
+                  // filteredListIngredients.splice(index, 1); // 2nd parameter means remove one item only
                 // }
           }
           else {
             console.log(`on rajoute ${element.ingredient} dans la liste`);
             filteredListIngredients.push(element.ingredient);
+            console.log(filteredListIngredients)
           } 
         })
       })
@@ -179,9 +180,9 @@ function filteringListWithTagsAppliances(filteredRecipes){
         if (tagsAppliances.includes((element.appliance))){
           console.log('deja dans la liste');
           
-            const index = filteredListAppliances.indexOf(formatText(tag));
+            // const index = filteredListAppliances.indexOf(formatText(tag));
             // if (index > -1) { // only splice array when item is found
-            filteredListAppliances.splice(index, 1); // 2nd parameter means remove one item only
+            // filteredListAppliances.splice(index, 1); // 2nd parameter means remove one item only
             // }
           } else {
           console.log(`on rajoute ${element.appliance} dans la liste`);
@@ -229,9 +230,9 @@ function filteringListWithTagsUstensils(filteredRecipes){
             
             console.log(tagsUstensils);
               console.log(`${el} deja dans la liste`);
-                const index = filteredListUstensils.indexOf(formatText(tag));
+                // const index = filteredListUstensils.indexOf(formatText(tag));
                 // if (index > -1) { // only splice array when item is found
-                filteredListUstensils.splice(index, 1); // 2nd parameter means remove one item only
+                // filteredListUstensils.splice(index, 1); // 2nd parameter means remove one item only
                 // }
           }
 
@@ -263,4 +264,6 @@ function filteringAllListsWhenClickOnATag(filteredRecipes, ListItems) {
   ListItems.forEach(listItem => {
     console.log(listItem)
   })
+
+
 }
