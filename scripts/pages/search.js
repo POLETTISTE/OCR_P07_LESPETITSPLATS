@@ -202,6 +202,15 @@ function filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients) 
 }
 
 function filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances) {
+  filteredListAppliances=[];
+
+    result = filteredRecipes.filter(element => {
+        filteredListAppliances.push(element.appliance);
+    })
+
+  dataAppliancesFiltered = [...new Set(filteredListAppliances)];
+  console.log(dataAppliancesFiltered);
+  return dataAppliancesFiltered
 
 }
 

@@ -337,7 +337,7 @@ function clickUstensil(e) {
 
   
   filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients);
-  // filteringListAppliancesWhenClickOnAnotherTag(filteredListIngredients);
+  filteringListAppliancesWhenClickOnAnotherTag(filteredListIngredients);
   // filteringListUstensilsWhenClickOnAnotherTag(filteredListIngredients);
 
   
