@@ -258,8 +258,7 @@ function clickIngredient(e) {
   searchWithTagIngredient(clickedIngredient);
   // on affiche les recettes triées
   displayCards(filteredRecipes);
-  console.log(filteredRecipes);
-  console.log(dataIngredientsFiltered);
+
   inputForm2.value='';
 
   ingredientUl.textContent='';
@@ -338,7 +337,6 @@ function clickUstensil(e) {
   filteringListWithTagsIngredients(filteredRecipes);
   filteringListWithTagsAppliances(filteredRecipes);
   filteringListWithTagsUstensils(filteredRecipes);
-  console.log('liste recreee');
 
   if (filteredRecipes.length !== 1) {
     getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
@@ -382,7 +380,6 @@ function closeTheTag(){
       break;
       
     default:
-      console.log('error in switch');
   }
 
 
@@ -392,8 +389,7 @@ function closeTheTag(){
   
   // AFFICHE LA LISTE COMPLETE
   if (tags.length === 0) {
-    console.log('zéro tag')
-    console.log(tags);
+
     // on affiche toutes les recettes existantes
     displayCards(recipes);
 
@@ -403,9 +399,6 @@ function closeTheTag(){
     
 
   }else if (tags.length > 0){
-    console.log('au moins un tag');
-    console.log(tags);
-
     
     // on affiche toutes les recettes existantes
     displayCards(filteredRecipes);
