@@ -148,8 +148,10 @@ function filteringListWithTagsIngredients(filteredRecipes){
 
           //IF ELEMENT EST DANS TAGINGREDIENT ALORS ON ENLEVE
           console.log(tagsIngredients);
+          if (formatText(tag)===formatText(element.ingredient)){
           
-          if (tagsIngredients.includes(element.ingredient)){
+
+          // if (tagsIngredients.includes(element.ingredient)){
             
               console.log('deja dans la liste');
               
@@ -181,7 +183,9 @@ function filteringListWithTagsAppliances(filteredRecipes){
         element.appliance.includes(formatText(tag))
         //IF ELEMENT EST DANS TAGAPPLIANCE ALORS ON ENLEVE
 
-        if (tagsAppliances.includes((element.appliance))){
+        // if (tagsAppliances.includes((element.appliance))){
+          if (formatText(tag)===formatText(element.appliance)){
+
           console.log('deja dans la liste');
           
             const index = filteredListAppliances.indexOf(formatText(tag));
@@ -222,9 +226,11 @@ function filteringListWithTagsUstensils(filteredRecipes){
           //IF ELEMENT EST DANS TAGINGREDIENT ALORS ON ENLEVE
           console.log(tagsUstensils);
 
-          if (formatText(tag) ===formatText (el)){
+          // if (formatText(tag) ===formatText (el)){
+            if (formatText(tag)===formatText(el)){
             
             console.log(tagsUstensils);
+
               console.log(`${el} deja dans la liste`);
                 const index = filteredListUstensils.indexOf(formatText(tag));
                 // if (index > -1) { // only splice array when item is found

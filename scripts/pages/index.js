@@ -315,7 +315,7 @@ function clickUstensil(e) {
   ustensilUl.textContent='';
 
   filteringListWithTagsUstensils(filteredRecipes);
-console.log('liste recreee')
+  console.log('liste recreee')
   if (filteredRecipes.length !== 1) {
     getList(dataUstensilsFiltered,'ustensilLi', clickUstensil, ustensilUl );
   } else {
