@@ -406,12 +406,6 @@ function closeTheTag(){
 
 
 
-
-
-
-
-
-
 // INITIALISATION
 async function init() {
   const { recipes } = await getRecipes();

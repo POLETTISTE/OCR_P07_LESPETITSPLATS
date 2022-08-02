@@ -134,6 +134,10 @@ function filteringListWithTagsIngredients(filteredRecipes){
       element.ingredients.some(resultIng);   
             
       element.ingredients.forEach(element => {
+        // const index = filteredListIngredients.indexOf(formatText(tag));
+        // // if (index > -1) { // only splice array when item is found
+        // filteredListIngredients.splice(index, 1); // 2nd parameter means remove one item only
+        // // }
 
         if (!tagsIngredients.includes(element.ingredient)){
           filteredListIngredients.push(element.ingredient);
@@ -157,6 +161,14 @@ function filteringListWithTagsAppliances(filteredRecipes){
 
         filteredListAppliances.push(element.appliance);
       } 
+
+
+      // const index = filteredListAppliances.indexOf(formatText(tag));
+      // // if (index > -1) { // only splice array when item is found
+      // filteredListAppliances.splice(index, 1); // 2nd parameter means remove one item only
+      // // }
+
+
     })
     dataAppliancesFiltered = [...new Set(filteredListAppliances)];
   })
@@ -193,7 +205,9 @@ function filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients) 
     element.ingredients.some(resultIng);   
           
     element.ingredients.forEach(el => {
-      filteredListIngredients.push(el.ingredient)
+      if (!tagsIngredients.includes(el.ingredient)){
+        filteredListIngredients.push(el.ingredient)
+      }
     })
   })
   dataIngredientsFiltered = [...new Set(filteredListIngredients)];
@@ -205,9 +219,13 @@ function filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances) {
   filteredListAppliances=[];
 
     result = filteredRecipes.filter(element => {
+      if (!tagsAppliances.includes(element)){
         filteredListAppliances.push(element.appliance);
+      }
     })
 
+
+    
   dataAppliancesFiltered = [...new Set(filteredListAppliances)];
   console.log(dataAppliancesFiltered);
   return dataAppliancesFiltered
@@ -223,7 +241,9 @@ function filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils){
       element.ustensils.some(resultUst);   
 
       element.ustensils.forEach(el => {
-        filteredListUstensils.push(el)
+        if (!tagsUstensils.includes(CapitalizeFirstLetterText(el))){
+          filteredListUstensils.push(el)
+        }
       })
     })
 
