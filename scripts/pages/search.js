@@ -162,13 +162,6 @@ function filteringListWithTagsAppliances(filteredRecipes){
         filteredListAppliances.push(element.appliance);
       } 
 
-
-      // const index = filteredListAppliances.indexOf(formatText(tag));
-      // // if (index > -1) { // only splice array when item is found
-      // filteredListAppliances.splice(index, 1); // 2nd parameter means remove one item only
-      // // }
-
-
     })
     dataAppliancesFiltered = [...new Set(filteredListAppliances)];
   })
