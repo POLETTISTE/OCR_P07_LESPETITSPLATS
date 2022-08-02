@@ -1,9 +1,4 @@
-function formatText(string){
-  return string
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g,"")
-    .toLowerCase();
-}
+
 
 // INPUTS
 
@@ -148,12 +143,15 @@ function filteringListWithTagsIngredients(filteredRecipes){
 
           //IF ELEMENT EST DANS TAGINGREDIENT ALORS ON ENLEVE
           console.log(tagsIngredients);
-          if (formatText(tag)===formatText(element.ingredient)){
-                      
+          
+          if (tagsIngredients.includes(element.ingredient)){
+            
               console.log('deja dans la liste');
               
                 const index = filteredListIngredients.indexOf(formatText(tag));
+                // if (index > -1) { // only splice array when item is found
                   filteredListIngredients.splice(index, 1); // 2nd parameter means remove one item only
+                // }
           }
           else {
             console.log(`on rajoute ${element.ingredient} dans la liste`);
@@ -178,12 +176,13 @@ function filteringListWithTagsAppliances(filteredRecipes){
         element.appliance.includes(formatText(tag))
         //IF ELEMENT EST DANS TAGAPPLIANCE ALORS ON ENLEVE
 
-          if (formatText(tag)===formatText(element.appliance)){
-
+        if (tagsAppliances.includes((element.appliance))){
           console.log('deja dans la liste');
           
             const index = filteredListAppliances.indexOf(formatText(tag));
+            // if (index > -1) { // only splice array when item is found
             filteredListAppliances.splice(index, 1); // 2nd parameter means remove one item only
+            // }
           } else {
           console.log(`on rajoute ${element.appliance} dans la liste`);
           filteredListAppliances.push(element.appliance);
@@ -205,22 +204,44 @@ function filteringListWithTagsUstensils(filteredRecipes){
       result = filteredRecipes.filter(element => {
         let resultUst = (item) => formatText(item).includes(formatText(tag));
         element.ustensils.some(resultUst);   
-        
+
         element.ustensils.forEach(el => {
           console.log(el)
           console.log(tag)
-
+          // console.log(formatText(el));
+          // console.log(formatText(tag))
           //IF ELEMENT EST DANS TAGINGREDIENT ALORS ON ENLEVE
           console.log(tagsUstensils);
 
-            if (formatText(tag)===formatText(el)){
+          // if (tagsAppliances.includes((element.appliance))){
+
+          //   if (tagsIngredients.includes(element.ingredient)){
+            
+          //     console.log('deja dans la liste');
+              
+          //       const index = filteredListIngredients.indexOf(formatText(tag));
+          //       // if (index > -1) { // only splice array when item is found
+          //         filteredListIngredients.splice(index, 1); // 2nd parameter means remove one item only
+          //       // }
+          // }
+
+          if (tagsUstensils.includes(CapitalizeFirstLetterText(el))){
             
             console.log(tagsUstensils);
-
               console.log(`${el} deja dans la liste`);
                 const index = filteredListUstensils.indexOf(formatText(tag));
+                // if (index > -1) { // only splice array when item is found
                 filteredListUstensils.splice(index, 1); // 2nd parameter means remove one item only
+                // }
           }
+
+
+
+
+
+
+
+
           else {
             console.log(`on rajoute ${el} dans la liste`);
             filteredListUstensils.push(el);
@@ -233,4 +254,13 @@ function filteringListWithTagsUstensils(filteredRecipes){
     })
     return dataUstensilsFiltered
 
+}
+
+function filteringAllListsWhenClickOnATag(filteredRecipes, ListItems) {
+  console.log(filteredListIngredients);
+  // filteredListIngredients=[];
+
+  ListItems.forEach(listItem => {
+    console.log(listItem)
+  })
 }
