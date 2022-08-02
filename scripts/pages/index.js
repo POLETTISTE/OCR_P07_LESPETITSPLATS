@@ -321,6 +321,7 @@ function clickAppliance(e) {
 //AJOUT TAG USTENSIL
 function clickUstensil(e) {
   inputForm1.value = '';
+
   addDisplayNoneWhenCreateTag(e);
   let clickedUstensil = e.target.textContent;
   getTagCard(e, 'tag-ustensil');
@@ -334,21 +335,18 @@ function clickUstensil(e) {
   applianceUl.textContent='';
   ustensilUl.textContent='';
 
-  filteringListWithTagsIngredients(filteredRecipes);
-  filteringListWithTagsAppliances(filteredRecipes);
-  filteringListWithTagsUstensils(filteredRecipes);
+  
+  filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients);
+  // filteringListAppliancesWhenClickOnAnotherTag(filteredListIngredients);
+  // filteringListUstensilsWhenClickOnAnotherTag(filteredListIngredients);
 
+  
   if (filteredRecipes.length !== 1) {
+
     getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
     getList(dataAppliancesFiltered,'applianceLi', clickAppliance, applianceUl );
     getList(dataUstensilsFiltered,'ingredientLi', clickUstensil, ustensilUl );
-  } else {
-
-    ingredientUl.textContent='';
-    applianceUl.textContent='';
-    ustensilUl.textContent='';
   }
-
 }
 
 

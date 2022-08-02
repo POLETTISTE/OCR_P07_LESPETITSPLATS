@@ -185,13 +185,26 @@ function filteringListWithTagsUstensils(filteredRecipes){
 
 }
 
-function filteringAllListsWhenClickOnATag(filteredRecipes, ListItems) {
-  console.log(filteredListIngredients);
-  // filteredListIngredients=[];
+function filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients) {
+  filteredListIngredients=[];
+  result = filteredRecipes.filter(element => {
 
-  ListItems.forEach(listItem => {
-    console.log(listItem)
+    let resultIng = (item) => formatText(item.ingredient).includes((element));
+    element.ingredients.some(resultIng);   
+          
+    element.ingredients.forEach(el => {
+      filteredListIngredients.push(el.ingredient)
+    })
   })
+  dataIngredientsFiltered = [...new Set(filteredListIngredients)];
 
+  return dataIngredientsFiltered
+}
 
+function filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances) {
+
+}
+
+function filteringListustensilssWhenClickOnAnotherTag(filteredListUstensils) {
+  
 }
