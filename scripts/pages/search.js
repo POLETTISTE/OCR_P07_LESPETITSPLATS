@@ -13,6 +13,8 @@ function searchInput1Datas(data) {
 }
 
 
+
+
 function searchInputBar() {
 
   //MOINS DE 3 CARACTERES
@@ -78,7 +80,7 @@ function searchWithTagIngredient(clickedIngredient){
     })
   }
   else if (tags.length >1){
-    filteredRecipes = filteredRecipes.filter(element => {
+    filteredRecipes = recipes.filter(element => {
       return element.ingredients.some(resultIng)
     })
 
@@ -96,7 +98,7 @@ function searchWithTagAppliance(clickedAppliance){
 
     })
   }else if(tags.length >1) {
-    filteredRecipes = filteredRecipes.filter(element => {
+    filteredRecipes = recipes.filter(element => {
       return formatText(element.appliance).includes(formatText(clickedAppliance))
     })
   }
@@ -212,15 +214,16 @@ function filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances) {
   filteredListAppliances=[];
 
     result = filteredRecipes.filter(element => {
+
+      console.log(element);
+      
       if (!tagsAppliances.includes(element)){
         filteredListAppliances.push(element.appliance);
+
       }
     })
+    dataAppliancesFiltered = [...new Set(filteredListAppliances)];
 
-
-    
-  dataAppliancesFiltered = [...new Set(filteredListAppliances)];
-  console.log(dataAppliancesFiltered);
   return dataAppliancesFiltered
 
 }
@@ -243,4 +246,26 @@ function filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils){
   dataUstensilsFiltered = [...new Set(filteredListUstensils)];
   return dataUstensilsFiltered
   
+}
+
+
+// a terminer avec appliances et ustensils 
+//ou faire 2 autres
+function filteringListwithTagIngredients(recipes) {
+
+  filteredRecipes=[]
+
+  result = recipes.filter(element => {
+    element.ingredients.forEach(el => {
+      tagsIngredients.forEach(tag => {
+        if (el.ingredient.includes(tag)) {
+          console.log(element)
+          filteredRecipes.push(element)
+        }
+      })
+    })
+  })
+  filteredRecipes = [...new Set(filteredRecipes)];
+  console.log(filteredRecipes)
+
 }

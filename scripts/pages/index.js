@@ -248,7 +248,7 @@ function pushAndConcatItem(clickedItem,tag){
 //AJOUT TAG INGREDIENT
 function clickIngredient(e) {
 
-  inputForm1.value = '';
+  // inputForm1.value = '';
   addDisplayNoneWhenCreateTag(e);
   let clickedIngredient = e.target.textContent;
   //on cree le tag
@@ -270,14 +270,12 @@ function clickIngredient(e) {
   filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils);
 
   
-  if (filteredRecipes.length !== 1) {
+  if (filteredRecipes.length !== 1 ) {
 
     getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
     getList(dataAppliancesFiltered,'applianceLi', clickAppliance, applianceUl );
     getList(dataUstensilsFiltered,'ingredientLi', clickUstensil, ustensilUl );
   }
-
-  
 }
 
 //AJOUT TAG APPLIANCE
@@ -296,17 +294,21 @@ function clickAppliance(e) {
   ingredientUl.textContent='';
   applianceUl.textContent='';
   ustensilUl.textContent='';
+
   
   filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients);
   filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances);
   filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils);
-
   
-  if (filteredRecipes.length !== 1) {
+  if (filteredRecipes.length !== 1 ) {
 
     getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
-    getList(dataAppliancesFiltered,'applianceLi', clickAppliance, applianceUl );
+    if (dataAppliancesFiltered.length>1) {
+      getList(dataAppliancesFiltered,'applianceLi', clickAppliance, applianceUl );
+    }
     getList(dataUstensilsFiltered,'ingredientLi', clickUstensil, ustensilUl );
+  } else {
+
   }
 
 }
@@ -327,11 +329,14 @@ function clickUstensil(e) {
   ingredientUl.textContent='';
   applianceUl.textContent='';
   ustensilUl.textContent='';
-
   
   filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients);
-  filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances);
   filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils);
+  filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances);
+
+  if (filteredListAppliances.length !== 0) {
+
+  }
 
   
   if (filteredRecipes.length !== 1) {
@@ -353,8 +358,17 @@ function closeTheTag(){
 
   switch(classTarget) {
     case 'tag-ingredient tag rounded' : 
-      index = tagsIngredients.indexOf(target.textContent);
-      tagsIngredients.splice(index, 1)
+      index = tagsIngredients.indexOf(item);
+      tagsIngredients.splice(index, 1);
+
+      // // // on remet l'ingrédient dans la liste
+      // dataIngredientsFiltered.push(item);
+      // console.log(dataIngredientsFiltered);
+
+
+
+
+
       removeDisplayNoneWhenCloseTheTag(item, ingredientUl);
       break;
 
@@ -380,27 +394,14 @@ function closeTheTag(){
   
   // AFFICHE LA LISTE COMPLETE
   if (tags.length === 0) {
-
     // on affiche toutes les recettes existantes
     displayCards(recipes);
-
     //on affiche la liste complète des ingrédients
-    filteringListWithTagsIngredients(dataIngredientsFiltered);
 
-    
+  }else {
 
-  }else if (tags.length > 0){
-    
-    // on affiche toutes les recettes existantes
     displayCards(filteredRecipes);
 
-    //on affiche la liste triée des ingrédients
-    tagsIngredients.forEach(tag => {
-      console.log(tag)
-    })
-    filteringListWithTagsIngredients();
-
-    console.log(filteringListWithTagsIngredients());
   } 
 }
 
