@@ -189,7 +189,7 @@ function filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients) 
   filteredListIngredients=[];
   result = filteredRecipes.filter(element => {
 
-    let resultIng = (item) => formatText(item.ingredient).includes((element));
+    let resultIng = (item) => formatText(item.ingredient).includes(element);
     element.ingredients.some(resultIng);   
           
     element.ingredients.forEach(el => {
@@ -214,6 +214,20 @@ function filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances) {
 
 }
 
-function filteringListustensilssWhenClickOnAnotherTag(filteredListUstensils) {
+function filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils){
+
+  filteredListUstensils=[];
+
+    result = filteredRecipes.filter(element => {
+      let resultUst = (item) => formatText(item).includes(element);
+      element.ustensils.some(resultUst);   
+
+      element.ustensils.forEach(el => {
+        filteredListUstensils.push(el)
+      })
+    })
+
+  dataUstensilsFiltered = [...new Set(filteredListUstensils)];
+  return dataUstensilsFiltered
   
 }

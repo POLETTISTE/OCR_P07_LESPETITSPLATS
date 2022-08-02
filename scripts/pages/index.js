@@ -260,27 +260,24 @@ function clickIngredient(e) {
   displayCards(filteredRecipes);
 
   inputForm2.value='';
-
   ingredientUl.textContent='';
   applianceUl.textContent='';
   ustensilUl.textContent='';
 
   
-  filteringListWithTagsIngredients(filteredRecipes);
-  filteringListWithTagsAppliances(filteredRecipes);
-  filteringListWithTagsUstensils(filteredRecipes);
+  filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients);
+  filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances);
+  filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils);
 
-
+  
   if (filteredRecipes.length !== 1) {
+
     getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
     getList(dataAppliancesFiltered,'applianceLi', clickAppliance, applianceUl );
     getList(dataUstensilsFiltered,'ingredientLi', clickUstensil, ustensilUl );
-  } else {
-    ingredientUl.textContent='';
-    applianceUl.textContent='';
-    ustensilUl.textContent='';
   }
 
+  
 }
 
 //AJOUT TAG APPLIANCE
@@ -299,21 +296,17 @@ function clickAppliance(e) {
   ingredientUl.textContent='';
   applianceUl.textContent='';
   ustensilUl.textContent='';
+  
+  filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients);
+  filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances);
+  filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils);
 
-  filteringListWithTagsIngredients(filteredRecipes);
-  filteringListWithTagsAppliances(filteredRecipes);
-  filteringListWithTagsUstensils(filteredRecipes);
-
-
+  
   if (filteredRecipes.length !== 1) {
+
     getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
     getList(dataAppliancesFiltered,'applianceLi', clickAppliance, applianceUl );
     getList(dataUstensilsFiltered,'ingredientLi', clickUstensil, ustensilUl );
-  } else {
-
-    ingredientUl.textContent='';
-    applianceUl.textContent='';
-    ustensilUl.textContent='';
   }
 
 }
@@ -337,8 +330,8 @@ function clickUstensil(e) {
 
   
   filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients);
-  filteringListAppliancesWhenClickOnAnotherTag(filteredListIngredients);
-  // filteringListUstensilsWhenClickOnAnotherTag(filteredListIngredients);
+  filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances);
+  filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils);
 
   
   if (filteredRecipes.length !== 1) {
