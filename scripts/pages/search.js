@@ -4,6 +4,18 @@
 
 function searchInput1Datas(data) {
   let resultIng = (item) => formatText(item.ingredient).includes(formatText(actualValueInput1));
+// let newArray = [];
+
+// for (let i = 0; i < data.length; i++) {
+//   data[i]
+//   if (formatText(data[i].name).includes(formatText(actualValueInput1)) || 
+//   formatText(data[i].description).includes(formatText(actualValueInput1)) ||
+//   data[i].ingredients.some(resultIng)) {
+// newArray.push(data[i]);
+
+//   }
+// }
+// console.log(newArray);
 
   result = data.filter(element => {
     return formatText(element.name).includes(formatText(actualValueInput1)) || 
@@ -11,9 +23,6 @@ function searchInput1Datas(data) {
            element.ingredients.some(resultIng)
   })
 }
-
-
-
 
 function searchInputBar() {
 
@@ -242,11 +251,12 @@ function filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils){
 }
 
 
-// a terminer avec appliances et ustensils 
-//ou faire 2 autres
+// when remove a tag
+
 function filteringRecipeswithTags(filteredRecipes) {
 
   let tempArray=[];
+
 
   result = filteredRecipes.filter(element => {
 
@@ -286,6 +296,7 @@ function filteringRecipeswithTags(filteredRecipes) {
 
   
   filteredRecipes = [...new Set(tempArray)];
-  console.log(filteredRecipes)
+
+  return filteredRecipes
 
 }

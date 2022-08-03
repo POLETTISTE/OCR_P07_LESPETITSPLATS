@@ -248,13 +248,13 @@ function pushAndConcatItem(clickedItem,tag){
 //AJOUT TAG INGREDIENT
 function clickIngredient(e) {
 
-  inputForm1.value = '';
   addDisplayNoneWhenCreateTag(e);
   let clickedIngredient = e.target.textContent;
   //on cree le tag
   getTagCard(e, 'tag-ingredient');
   //on rajoute le nom du tag dans la liste des tags ingredients
   pushAndConcatItem(clickedIngredient, tagsIngredients);
+
   searchWithTagIngredient(clickedIngredient);
   // on affiche les recettes triées
   displayCards(filteredRecipes);
@@ -265,9 +265,9 @@ function clickIngredient(e) {
   ustensilUl.textContent='';
 
   
-  filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients);
-  filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances);
-  filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils);
+  dataIngredientsFiltered = filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients);
+  dataAppliancesFiltered = filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances);
+  dataUstensilsFiltered = filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils);
 
   
   if (filteredRecipes.length !== 1 ) {
@@ -275,6 +275,9 @@ function clickIngredient(e) {
     getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
     getList(dataAppliancesFiltered,'applianceLi', clickAppliance, applianceUl );
     getList(dataUstensilsFiltered,'ingredientLi', clickUstensil, ustensilUl );
+  } else {
+
+    
   }
 }
 
@@ -352,16 +355,8 @@ function closeTheTag(){
     case 'tag-ingredient tag rounded' : 
       index = tagsIngredients.indexOf(item);
       tagsIngredients.splice(index, 1);
-
-      // // // on remet l'ingrédient dans la liste
-      // dataIngredientsFiltered.push(item);
-      // console.log(dataIngredientsFiltered);
-
-
-
-
-
       removeDisplayNoneWhenCloseTheTag(item, ingredientUl);
+      console.log(tagsIngredients)
       break;
 
     case 'tag-appliance tag rounded' : 
@@ -384,15 +379,27 @@ function closeTheTag(){
 
   tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
   
+  console.log(tagsIngredients);
+  console.log(tagsAppliances);
+  console.log(tagsUstensils);
+
+  console.log(filteredRecipes);
+
+  filteredRecipes =  filteringRecipeswithTags(recipes);
+  console.log(filteredRecipes);
+
+  // displayCards(recipes);
+  displayCards(filteredRecipes);
+
   // AFFICHE LA LISTE COMPLETE
   if (tags.length === 0) {
     // on affiche toutes les recettes existantes
-    displayCards(recipes);
     //on affiche la liste complète des ingrédients
+    displayCards(recipes);
 
   }else {
-    filteringRecipeswithTags(filteredRecipes)
-    displayCards(filteredRecipes);
+    // displayCards(filteredRecipes);
+    
 
   } 
 }
