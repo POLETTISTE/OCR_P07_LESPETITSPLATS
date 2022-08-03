@@ -122,9 +122,6 @@ function searchWithTagUstensils(clickedUstensil){
   }
 }
 
-
-// a revoir tri en fonction du tag entré-------------------
-
 function filteringListWithTagsIngredients(filteredRecipes){
 
   filteredListIngredients=[];
@@ -136,10 +133,6 @@ function filteringListWithTagsIngredients(filteredRecipes){
       element.ingredients.some(resultIng);   
             
       element.ingredients.forEach(element => {
-        // const index = filteredListIngredients.indexOf(formatText(tag));
-        // // if (index > -1) { // only splice array when item is found
-        // filteredListIngredients.splice(index, 1); // 2nd parameter means remove one item only
-        // // }
 
         if (!tagsIngredients.includes(element.ingredient)){
           filteredListIngredients.push(element.ingredient);
@@ -251,50 +244,48 @@ function filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils){
 
 // a terminer avec appliances et ustensils 
 //ou faire 2 autres
-function filteringListwithTagIngredients(recipes) {
+function filteringRecipeswithTags(filteredRecipes) {
 
-  filteredRecipes=[];
-  let tempArrayIng=[];
-  let tempArrayApp=[];
-  let tempArrayUst=[];
+  let tempArray=[];
 
+  result = filteredRecipes.filter(element => {
 
-  recipes = recipes.filter(element => {
     element.ingredients.forEach(el => {
       tagsIngredients.forEach(tag => {
-        if (el.ingredient.includes(tag)) {
-          console.log(element)
-          filteredRecipes.push(element)
-          // return (element)
+        if (el.ingredient.includes(tag) ) {
+            tempArray.push(element);
         }
       })
     })
   })
+  
 
-  result = recipes.filter(element => {
+  result = filteredRecipes.filter(element => {
     tagsAppliances.forEach(tag => {
       if (element.appliance.includes(tag)){
-        filteredRecipes.push(element)
-        // return (element)
+        console.log(element);
+
+        tempArray.push(element)
       }
     })
   })
 
-  result = recipes.filter(element => {
+  result = filteredRecipes.filter(element => {
     element.ustensils.forEach(el => {
       tagsUstensils.forEach(tag => {
-        if (el.includes(tag)) {
-          filteredRecipes.push(el)
+        if (el.includes(tag)){
+          console.log(el);
+          tempArray.push(el)
           // return (el)
         }
       })
     })
   })
 
+  console.log(tempArray);
 
-
-
-  filteredRecipes = [...new Set(result)];
+  
+  filteredRecipes = [...new Set(tempArray)];
   console.log(filteredRecipes)
 
 }
