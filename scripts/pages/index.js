@@ -248,7 +248,7 @@ function pushAndConcatItem(clickedItem,tag){
 //AJOUT TAG INGREDIENT
 function clickIngredient(e) {
 
-  // inputForm1.value = '';
+  inputForm1.value = '';
   addDisplayNoneWhenCreateTag(e);
   let clickedIngredient = e.target.textContent;
   //on cree le tag
@@ -265,7 +265,7 @@ function clickIngredient(e) {
   ustensilUl.textContent='';
 
   
-  filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients);
+  // filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients);
   filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances);
   filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils);
 
@@ -297,18 +297,14 @@ function clickAppliance(e) {
 
   
   filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients);
-  filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances);
+  // filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances);
   filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils);
   
   if (filteredRecipes.length !== 1 ) {
 
     getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
-    if (dataAppliancesFiltered.length>1) {
-      getList(dataAppliancesFiltered,'applianceLi', clickAppliance, applianceUl );
-    }
+    getList(dataAppliancesFiltered,'applianceLi', clickAppliance, applianceUl );
     getList(dataUstensilsFiltered,'ingredientLi', clickUstensil, ustensilUl );
-  } else {
-
   }
 
 }
@@ -331,12 +327,8 @@ function clickUstensil(e) {
   ustensilUl.textContent='';
   
   filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients);
-  filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils);
+  // filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils);
   filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances);
-
-  if (filteredListAppliances.length !== 0) {
-
-  }
 
   
   if (filteredRecipes.length !== 1) {
