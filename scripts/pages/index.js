@@ -265,7 +265,7 @@ function clickIngredient(e) {
   ustensilUl.textContent='';
 
   
-  // filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients);
+  filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients);
   filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances);
   filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils);
 
@@ -297,7 +297,7 @@ function clickAppliance(e) {
 
   
   filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients);
-  // filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances);
+  filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances);
   filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils);
   
   if (filteredRecipes.length !== 1 ) {
@@ -327,7 +327,7 @@ function clickUstensil(e) {
   ustensilUl.textContent='';
   
   filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients);
-  // filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils);
+  filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils);
   filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances);
 
   
@@ -391,7 +391,7 @@ function closeTheTag(){
     //on affiche la liste complète des ingrédients
 
   }else {
-
+    filteringRecipeswithTags(filteredRecipes)
     displayCards(filteredRecipes);
 
   } 
