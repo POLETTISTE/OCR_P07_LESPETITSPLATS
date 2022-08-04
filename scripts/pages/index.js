@@ -13,7 +13,6 @@ let filteredListIngredients = [];
 let filteredListAppliances = [];
 let filteredListUstensils = [];
 
-// let uniqueArr = [];
 
 
 let tagsIngredients = []; //ajoute / supprime tag + stocke element dans array
@@ -85,10 +84,22 @@ async function displayCards(filteredData) {
 inputForm1.addEventListener(('input'), (e) => {
   e.preventDefault();
   e.stopPropagation();
-  actualValueInput1 = inputForm1.value;
+  actualValueInput1 = formatText(inputForm1.value);
   formatText(actualValueInput1);
 
   searchInputBar();
+
+  filteringListIngredientsWithInputPrincipal(filteredRecipes);
+  filteringListAppliancesWithInputPrincipal(filteredRecipes);
+  filteringListUstensilsWithInputPrincipal(filteredRecipes);
+
+  ingredientUl.textContent='';
+  applianceUl.textContent='';
+  ustensilUl.textContent='';
+  
+  getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl);
+  getList(dataAppliancesFiltered,'applianceLi', clickAppliance, applianceUl);
+  getList(dataUstensilsFiltered,'ustensilLi', clickUstensil, ustensilUl);
 
 });
 
