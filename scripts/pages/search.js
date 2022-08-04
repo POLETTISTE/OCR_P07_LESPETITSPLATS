@@ -50,13 +50,25 @@ function searchInputBar() {
       inputForm1.value='Aucune recette ne correspond à votre critère...vous pouvez chercher "tarte aux pommes", "poisson", etc';
       inputForm1.select();
 
+      let essai = document.querySelectorAll('.tag');
 
+      for (const element of essai) {
+        console.log(element);
+        element.remove();
+        tagsIngredients=[];
+        tagsAppliances=[];
+        tagsUstensils=[];
+        
+      }
+      init();
+      filteredRecipes = recipes
+      // displayCards(filteredRecipes);
       // si on a deja des donnes filtrees dans recipearray, alors on prend filteredRecipes pour filtrer
     }else  {
       searchInput1Datas(filteredRecipes);
 
     }
-    displayCards(filteredRecipes)
+  displayCards(filteredRecipes)
     
 
 

@@ -31,6 +31,7 @@ let actualValueInput4;
 //DOM
 const recipesSection = document.getElementById('recipes');
 const tagsDiv = document.querySelector('.tags');
+const tagElement = document.querySelectorAll('.tag');
 
 const btnIngredients = document.querySelector('.btn-primary');
 const btnAppliances = document.querySelector('.btn-success');
@@ -96,7 +97,7 @@ inputForm1.addEventListener(('input'), (e) => {
   ingredientUl.textContent='';
   applianceUl.textContent='';
   ustensilUl.textContent='';
-  
+
   getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl);
   getList(dataAppliancesFiltered,'applianceLi', clickAppliance, applianceUl);
   getList(dataUstensilsFiltered,'ustensilLi', clickUstensil, ustensilUl);
@@ -256,7 +257,7 @@ function pushAndConcatItem(clickedItem,tag){
 
 //AJOUT TAG INGREDIENT
 function clickIngredient(e) {
-
+// inputForm1.value='';
   addDisplayNoneWhenCreateTag(e);
   let clickedIngredient = e.target.textContent;
   //on cree le tag
@@ -291,7 +292,7 @@ function clickIngredient(e) {
 function clickAppliance(e) {
 
 
-  inputForm1.value = '';
+  // inputForm1.value = '';
   addDisplayNoneWhenCreateTag(e);
   let clickedAppliance = e.target.textContent;
   getTagCard(e, 'tag-appliance');
@@ -320,7 +321,7 @@ function clickAppliance(e) {
 
 //AJOUT TAG USTENSIL
 function clickUstensil(e) {
-  inputForm1.value = '';
+  // inputForm1.value = '';
 
   addDisplayNoneWhenCreateTag(e);
   let clickedUstensil = e.target.textContent;
