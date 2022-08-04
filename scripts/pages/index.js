@@ -220,14 +220,14 @@ function clickIngredient(e) {
 
   errorMessage.style.display = "none";
   recipesSection.className = "d-flex flex-wrap justify-content-between col-12";
-  inputForm1.value='';
+  // inputForm1.value='';
   addDisplayNoneWhenCreateTag(e);
   let clickedIngredient = e.target.textContent;
   //on cree le tag
   getTagCard(e, 'tag-ingredient');
   //on rajoute le nom du tag dans la liste des tags ingredients
   pushAndConcatItem(clickedIngredient, tagsIngredients);
-
+  console.log(filteredRecipes);
   searchWithTagIngredient(clickedIngredient);
   // on affiche les recettes triées
   displayCards(filteredRecipes);
@@ -256,7 +256,7 @@ function clickAppliance(e) {
   errorMessage.style.display = "none";
   recipesSection.className = "d-flex flex-wrap justify-content-between col-12";
 
-  inputForm1.value = '';
+  // inputForm1.value = '';
   addDisplayNoneWhenCreateTag(e);
   let clickedAppliance = e.target.textContent;
   getTagCard(e, 'tag-appliance');
@@ -287,7 +287,7 @@ function clickUstensil(e) {
 
   errorMessage.style.display = "none";
   recipesSection.className = "d-flex flex-wrap justify-content-between col-12";
-  inputForm1.value = '';
+  // inputForm1.value = '';
 
   addDisplayNoneWhenCreateTag(e);
   let clickedUstensil = e.target.textContent;
@@ -318,6 +318,7 @@ function clickUstensil(e) {
 
 function closeTheTag(){
 
+  inputForm1.textContent='';
   //on récupère le nom du tag
   const target = this.parentNode;
   let item = target.textContent;
