@@ -34,8 +34,9 @@
 
 
 .saisie-recherche {
-    width:667px;
+    max-width:667px;
     height: 69px;
+    // min-height: 69px;
     font-size: 18px;
     font-weight: 400;
     line-height: 21.6px;
@@ -66,6 +67,7 @@
     background-color: #68D9A4;
     color:white;
 
+
 }
 
 #SaisieRecherche4 {
@@ -75,8 +77,8 @@
 }
 
 .search-list {
-    width:667px;
-    max-height:340px;
+    max-width:667px;
+    height:340px;
     margin-right:40px;
     color:white;
     overflow: hidden;

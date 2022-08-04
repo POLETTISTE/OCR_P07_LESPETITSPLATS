@@ -58,7 +58,7 @@ function searchInputBar() {
 
       let essai = document.querySelectorAll('.tag');
       for (const element of essai) {
-        console.log(element);
+
         element.remove();
         tagsIngredients=[];
         tagsAppliances=[];
@@ -308,8 +308,6 @@ function filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances) {
   filteredListAppliances=[];
 
     result = filteredRecipes.filter(element => {
-
-      console.log(element);
       
       if (!tagsAppliances.includes(element)){
         filteredListAppliances.push(element.appliance);
@@ -365,7 +363,6 @@ function filteringRecipeswithTags(filteredRecipes) {
   result = filteredRecipes.filter(element => {
     tagsAppliances.forEach(tag => {
       if (element.appliance.includes(tag)){
-        console.log(element);
 
         tempArray.push(element)
       }
@@ -376,9 +373,7 @@ function filteringRecipeswithTags(filteredRecipes) {
     element.ustensils.forEach(el => {
       tagsUstensils.forEach(tag => {
         if (el.includes(tag)){
-          console.log(el);
           tempArray.push(el)
-          // return (el)
         }
       })
     })

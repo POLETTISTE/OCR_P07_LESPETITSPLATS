@@ -6,6 +6,10 @@ body {
   margin-right: 70px;
 }
 
+strong {
+  text-decoration: underline;
+}
+
 h1 {
   color: red;
   font: 900;
@@ -59,6 +63,7 @@ span {
 }
 
 article {
+  min-width: 380px;
   max-width: 380px;
   min-height: 364px;
   background-color: #E7E7E7;
@@ -191,7 +196,7 @@ header {
 }
 
 .saisie-recherche {
-  width: 667px;
+  max-width: 667px;
   height: 69px;
   font-size: 18px;
   font-weight: 400;
@@ -229,8 +234,8 @@ header {
 }
 
 .search-list {
-  width: 667px;
-  max-height: 340px;
+  max-width: 667px;
+  height: 340px;
   margin-right: 40px;
   color: white;
   overflow: hidden;

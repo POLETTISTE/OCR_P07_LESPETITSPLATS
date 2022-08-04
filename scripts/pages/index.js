@@ -375,7 +375,6 @@ function closeTheTag(){
       index = tagsIngredients.indexOf(item);
       tagsIngredients.splice(index, 1);
       removeDisplayNoneWhenCloseTheTag(item, ingredientUl);
-      console.log(tagsIngredients)
       break;
 
     case 'tag-appliance tag rounded' : 
@@ -398,18 +397,11 @@ function closeTheTag(){
 
   tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
   
-  console.log(tagsIngredients);
-  console.log(tagsAppliances);
-  console.log(tagsUstensils);
-  console.log(filteredRecipes);
-
   ingredientUl.textContent='';
   applianceUl.textContent='';
   ustensilUl.textContent ='';
 
   filteredRecipes =  filteringRecipeswithTags(recipes);
-  console.log(filteredRecipes);
-
 
   // AFFICHE LA LISTE COMPLETE
   if (tags.length === 0) {
