@@ -27,6 +27,7 @@ function searchInput1Datas(data) {
 
 function searchInputBar() {
 
+
   //MOINS DE 3 CARACTERES
   if (inputForm1.value.length <= 2) {
     
@@ -47,21 +48,26 @@ function searchInputBar() {
     searchInput1Datas(recipes);
     // si on a aucune donnee filtree, on prend recipes
     if (filteredRecipes.length === 0) {
-      inputForm1.value='Aucune recette ne correspond à votre critère...vous pouvez chercher "tarte aux pommes", "poisson", etc';
+      // inputForm1.value='Aucune recette ne correspond à votre critère...vous pouvez chercher "tarte aux pommes", "poisson", etc';
+      // displayError();
+      errorMessage.style.display = "flex";
+      recipesSection.className = "";
+      
+      inputForm1.value="";
       inputForm1.select();
 
       let essai = document.querySelectorAll('.tag');
-
       for (const element of essai) {
         console.log(element);
         element.remove();
         tagsIngredients=[];
         tagsAppliances=[];
         tagsUstensils=[];
+
         
       }
       init();
-      filteredRecipes = recipes
+      filteredRecipes = recipes;
       // displayCards(filteredRecipes);
       // si on a deja des donnes filtrees dans recipearray, alors on prend filteredRecipes pour filtrer
     }else  {

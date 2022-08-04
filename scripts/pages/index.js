@@ -29,7 +29,9 @@ let actualValueInput4;
 
 
 //DOM
+const errorMessage = document.getElementById('error-message');
 const recipesSection = document.getElementById('recipes');
+const recipeCard = document.querySelector('.recipe-card');
 const tagsDiv = document.querySelector('.tags');
 const tagElement = document.querySelectorAll('.tag');
 
@@ -83,8 +85,13 @@ async function displayCards(filteredData) {
 
 // RECHERCHE DANS LE FORMULAIRE PRINCIPAL
 inputForm1.addEventListener(('input'), (e) => {
+
   e.preventDefault();
   e.stopPropagation();
+  errorMessage.style.display = "none";
+  recipesSection.className = "d-flex flex-wrap justify-content-between col-12";
+
+
   actualValueInput1 = formatText(inputForm1.value);
   formatText(actualValueInput1);
 
@@ -257,7 +264,9 @@ function pushAndConcatItem(clickedItem,tag){
 
 //AJOUT TAG INGREDIENT
 function clickIngredient(e) {
-// inputForm1.value='';
+  errorMessage.style.display = "none";
+  recipesSection.className = "d-flex flex-wrap justify-content-between col-12";
+inputForm1.value='';
   addDisplayNoneWhenCreateTag(e);
   let clickedIngredient = e.target.textContent;
   //on cree le tag
@@ -290,9 +299,10 @@ function clickIngredient(e) {
 
 //AJOUT TAG APPLIANCE
 function clickAppliance(e) {
+  errorMessage.style.display = "none";
+  recipesSection.className = "d-flex flex-wrap justify-content-between col-12";
 
-
-  // inputForm1.value = '';
+  inputForm1.value = '';
   addDisplayNoneWhenCreateTag(e);
   let clickedAppliance = e.target.textContent;
   getTagCard(e, 'tag-appliance');
@@ -321,7 +331,9 @@ function clickAppliance(e) {
 
 //AJOUT TAG USTENSIL
 function clickUstensil(e) {
-  // inputForm1.value = '';
+  errorMessage.style.display = "none";
+  recipesSection.className = "d-flex flex-wrap justify-content-between col-12";
+  inputForm1.value = '';
 
   addDisplayNoneWhenCreateTag(e);
   let clickedUstensil = e.target.textContent;

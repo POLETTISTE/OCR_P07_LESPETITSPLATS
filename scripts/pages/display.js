@@ -36,6 +36,8 @@ function addDisplayNoneWhenCreateTag(e) {
 }
 
 
+
+
 function removeDisplayNoneWhenCloseTheTag(item, source) {
   
   const elements = source.childNodes

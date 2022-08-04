@@ -1,0 +1,18 @@
+#error-message {
+    display: none;
+    position: relative;
+    top:100px;
+    height:200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto
+};
+
+.alert-error {
+    font-size: 30px;
+    color:#D04F4F;
+    text-align: center;
+    line-height: 50px;
+    
+}
