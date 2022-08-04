@@ -59,7 +59,6 @@ span {
 }
 
 article {
-  min-width: 380px;
   max-width: 380px;
   min-height: 364px;
   background-color: #E7E7E7;
