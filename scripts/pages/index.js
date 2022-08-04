@@ -273,10 +273,7 @@ function clickIngredient(e) {
     getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
     getList(dataAppliancesFiltered,'applianceLi', clickAppliance, applianceUl );
     getList(dataUstensilsFiltered,'ingredientLi', clickUstensil, ustensilUl );
-  } else {
-
-    
-  }
+  } 
 }
 
 //AJOUT TAG APPLIANCE
@@ -389,16 +386,6 @@ function closeTheTag(){
   filteredRecipes =  filteringRecipeswithTags(recipes);
   console.log(filteredRecipes);
 
-  // dataIngredientsFiltered =  filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients);
-  // dataAppliancesFiltered = filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances);
-  // dataUstensilsFiltered = filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils);
-
-  // getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
-  // getList(dataAppliancesFiltered,'applianceLi', clickAppliance, applianceUl );
-  // getList(dataUstensilsFiltered,'ustensilLi', clickUstensil, ustensilUl );
-
-  // displayCards(recipes);
-  // displayCards(filteredRecipes);
 
   // AFFICHE LA LISTE COMPLETE
   if (tags.length === 0) {
@@ -412,6 +399,7 @@ function closeTheTag(){
 
   }else {
     displayCards(filteredRecipes);
+
     dataIngredientsFiltered =  filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients);
     dataAppliancesFiltered = filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances);
     dataUstensilsFiltered = filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils);
@@ -422,8 +410,6 @@ function closeTheTag(){
 
   } 
 }
-
-
 
 // INITIALISATION
 async function init() {
