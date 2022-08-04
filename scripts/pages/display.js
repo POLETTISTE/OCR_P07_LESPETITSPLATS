@@ -1,6 +1,6 @@
 // ---------------------------DISPLAY.JS------------------------
+//remove physically tag button
 function removeTag(item) {
-  //remove physically tag button
   item.textContent='';
   item.remove();
 }

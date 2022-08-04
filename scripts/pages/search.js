@@ -4,18 +4,18 @@
 
 function searchInput1Datas(data) {
   let resultIng = (item) => formatText(item.ingredient).includes(formatText(actualValueInput1));
-// let newArray = [];
+  // let newArray = [];
 
-// for (let i = 0; i < data.length; i++) {
-//   data[i]
-//   if (formatText(data[i].name).includes(formatText(actualValueInput1)) || 
-//   formatText(data[i].description).includes(formatText(actualValueInput1)) ||
-//   data[i].ingredients.some(resultIng)) {
-// newArray.push(data[i]);
+  // for (let i = 0; i < data.length; i++) {
+  //   data[i]
+  //   if (formatText(data[i].name).includes(formatText(actualValueInput1)) || 
+  //   formatText(data[i].description).includes(formatText(actualValueInput1)) ||
+  //   data[i].ingredients.some(resultIng)) {
+  // newArray.push(data[i]);
 
-//   }
-// }
-// console.log(newArray);
+  //   }
+  // }
+  // console.log(newArray);
 
   result = data.filter(element => {
     return formatText(element.name).includes(formatText(actualValueInput1)) || 
@@ -74,7 +74,7 @@ function searchInputBar() {
       searchInput1Datas(filteredRecipes);
 
     }
-  displayCards(filteredRecipes)
+    displayCards(filteredRecipes)
     
 
 
@@ -161,19 +161,19 @@ function filteringListIngredientsWithInputPrincipal(filteredRecipes) {
 
   filteredListIngredients=[];
 
-    result = filteredRecipes.filter(element => {
+  result = filteredRecipes.filter(element => {
 
-      let resultIng = (item) => formatText(item.ingredient).includes(actualValueInput1);
-      element.ingredients.some(resultIng);   
+    let resultIng = (item) => formatText(item.ingredient).includes(actualValueInput1);
+    element.ingredients.some(resultIng);   
             
-      element.ingredients.forEach(element => {
+    element.ingredients.forEach(element => {
 
-        if (!tagsIngredients.includes(element.ingredient)){
-          filteredListIngredients.push(element.ingredient);
-        } 
-      })
+      if (!tagsIngredients.includes(element.ingredient)){
+        filteredListIngredients.push(element.ingredient);
+      } 
     })
-    dataIngredientsFiltered = [...new Set(filteredListIngredients)];
+  })
+  dataIngredientsFiltered = [...new Set(filteredListIngredients)];
   
   return dataIngredientsFiltered
 }
@@ -181,16 +181,16 @@ function filteringListIngredientsWithInputPrincipal(filteredRecipes) {
 function filteringListAppliancesWithInputPrincipal(filteredRecipes) {
   filteredListAppliances=[];
 
-    result = filteredRecipes.filter(element => {
-      element.appliance.includes(actualValueInput1)
+  result = filteredRecipes.filter(element => {
+    element.appliance.includes(actualValueInput1)
 
-      if (!tagsAppliances.includes((element.appliance))){
+    if (!tagsAppliances.includes((element.appliance))){
 
-        filteredListAppliances.push(element.appliance);
-      } 
+      filteredListAppliances.push(element.appliance);
+    } 
 
-    })
-    dataAppliancesFiltered = [...new Set(filteredListAppliances)];
+  })
+  dataAppliancesFiltered = [...new Set(filteredListAppliances)];
 
   return dataAppliancesFiltered
 }
@@ -199,17 +199,17 @@ function filteringListUstensilsWithInputPrincipal(filteredRecipes) {
 
   filteredListUstensils=[];
     
-    result = filteredRecipes.filter(element => {
-      let resultUst = (item) => formatText(item).includes(actualValueInput1);
-      element.ustensils.some(resultUst);   
+  result = filteredRecipes.filter(element => {
+    let resultUst = (item) => formatText(item).includes(actualValueInput1);
+    element.ustensils.some(resultUst);   
 
-      element.ustensils.forEach(el => {
-        if (!tagsUstensils.includes(CapitalizeFirstLetterText(el))) {
-          filteredListUstensils.push(el);
-        }
-      })
+    element.ustensils.forEach(el => {
+      if (!tagsUstensils.includes(CapitalizeFirstLetterText(el))) {
+        filteredListUstensils.push(el);
+      }
     })
-    dataUstensilsFiltered = [...new Set(filteredListUstensils)];
+  })
+  dataUstensilsFiltered = [...new Set(filteredListUstensils)];
 
   return dataUstensilsFiltered
 
@@ -307,14 +307,14 @@ function filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients) 
 function filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances) {
   filteredListAppliances=[];
 
-    result = filteredRecipes.filter(element => {
+  result = filteredRecipes.filter(element => {
       
-      if (!tagsAppliances.includes(element)){
-        filteredListAppliances.push(element.appliance);
+    if (!tagsAppliances.includes(element)){
+      filteredListAppliances.push(element.appliance);
 
-      }
-    })
-    dataAppliancesFiltered = [...new Set(filteredListAppliances)];
+    }
+  })
+  dataAppliancesFiltered = [...new Set(filteredListAppliances)];
 
   return dataAppliancesFiltered
 
@@ -324,16 +324,16 @@ function filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils){
 
   filteredListUstensils=[];
 
-    result = filteredRecipes.filter(element => {
-      let resultUst = (item) => formatText(item).includes(element);
-      element.ustensils.some(resultUst);   
+  result = filteredRecipes.filter(element => {
+    let resultUst = (item) => formatText(item).includes(element);
+    element.ustensils.some(resultUst);   
 
-      element.ustensils.forEach(el => {
-        if (!tagsUstensils.includes(CapitalizeFirstLetterText(el))){
-          filteredListUstensils.push(el)
-        }
-      })
+    element.ustensils.forEach(el => {
+      if (!tagsUstensils.includes(CapitalizeFirstLetterText(el))){
+        filteredListUstensils.push(el)
+      }
     })
+  })
 
   dataUstensilsFiltered = [...new Set(filteredListUstensils)];
   return dataUstensilsFiltered
@@ -353,7 +353,7 @@ function filteringRecipeswithTags(filteredRecipes) {
     element.ingredients.forEach(el => {
       tagsIngredients.forEach(tag => {
         if (el.ingredient.includes(tag) ) {
-            tempArray.push(element);
+          tempArray.push(element);
         }
       })
     })

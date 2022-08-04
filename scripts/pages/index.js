@@ -6,20 +6,16 @@ let result = [];
 let arrTriIngredients = []; //TEMP contient toutes les noms des ingrédients avec doublons
 let arrTriAppliances = [];// TEMP contient toutes les noms des appareils avec doublons
 let arrTriUstensils = [];// TEMP contient toutes les noms des ustensiles sans doublons
-let dataIngredientsFiltered = []; // contient toutes les noms des ingrédients sans doublons
-let dataAppliancesFiltered = []; // contient toutes les noms des appareils sans doublons
-let dataUstensilsFiltered = []; // contient toutes les noms des ustensiles sans doublons
 let filteredListIngredients = [];
 let filteredListAppliances = [];
 let filteredListUstensils = [];
-
-
-
+let dataIngredientsFiltered = []; // contient toutes les noms des ingrédients sans doublons
+let dataAppliancesFiltered = []; // contient toutes les noms des appareils sans doublons
+let dataUstensilsFiltered = []; // contient toutes les noms des ustensiles sans doublons
 let tagsIngredients = []; //ajoute / supprime tag + stocke element dans array
 let tagsAppliances = []; //ajoute / supprime tag + stocke element dans array
 let tagsUstensils = []; //ajoute / supprime tag + stocke element dans array
 let tags = []; // contient tous les tags sélectionnés
-
 
 let filteredRecipes = []; // contient toutes les recettes filtrées par les tags (globale)
 let actualValueInput1;
@@ -81,16 +77,14 @@ async function displayCards(filteredData) {
   });
 }
 
-
-
 // RECHERCHE DANS LE FORMULAIRE PRINCIPAL
 inputForm1.addEventListener(('input'), (e) => {
 
   e.preventDefault();
   e.stopPropagation();
+
   errorMessage.style.display = "none";
   recipesSection.className = "d-flex flex-wrap justify-content-between col-12";
-
 
   actualValueInput1 = formatText(inputForm1.value);
   formatText(actualValueInput1);
@@ -108,15 +102,14 @@ inputForm1.addEventListener(('input'), (e) => {
   getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl);
   getList(dataAppliancesFiltered,'applianceLi', clickAppliance, applianceUl);
   getList(dataUstensilsFiltered,'ustensilLi', clickUstensil, ustensilUl);
-
 });
 
 inputForm2.addEventListener('input', (e) => {
+
   e.preventDefault();
   e.stopPropagation();
 
   actualValueInput2 = inputForm2.value;
-
   ingredientUl.textContent = '';
 
   //filtre la liste pendant la saisie
@@ -128,32 +121,16 @@ inputForm2.addEventListener('input', (e) => {
 
 
 inputForm3.addEventListener('input', (e) => {
+
   e.preventDefault();
   e.stopPropagation();
 
   actualValueInput3 = inputForm3.value;
+  applianceUl.textContent = '';
 
-  if (tags.length === 0 && actualValueInput3 === '') {
-    applianceUl.textContent = '';
-    searchInputAppliance(dataAppliancesFiltered);
-    getList(filteredListAppliances,'applianceLi', clickAppliance, applianceUl );
+  searchInputAppliance(dataAppliancesFiltered);
+  getList(filteredListAppliances,'applianceLi', clickAppliance, applianceUl );
 
-  } else if (tags.length !== 0 && actualValueInput3 === '') {
-    applianceUl.textContent = '';
-    searchInputAppliance(dataAppliancesFiltered);
-    getList(filteredListAppliances,'applianceLi', clickAppliance, applianceUl );
-
-  } else if (actualValueInput3.length !== 0) {
-
-    applianceUl.textContent = '';
-    searchInputAppliance(dataAppliancesFiltered);
-    getList(filteredListAppliances,'applianceLi', clickAppliance, applianceUl );
-
-  } else {
-
-    applianceUl.textContent = '';
-    getList(filteredListAppliances,'applianceLi', clickAppliance, applianceUl );
-  }
 })
 
 inputForm4.addEventListener('input', (e) => {
@@ -161,27 +138,10 @@ inputForm4.addEventListener('input', (e) => {
   e.stopPropagation();
 
   actualValueInput4 = inputForm4.value;
+  ustensilUl.textContent = '';
 
-  if (tags.length === 0 && actualValueInput4 === '') {
-    ustensilUl.textContent = '';
-    searchInputUstensil(dataUstensilsFiltered);
-    getList(filteredListUstensils,'ustensilLi', clickUstensil, ustensilUl );
-
-  } else if (tags.length !== 0 && actualValueInput4 === '') {
-    ustensilUl.textContent = '';
-    searchInputUstensil(dataUstensilsFiltered);
-    getList(filteredListUstensils,'ustensilLi', clickUstensil, ustensilUl );
-
-  } else if (actualValueInput4.length !== 0) {
-
-    ustensilUl.textContent = '';
-    searchInputUstensil(dataUstensilsFiltered);
-    getList(filteredListUstensils,'ustensilLi', clickUstensil, ustensilUl );
-
-  } else {
-    ustensilUl.textContent = '';
-    getList(filteredListUstensils,'ustensilLi', clickUstensil, ustensilUl );
-  }
+  searchInputUstensil(dataUstensilsFiltered);
+  getList(filteredListUstensils,'ustensilLi', clickUstensil, ustensilUl );
 })
 
 // MENU DEROULANT RECHERCHE PAR INGREDIENT
@@ -189,24 +149,19 @@ dropdownPrimary.addEventListener('click', (e)=> {
   e.preventDefault();
   e.stopPropagation();
   
-  
   appliancesDiv.style.display = "none";
   ustensilsDiv.style.display = "none";
   btnAppliances.style.display = "block";
   btnUstensils.style.display = "block";
-  
   
   if (ingredientsDiv.style.display === "none") {
     ingredientsDiv.style.display = "block";
     btnIngredients.style.display = "none";
     inputForm2.focus();
     inputForm2.select();
-
   } else {
-    // inputForm2.value ="";
     ingredientsDiv.style.display = "none";
     btnIngredients.style.display = "block";
-
   }
 });
 
@@ -221,7 +176,6 @@ dropdownSuccess.addEventListener('click', (e)=> {
   if (appliancesDiv.style.display === "none") {
     appliancesDiv.style.display = "block";
     btnAppliances.style.display = "none";
-
     inputForm3.focus();
     inputForm3.select();
 
@@ -239,10 +193,10 @@ dropdownDanger.addEventListener('click', (e)=> {
   appliancesDiv.style.display = "none";
   btnIngredients.style.display = "block";
   btnAppliances.style.display = "block";
+
   if (ustensilsDiv.style.display === "none") {
     ustensilsDiv.style.display = "block";
     btnUstensils.style.display = "none";
-    
     inputForm4.focus();
     inputForm4.select();
 
@@ -259,14 +213,14 @@ function pushAndConcatItem(clickedItem,tag){
 
   tag.push(clickedItem);
   tags = tagsIngredients.concat(tagsAppliances, tagsUstensils); // CONTIENT TOUS LES TAGS == TAGS
-
 }
 
 //AJOUT TAG INGREDIENT
 function clickIngredient(e) {
+
   errorMessage.style.display = "none";
   recipesSection.className = "d-flex flex-wrap justify-content-between col-12";
-inputForm1.value='';
+  inputForm1.value='';
   addDisplayNoneWhenCreateTag(e);
   let clickedIngredient = e.target.textContent;
   //on cree le tag
@@ -283,7 +237,6 @@ inputForm1.value='';
   applianceUl.textContent='';
   ustensilUl.textContent='';
 
-  
   dataIngredientsFiltered = filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients);
   dataAppliancesFiltered = filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances);
   dataUstensilsFiltered = filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils);
@@ -299,6 +252,7 @@ inputForm1.value='';
 
 //AJOUT TAG APPLIANCE
 function clickAppliance(e) {
+
   errorMessage.style.display = "none";
   recipesSection.className = "d-flex flex-wrap justify-content-between col-12";
 
@@ -315,7 +269,6 @@ function clickAppliance(e) {
   applianceUl.textContent='';
   ustensilUl.textContent='';
 
-  
   filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients);
   filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances);
   filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils);
@@ -331,6 +284,7 @@ function clickAppliance(e) {
 
 //AJOUT TAG USTENSIL
 function clickUstensil(e) {
+
   errorMessage.style.display = "none";
   recipesSection.className = "d-flex flex-wrap justify-content-between col-12";
   inputForm1.value = '';
@@ -408,10 +362,10 @@ function closeTheTag(){
     // on affiche toutes les recettes existantes
     //on affiche la liste complète des ingrédients
     displayCards(recipes);
+
     getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
     getList(dataAppliancesFiltered,'applianceLi', clickAppliance, applianceUl );
     getList(dataUstensilsFiltered,'ustensilLi', clickUstensil, ustensilUl );
-
 
   }else {
     displayCards(filteredRecipes);
@@ -423,7 +377,6 @@ function closeTheTag(){
     getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
     getList(dataAppliancesFiltered,'applianceLi', clickAppliance, applianceUl );
     getList(dataUstensilsFiltered,'ustensilLi', clickUstensil, ustensilUl );
-
   } 
 }
 
