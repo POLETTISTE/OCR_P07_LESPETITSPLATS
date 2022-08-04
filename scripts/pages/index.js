@@ -6,11 +6,9 @@ let result = [];
 let arrTriIngredients = []; //TEMP contient toutes les noms des ingrédients avec doublons
 let arrTriAppliances = [];// TEMP contient toutes les noms des appareils avec doublons
 let arrTriUstensils = [];// TEMP contient toutes les noms des ustensiles sans doublons
-
 let dataIngredientsFiltered = []; // contient toutes les noms des ingrédients sans doublons
 let dataAppliancesFiltered = []; // contient toutes les noms des appareils sans doublons
 let dataUstensilsFiltered = []; // contient toutes les noms des ustensiles sans doublons
-
 let filteredListIngredients = [];
 let filteredListAppliances = [];
 let filteredListUstensils = [];
@@ -361,13 +359,13 @@ function closeTheTag(){
 
     case 'tag-appliance tag rounded' : 
       index = tagsAppliances.indexOf(target.textContent);
-      tagsAppliances.splice(index, 1)
+      tagsAppliances.splice(index, 1);
       removeDisplayNoneWhenCloseTheTag(item, applianceUl);
       break;
 
     case 'tag-ustensil tag rounded' : 
       index = tagsUstensils.indexOf(target.textContent);
-      tagsUstensils.splice(index, 1)
+      tagsUstensils.splice(index, 1);
       removeDisplayNoneWhenCloseTheTag(item, ustensilUl);
       break;
       
@@ -382,24 +380,45 @@ function closeTheTag(){
   console.log(tagsIngredients);
   console.log(tagsAppliances);
   console.log(tagsUstensils);
-
   console.log(filteredRecipes);
+
+  ingredientUl.textContent='';
+  applianceUl.textContent='';
+  ustensilUl.textContent ='';
 
   filteredRecipes =  filteringRecipeswithTags(recipes);
   console.log(filteredRecipes);
 
+  // dataIngredientsFiltered =  filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients);
+  // dataAppliancesFiltered = filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances);
+  // dataUstensilsFiltered = filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils);
+
+  // getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
+  // getList(dataAppliancesFiltered,'applianceLi', clickAppliance, applianceUl );
+  // getList(dataUstensilsFiltered,'ustensilLi', clickUstensil, ustensilUl );
+
   // displayCards(recipes);
-  displayCards(filteredRecipes);
+  // displayCards(filteredRecipes);
 
   // AFFICHE LA LISTE COMPLETE
   if (tags.length === 0) {
     // on affiche toutes les recettes existantes
     //on affiche la liste complète des ingrédients
     displayCards(recipes);
+    getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
+    getList(dataAppliancesFiltered,'applianceLi', clickAppliance, applianceUl );
+    getList(dataUstensilsFiltered,'ustensilLi', clickUstensil, ustensilUl );
+
 
   }else {
-    // displayCards(filteredRecipes);
-    
+    displayCards(filteredRecipes);
+    dataIngredientsFiltered =  filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients);
+    dataAppliancesFiltered = filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances);
+    dataUstensilsFiltered = filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils);
+
+    getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
+    getList(dataAppliancesFiltered,'applianceLi', clickAppliance, applianceUl );
+    getList(dataUstensilsFiltered,'ustensilLi', clickUstensil, ustensilUl );
 
   } 
 }
