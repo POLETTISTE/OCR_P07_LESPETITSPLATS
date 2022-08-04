@@ -108,7 +108,13 @@ function searchWithTagIngredient(clickedIngredient){
   if(tags.length ===0){
     filteredRecipes = recipes.filter(recipe => recipe);
   }
-  else if (tags.length >0){
+  else if (tags.length ===1){
+    
+    filteredRecipes = recipes.filter(element => {
+      return element.ingredients.some(resultIng)
+    })
+  }
+  else if (tags.length >1){
     filteredRecipes = filteredRecipes.filter(element => {
       return element.ingredients.some(resultIng)
     })
@@ -120,8 +126,13 @@ function searchWithTagAppliance(clickedAppliance){
 
   if(tags.length ===0){
     filteredRecipes = recipes.filter(recipe => recipe);
+  }
+  else if (tags.length ===1){
+    filteredRecipes = recipes.filter(element => {
+      return formatText(element.appliance).includes(formatText(clickedAppliance))
 
-  } else if(tags.length >0) {
+    })
+  }else if(tags.length >1) {
     filteredRecipes = filteredRecipes.filter(element => {
       return formatText(element.appliance).includes(formatText(clickedAppliance))
     })
@@ -133,8 +144,13 @@ function searchWithTagUstensils(clickedUstensil){
 
   if(tags.length ===0){
     filteredRecipes = recipes.filter(recipe => recipe);
- 
-  }else if(tags.length >0) {
+  }
+  else if (tags.length ===1){
+    filteredRecipes = recipes.filter(element => {
+      return element.ustensils.some(resultUst);
+
+    })
+  }else if(tags.length >1) {
     filteredRecipes = filteredRecipes.filter(element => {
       return element.ustensils.some(resultUst);
     })

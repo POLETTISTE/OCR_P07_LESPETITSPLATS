@@ -228,7 +228,9 @@ function clickIngredient(e) {
   //on rajoute le nom du tag dans la liste des tags ingredients
   pushAndConcatItem(clickedIngredient, tagsIngredients);
   console.log(filteredRecipes);
-  searchWithTagIngredient(clickedIngredient);
+
+  searchWithTagIngredient(clickedIngredient, filteredRecipes);
+  console.log(filteredRecipes);
   // on affiche les recettes triées
   displayCards(filteredRecipes);
 
@@ -248,6 +250,8 @@ function clickIngredient(e) {
     getList(dataAppliancesFiltered,'applianceLi', clickAppliance, applianceUl );
     getList(dataUstensilsFiltered,'ingredientLi', clickUstensil, ustensilUl );
   } 
+  return filteredRecipes
+
 }
 
 //AJOUT TAG APPLIANCE
