@@ -22,6 +22,7 @@ function searchInput1Datas(data) {
            formatText(element.description).includes(formatText(actualValueInput1)) ||
            element.ingredients.some(resultIng)
   })
+  return filteredRecipes=result
 }
 
 function searchInputBar() {
@@ -31,13 +32,13 @@ function searchInputBar() {
     
     // si on a aucune donnee filtree, on prend recipes
     if (tags.length === 0) {
-      result = recipes.filter(recipe => recipe);
+      filteredRecipes = recipes.filter(recipe => recipe);
 
       // si on a deja des donnes filtrees dans recipearray, alors on prend filteredRecipes pour filtrer
     } else {
-      result = filteredRecipes.filter(recipe => recipe);
+      filteredRecipes = filteredRecipes.filter(recipe => recipe);
     }
-    displayCards(result);
+    displayCards(filteredRecipes);
   }
 
   // PLUS DE 2 CARACTERES

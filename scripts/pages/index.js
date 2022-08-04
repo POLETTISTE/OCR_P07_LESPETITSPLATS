@@ -13,7 +13,7 @@ let filteredListIngredients = [];
 let filteredListAppliances = [];
 let filteredListUstensils = [];
 
-let uniqueArr = [];
+// let uniqueArr = [];
 
 
 let tagsIngredients = []; //ajoute / supprime tag + stocke element dans array
