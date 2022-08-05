@@ -38,15 +38,7 @@ function searchInputBar() {
 
       // si on a deja des donnes filtrees dans recipearray, alors on prend filteredRecipes pour filtrer
     } else {
-       deleteTags = document.querySelectorAll('.tag');
-      for (const element of deleteTags) {
-  
-        element.remove();
-        tagsIngredients=[];
-        tagsAppliances=[];
-        tagsUstensils=[];
-  
-      }
+      deleteTags();
       filteredRecipes = recipes.filter(recipe => recipe);
     }
     displayCards(recipes);
@@ -65,16 +57,8 @@ function searchInputBar() {
       inputForm1.value="";
       inputForm1.select();
 
-      deleteTags = document.querySelectorAll('.tag');
-      for (const element of deleteTags) {
+      deleteTags();
 
-        element.remove();
-        tagsIngredients=[];
-        tagsAppliances=[];
-        tagsUstensils=[];
-
-        
-      }
       init();
       filteredRecipes = recipes;
       // displayCards(filteredRecipes);
@@ -380,12 +364,12 @@ function filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils){
 
 // when remove a tag
 
-function filteringRecipeswithTags(filteredRecipes) {
+function filteringRecipeswithTags(recipes) {
 
   let tempArray=[];
 
 
-  result = filteredRecipes.filter(element => {
+  result = recipes.filter(element => {
 
     element.ingredients.forEach(el => {
       tagsIngredients.forEach(tag => {
@@ -397,7 +381,7 @@ function filteringRecipeswithTags(filteredRecipes) {
   })
   
 
-  result = filteredRecipes.filter(element => {
+  result = recipes.filter(element => {
     tagsAppliances.forEach(tag => {
       if (element.appliance.includes(tag)){
 
@@ -406,7 +390,7 @@ function filteringRecipeswithTags(filteredRecipes) {
     })
   })
 
-  result = filteredRecipes.filter(element => {
+  result = recipes.filter(element => {
     element.ustensils.forEach(el => {
       tagsUstensils.forEach(tag => {
         if (el.includes(tag)){
@@ -421,6 +405,6 @@ function filteringRecipeswithTags(filteredRecipes) {
 
   filteredRecipes = [...new Set(tempArray)];
 
-  return filteredRecipes
+  return filteredRecipes;
 
 }

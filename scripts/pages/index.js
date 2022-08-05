@@ -254,16 +254,11 @@ function clickIngredient(e) {
   applianceUl.textContent='';
   ustensilUl.textContent='';
 
-  dataIngredientsFiltered = filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients);
-  dataAppliancesFiltered = filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances);
-  dataUstensilsFiltered = filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils);
-
+  
   
   if (filteredRecipes.length > 1 ) {
-
-    getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
-    getList(dataAppliancesFiltered,'applianceLi', clickAppliance, applianceUl );
-    getList(dataUstensilsFiltered,'ingredientLi', clickUstensil, ustensilUl );
+    
+    refreshLists()
   } 
   return filteredRecipes
 
@@ -297,15 +292,10 @@ function clickAppliance(e) {
   applianceUl.textContent='';
   ustensilUl.textContent='';
 
- dataIngredientsFiltered = filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients);
- dataAppliancesFiltered = filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances);
- dataUstensilsFiltered = filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils);
   
   if (filteredRecipes.length > 1 ) {
-
-    getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
-    getList(dataAppliancesFiltered,'applianceLi', clickAppliance, applianceUl );
-    getList(dataUstensilsFiltered,'ingredientLi', clickUstensil, ustensilUl );
+    
+    refreshLists()
   }
   return filteredRecipes
 
@@ -339,16 +329,11 @@ function clickUstensil(e) {
   applianceUl.textContent='';
   ustensilUl.textContent='';
   
-  dataIngredientsFiltered = filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients);
-  dataAppliancesFiltered = filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances);
-  dataUstensilsFiltered = filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils);
-   
+  
   
   if (filteredRecipes.length > 1) {
-
-    getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
-    getList(dataAppliancesFiltered,'applianceLi', clickAppliance, applianceUl );
-    getList(dataUstensilsFiltered,'ingredientLi', clickUstensil, ustensilUl );
+    
+    refreshLists()
   }
   return filteredRecipes
 
@@ -409,14 +394,30 @@ function closeTheTag(){
   }else {
     displayCards(filteredRecipes);
 
-    dataIngredientsFiltered =  filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients);
-    dataAppliancesFiltered = filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances);
-    dataUstensilsFiltered = filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils);
-
-    getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
-    getList(dataAppliancesFiltered,'applianceLi', clickAppliance, applianceUl );
-    getList(dataUstensilsFiltered,'ustensilLi', clickUstensil, ustensilUl );
+    refreshLists()
   } 
+}
+
+function deleteTags(){
+  let deleteTag = document.querySelectorAll('.tag');
+
+  for (const element of deleteTag) {
+
+    element.remove();
+    tagsIngredients=[];
+    tagsAppliances=[];
+    tagsUstensils=[];
+  }
+}
+
+function refreshLists() {
+  dataIngredientsFiltered =  filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients);
+  dataAppliancesFiltered = filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances);
+  dataUstensilsFiltered = filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils);
+
+  getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
+  getList(dataAppliancesFiltered,'applianceLi', clickAppliance, applianceUl );
+  getList(dataUstensilsFiltered,'ustensilLi', clickUstensil, ustensilUl );
 }
 
 // INITIALISATION
