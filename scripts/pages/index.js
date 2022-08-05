@@ -229,16 +229,21 @@ function clickIngredient(e) {
   pushAndConcatItem(clickedIngredient, tagsIngredients);
   console.log(filteredRecipes);
 
+  //regarder si input 1 !==0 etc...
+  
   searchWithTagIngredient(clickedIngredient, filteredRecipes);
   console.log(filteredRecipes);
   // on affiche les recettes triées
+  
   displayCards(filteredRecipes);
 
+  
+  
+  //tri des listes
   inputForm2.value='';
   ingredientUl.textContent='';
   applianceUl.textContent='';
   ustensilUl.textContent='';
-
   dataIngredientsFiltered = filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients);
   dataAppliancesFiltered = filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances);
   dataUstensilsFiltered = filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils);
