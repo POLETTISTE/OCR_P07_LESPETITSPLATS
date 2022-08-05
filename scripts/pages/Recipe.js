@@ -2,10 +2,10 @@ function Recipe(data) {
   
   const { id, name, servings, ingredients, time, description, appliance, ustensils } = data;
   
-  const dataRecipes = data;
   const dataIngredients = ingredients;
   const dataAppliances = appliance;
   const dataUstensils = ustensils;
+  
   
   // //PUSH TOUTES LES RECETTES DANS ARRAY RecipesArray
   // recipesArray.push(dataRecipes);

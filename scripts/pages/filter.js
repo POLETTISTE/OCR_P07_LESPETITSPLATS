@@ -31,7 +31,6 @@ function searchInputBar() {
   //MOINS DE 3 CARACTERES
   if (inputForm1.value.length <= 2) {
 
-    
     // si on a aucune donnee filtree, on prend recipes
     if (tags.length === 0) {
       filteredRecipes = recipes.filter(recipe => recipe);
@@ -52,7 +51,7 @@ function searchInputBar() {
     if (filteredRecipes.length === 0) {
 
       errorMessage.style.display = "flex";
-      recipesSection.className = "";
+      recipesSection.style.display = "none";
       
       inputForm1.value="";
       inputForm1.select();
@@ -118,11 +117,9 @@ function searchWithTagIngredient(clickedIngredient){
     })
   }
   else if (tags.length >1) {
-    console.log(filteredRecipes);
     filteredRecipes = filteredRecipes.filter(element => {
       return element.ingredients.some(resultIng)
     })
-    console.log(filteredRecipes)
   }
   return filteredRecipes
     
@@ -307,15 +304,13 @@ function filteringListWithTagsUstensils(filteredRecipes){
 
 function filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients) {
   filteredListIngredients=[];
-  console.log(filteredRecipes);
   result = filteredRecipes.filter(element => {
 
     let resultIng = (item) => formatText(item.ingredient).includes(element);
     element.ingredients.some(resultIng);   
           
     element.ingredients.forEach(el => {
-      console.log(el.ingredient);
-      console.log(tagsIngredients)
+
       if (!tagsIngredients.includes(el.ingredient)){
         filteredListIngredients.push(el.ingredient)
       }
@@ -347,13 +342,10 @@ function filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils){
   filteredListUstensils=[];
 
   result = filteredRecipes.filter(element => {
-    console.log(element);
     let resultUst = (item) => formatText(item).includes(element);
     element.ustensils.some(resultUst);   
 
     element.ustensils.forEach(el => {
-      console.log(el);
-      console.log(tagsUstensils)
 
       if (!tagsUstensils.includes(CapitalizeFirstLetterText(el))){
         filteredListUstensils.push(CapitalizeFirstLetterText(el))
@@ -377,8 +369,7 @@ function filteringRecipeswithTags(recipes) {
   result = recipes.filter(element => {
 
     element.ingredients.forEach(el => {
-      console.log(el.ingredient);
-      console.log(tagsIngredients)
+
       tagsIngredients.forEach(tag => {
         if (el.ingredient.includes(tag) ) {
           tempArray.push(element);
@@ -399,8 +390,7 @@ function filteringRecipeswithTags(recipes) {
 
   result = recipes.filter(element => {
     element.ustensils.forEach(el => {
-      console.log(el)
-      console.log(tagsUstensils)
+
       tagsUstensils.forEach(tag => {
         if (formatText(CapitalizeFirstLetterText(el)).includes(formatText(tag))){
 
@@ -410,7 +400,6 @@ function filteringRecipeswithTags(recipes) {
     })
   })
 
-  console.log(tempArray);
 
   filteredRecipes = [...new Set(tempArray)];
 

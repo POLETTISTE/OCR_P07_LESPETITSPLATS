@@ -59,9 +59,20 @@ span {
   width: fit-content;
   margin-top: 130px;
   padding: 0px;
-  display: none;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
+@media screen and (max-width: 992px) {
+  #recipes {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 50px;
+  }
+}
 article {
   min-width: 380px;
   max-width: 380px;
@@ -75,6 +86,14 @@ article {
   border-bottom-right-radius: 5px;
 }
 
+@media screen and (max-width: 992px) {
+  article {
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+    margin-bottom: 30px;
+  }
+}
 .picture {
   height: 178px;
   background-color: #C7BEBE;
@@ -135,6 +154,11 @@ header {
   background-color: #E7E7E7;
 }
 
+@media screen and (max-width: 992px) {
+  .form-control {
+    width: auto;
+  }
+}
 #SaisieRecherche1 {
   background-color: #E7E7E7;
 }
@@ -173,22 +197,42 @@ header {
   z-index: 5;
 }
 
-#dropdownMenuLink {
+@media screen and (max-width: 992px) {
+  .filters {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+}
+.dropdownMenuLink {
   font-size: 18px;
   margin-right: 30px;
   width: 170px;
   height: 69px;
   padding-top: 20px;
 }
-#dropdownMenuLink::after {
+.dropdownMenuLink::after {
   margin-left: 30px;
 }
-#dropdownMenuLink:focus, #dropdownMenuLink:hover {
+.dropdownMenuLink:focus, .dropdownMenuLink:hover {
   outline: 0px;
   -webkit-appearance: none;
   box-shadow: none;
 }
 
+@media screen and (max-width: 992px) {
+  .dropdownMenuLink {
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px;
+  }
+  .dropdown {
+    padding-bottom: 20px;
+  }
+}
 .btn-title {
   width: 100%;
   display: flex;
@@ -241,6 +285,12 @@ header {
   overflow: hidden;
 }
 
+@media screen and (max-width: 992px) {
+  .search-list {
+    margin: 0;
+    width: 100%;
+  }
+}
 .ingredients-list {
   background-color: #3382F7;
 }

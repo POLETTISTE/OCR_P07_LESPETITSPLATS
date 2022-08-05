@@ -1,8 +1,6 @@
 // ---------------------------INDEX.JS------------------------
 let result = [];
 
-// let recipesArray = []; // contient toutes les recettes d'origine (50);
-
 let arrTriIngredients = []; //TEMP contient toutes les noms des ingrédients avec doublons
 let arrTriAppliances = [];// TEMP contient toutes les noms des appareils avec doublons
 let arrTriUstensils = [];// TEMP contient toutes les noms des ustensiles sans doublons
@@ -85,7 +83,7 @@ inputForm1.addEventListener(('input'), (e) => {
 
 
   errorMessage.style.display = "none";
-  recipesSection.className = "d-flex flex-wrap justify-content-between col-12";
+  recipesSection.style.display='flex';
 
   actualValueInput1 = formatText(inputForm1.value);
   formatText(actualValueInput1);
@@ -232,19 +230,13 @@ function clickIngredient(e) {
   //regarder si input 1 !==0 etc...
   if(tags.length === 1) {
     searchWithTagIngredient(clickedIngredient);
-    console.log(filteredRecipes);
-
 
   }else if(tags.length >1){
-    console.log(filteredRecipes);
 
     searchWithTagIngredient(clickedIngredient);
-    console.log(filteredRecipes);
     filteringRecipeswithTags(filteredRecipes);
-    console.log(filteredRecipes);
 
   }
-  console.log(filteredRecipes);
   // on affiche les recettes triées
   displayCards(filteredRecipes);
 
@@ -352,8 +344,6 @@ function closeTheTag(){
   switch(classTarget) {
     case 'tag-ingredient tag rounded' : 
       index = tagsIngredients.indexOf(item);
-      console.log(item)
-      console.log(tagsIngredients)
 
       tagsIngredients.splice(index, 1);
       removeDisplayNoneWhenCloseTheTag(item, ingredientUl);
@@ -361,18 +351,13 @@ function closeTheTag(){
 
     case 'tag-appliance tag rounded' : 
       index = tagsAppliances.indexOf(item);
-      console.log(item)
-      console.log(tagsAppliances)
-
 
       tagsAppliances.splice(index, 1);
       removeDisplayNoneWhenCloseTheTag(item, applianceUl);
       break;
 
     case 'tag-ustensil tag rounded' : 
-    console.log(tagsUstensils)
       index = tagsUstensils.indexOf(item);
-      console.log(item)
       tagsUstensils.splice(index, 1);
       removeDisplayNoneWhenCloseTheTag(item, ustensilUl);
       break;
