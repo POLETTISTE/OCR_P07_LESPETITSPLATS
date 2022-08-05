@@ -227,14 +227,24 @@ function clickIngredient(e) {
   getTagCard(e, 'tag-ingredient');
   //on rajoute le nom du tag dans la liste des tags ingredients
   pushAndConcatItem(clickedIngredient, tagsIngredients);
-  console.log(filteredRecipes);
 
   //regarder si input 1 !==0 etc...
-  
-  searchWithTagIngredient(clickedIngredient, filteredRecipes);
+  if(tags.length === 1) {
+    searchWithTagIngredient(clickedIngredient, filteredRecipes);
+    console.log(filteredRecipes);
+
+
+  }else if(tags.length >1){
+    console.log(filteredRecipes);
+
+    searchWithTagIngredient(clickedIngredient, filteredRecipes);
+    console.log(filteredRecipes);
+    filteringRecipeswithTags(filteredRecipes);
+    console.log(filteredRecipes);
+
+  }
   console.log(filteredRecipes);
   // on affiche les recettes triées
-  
   displayCards(filteredRecipes);
 
   

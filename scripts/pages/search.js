@@ -117,13 +117,19 @@ function searchWithTagIngredient(clickedIngredient){
     filteredRecipes = recipes.filter(element => {
       return element.ingredients.some(resultIng)
     })
+  }
 
-
-  }else if ((tags.length >=1 && inputForm1.value!=="")) {
+  else if(tags.length ===1 && inputForm1.value!=="") {
     filteredRecipes = filteredRecipes.filter(element => {
       return element.ingredients.some(resultIng)
     })
-    
+  }
+  else if (tags.length >1) {
+    console.log(filteredRecipes);
+    filteredRecipes = filteredRecipes.filter(element => {
+      return element.ingredients.some(resultIng)
+    })
+    console.log(filteredRecipes)
   }
   return filteredRecipes
     
@@ -134,6 +140,7 @@ function searchWithTagAppliance(clickedAppliance){
   if(tags.length ===0 && inputForm1.value===""){
     filteredRecipes = recipes.filter(recipe => recipe);
   }
+
   else if (tags.length ===0 && inputForm1.value!=="") {
     filteredRecipes = filteredRecipes.filter(recipe => recipe);
   }
@@ -141,8 +148,14 @@ function searchWithTagAppliance(clickedAppliance){
     filteredRecipes = recipes.filter(element => {
       return formatText(element.appliance).includes(formatText(clickedAppliance))
     })
+  }
+  else if(tags.length ===1 && inputForm1.value!=="") {
+    filteredRecipes = filteredRecipes.filter(element => {
+      return formatText(element.appliance).includes(formatText(clickedAppliance))
+    })
+  }
 
-  }else if ((tags.length >=1 && inputForm1.value!=="")) {
+  else if (tags.length >1 ) {
     filteredRecipes = filteredRecipes.filter(element => {
       return formatText(element.appliance).includes(formatText(clickedAppliance))
     })
@@ -159,12 +172,19 @@ function searchWithTagUstensils(clickedUstensil){
     filteredRecipes = filteredRecipes.filter(element => {
 
     })
-  }  else if (tags.length ===1 && inputForm1.value===""){
+  }  
+  else if (tags.length ===1 && inputForm1.value===""){
     filteredRecipes = recipes.filter(element => {
       return element.ustensils.some(resultUst);
     })
   
-}else if ((tags.length >=1 && inputForm1.value!=="")) {
+}
+else if(tags.length ===1 && inputForm1.value!=="") {
+  filteredRecipes = filteredRecipes.filter(element => {
+    return element.ustensils.some(resultUst);
+  })
+}
+else if (tags.length >1) {
   filteredRecipes = filteredRecipes.filter(element => {
       return element.ustensils.some(resultUst);
     })
