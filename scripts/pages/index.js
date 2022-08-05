@@ -230,14 +230,14 @@ function clickIngredient(e) {
 
   //regarder si input 1 !==0 etc...
   if(tags.length === 1) {
-    searchWithTagIngredient(clickedIngredient, filteredRecipes);
+    searchWithTagIngredient(clickedIngredient);
     console.log(filteredRecipes);
 
 
   }else if(tags.length >1){
     console.log(filteredRecipes);
 
-    searchWithTagIngredient(clickedIngredient, filteredRecipes);
+    searchWithTagIngredient(clickedIngredient);
     console.log(filteredRecipes);
     filteringRecipeswithTags(filteredRecipes);
     console.log(filteredRecipes);
@@ -247,19 +247,18 @@ function clickIngredient(e) {
   // on affiche les recettes triées
   displayCards(filteredRecipes);
 
-  
-  
   //tri des listes
   inputForm2.value='';
   ingredientUl.textContent='';
   applianceUl.textContent='';
   ustensilUl.textContent='';
+
   dataIngredientsFiltered = filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients);
   dataAppliancesFiltered = filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances);
   dataUstensilsFiltered = filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils);
 
   
-  if (filteredRecipes.length !== 1 ) {
+  if (filteredRecipes.length > 1 ) {
 
     getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
     getList(dataAppliancesFiltered,'applianceLi', clickAppliance, applianceUl );
@@ -280,24 +279,34 @@ function clickAppliance(e) {
   let clickedAppliance = e.target.textContent;
   getTagCard(e, 'tag-appliance');
   pushAndConcatItem(clickedAppliance, tagsAppliances);
-  searchWithTagAppliance(clickedAppliance);
+  
+  
+  if(tags.length === 1) {
+    searchWithTagAppliance(clickedAppliance);
+  } 
+  else if(tags.length >1){
+    searchWithTagAppliance(clickedAppliance);
+    filteringRecipeswithTags(filteredRecipes);
+  }
   displayCards(filteredRecipes);
+
   inputForm3.value='';
   
   ingredientUl.textContent='';
   applianceUl.textContent='';
   ustensilUl.textContent='';
 
-  filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients);
-  filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances);
-  filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils);
+ dataIngredientsFiltered = filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients);
+ dataAppliancesFiltered = filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances);
+ dataUstensilsFiltered = filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils);
   
-  if (filteredRecipes.length !== 1 ) {
+  if (filteredRecipes.length > 1 ) {
 
     getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
     getList(dataAppliancesFiltered,'applianceLi', clickAppliance, applianceUl );
     getList(dataUstensilsFiltered,'ingredientLi', clickUstensil, ustensilUl );
   }
+  return filteredRecipes
 
 }
 
@@ -307,12 +316,20 @@ function clickUstensil(e) {
   errorMessage.style.display = "none";
   recipesSection.className = "d-flex flex-wrap justify-content-between col-12";
   // inputForm1.value = '';
-
   addDisplayNoneWhenCreateTag(e);
   let clickedUstensil = e.target.textContent;
   getTagCard(e, 'tag-ustensil');
   pushAndConcatItem(clickedUstensil, tagsUstensils)
-  searchWithTagUstensils(clickedUstensil);
+
+  if(tags.length === 1) {
+    searchWithTagUstensils(clickedUstensil);
+
+  } else if (tags.length >1){
+    searchWithTagUstensils(clickedUstensil);
+
+    filteringRecipeswithTags(filteredRecipes);
+
+  }
   displayCards(filteredRecipes);
 
   inputForm4.value='';
@@ -321,17 +338,19 @@ function clickUstensil(e) {
   applianceUl.textContent='';
   ustensilUl.textContent='';
   
-  filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients);
-  filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils);
-  filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances);
-
+  dataIngredientsFiltered = filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients);
+  dataAppliancesFiltered = filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances);
+  dataUstensilsFiltered = filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils);
+   
   
-  if (filteredRecipes.length !== 1) {
+  if (filteredRecipes.length > 1) {
 
     getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
     getList(dataAppliancesFiltered,'applianceLi', clickAppliance, applianceUl );
     getList(dataUstensilsFiltered,'ingredientLi', clickUstensil, ustensilUl );
   }
+  return filteredRecipes
+
 }
 
 
@@ -352,13 +371,13 @@ function closeTheTag(){
       break;
 
     case 'tag-appliance tag rounded' : 
-      index = tagsAppliances.indexOf(target.textContent);
+      index = tagsAppliances.indexOf(item);
       tagsAppliances.splice(index, 1);
       removeDisplayNoneWhenCloseTheTag(item, applianceUl);
       break;
 
     case 'tag-ustensil tag rounded' : 
-      index = tagsUstensils.indexOf(target.textContent);
+      index = tagsUstensils.indexOf(item);
       tagsUstensils.splice(index, 1);
       removeDisplayNoneWhenCloseTheTag(item, ustensilUl);
       break;
@@ -379,13 +398,12 @@ function closeTheTag(){
 
   // AFFICHE LA LISTE COMPLETE
   if (tags.length === 0) {
-    // on affiche toutes les recettes existantes
-    //on affiche la liste complète des ingrédients
-    displayCards(recipes);
-
-    getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
-    getList(dataAppliancesFiltered,'applianceLi', clickAppliance, applianceUl );
-    getList(dataUstensilsFiltered,'ustensilLi', clickUstensil, ustensilUl );
+    // // on affiche toutes les recettes existantes
+    // //on affiche la liste complète des ingrédients
+    inputForm1.value='';
+    inputForm1.select();
+  
+    init()
 
   }else {
     displayCards(filteredRecipes);
