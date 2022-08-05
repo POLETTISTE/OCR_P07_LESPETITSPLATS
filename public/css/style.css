@@ -257,6 +257,11 @@ header {
   box-shadow: none;
 }
 
+@media screen and (max-width: 992px) {
+  .saisie-recherche {
+    width: 100%;
+  }
+}
 #SaisieRecherche1 {
   font-weight: 400;
   font-size: 18px;
@@ -303,6 +308,13 @@ header {
   background-color: #ED6454;
 }
 
+@media screen and (max-width: 992px) {
+  .ingredients-list,
+.appliances-list,
+.ustensils-list {
+    height: 200px;
+  }
+}
 .ingredientUl,
 .applianceUl,
 .ustensilUl {
