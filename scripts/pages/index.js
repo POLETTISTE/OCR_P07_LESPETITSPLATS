@@ -83,6 +83,7 @@ inputForm1.addEventListener(('input'), (e) => {
   e.preventDefault();
   e.stopPropagation();
 
+
   errorMessage.style.display = "none";
   recipesSection.className = "d-flex flex-wrap justify-content-between col-12";
 

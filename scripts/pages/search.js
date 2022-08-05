@@ -30,6 +30,7 @@ function searchInputBar() {
 
   //MOINS DE 3 CARACTERES
   if (inputForm1.value.length <= 2) {
+
     
     // si on a aucune donnee filtree, on prend recipes
     if (tags.length === 0) {
@@ -37,9 +38,18 @@ function searchInputBar() {
 
       // si on a deja des donnes filtrees dans recipearray, alors on prend filteredRecipes pour filtrer
     } else {
-      filteredRecipes = filteredRecipes.filter(recipe => recipe);
+       deleteTags = document.querySelectorAll('.tag');
+      for (const element of deleteTags) {
+  
+        element.remove();
+        tagsIngredients=[];
+        tagsAppliances=[];
+        tagsUstensils=[];
+  
+      }
+      filteredRecipes = recipes.filter(recipe => recipe);
     }
-    displayCards(filteredRecipes);
+    displayCards(recipes);
   }
 
   // PLUS DE 2 CARACTERES
@@ -55,8 +65,8 @@ function searchInputBar() {
       inputForm1.value="";
       inputForm1.select();
 
-      let essai = document.querySelectorAll('.tag');
-      for (const element of essai) {
+      deleteTags = document.querySelectorAll('.tag');
+      for (const element of deleteTags) {
 
         element.remove();
         tagsIngredients=[];
