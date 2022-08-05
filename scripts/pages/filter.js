@@ -162,10 +162,9 @@ function searchWithTagUstensils(clickedUstensil){
     filteredRecipes = recipes.filter(recipe => recipe);
   }
   else if (tags.length ===0 && inputForm1.value!=="") {
-    filteredRecipes = filteredRecipes.filter(element => {
+    filteredRecipes = filteredRecipes.filter(recipe => recipe);
 
-    })
-  }  
+    }
   else if (tags.length ===1 && inputForm1.value===""){
     filteredRecipes = recipes.filter(element => {
       return element.ustensils.some(resultUst);
@@ -231,7 +230,7 @@ function filteringListUstensilsWithInputPrincipal(filteredRecipes) {
     element.ustensils.some(resultUst);   
 
     element.ustensils.forEach(el => {
-      if (!tagsUstensils.includes(CapitalizeFirstLetterText(el))) {
+      if (!tagsUstensils.includes(CapitalizeFirstLetterText(formatText(el)))) {
         filteredListUstensils.push(el);
       }
     })
@@ -295,8 +294,8 @@ function filteringListWithTagsUstensils(filteredRecipes){
       element.ustensils.some(resultUst);   
 
       element.ustensils.forEach(el => {
-        if (!tagsUstensils.includes(CapitalizeFirstLetterText(el))) {
-          filteredListUstensils.push(CapitalizeFirstLetterText(el));
+        if (!tagsUstensils.includes(CapitalizeFirstLetterText(formatText(el)))) {
+          filteredListUstensils.push((CapitalizeFirstLetterText(formatText(el))));
         }
       })
     })
@@ -403,7 +402,7 @@ function filteringRecipeswithTags(recipes) {
       console.log(el)
       console.log(tagsUstensils)
       tagsUstensils.forEach(tag => {
-        if (el.includes(formatText(tag))){
+        if (formatText(CapitalizeFirstLetterText(el)).includes(formatText(tag))){
 
           tempArray.push(element)
         }
