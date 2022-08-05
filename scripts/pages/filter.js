@@ -350,8 +350,11 @@ function filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils){
     element.ustensils.some(resultUst);   
 
     element.ustensils.forEach(el => {
+      console.log(el);
+      console.log(tagsUstensils)
+
       if (!tagsUstensils.includes(CapitalizeFirstLetterText(el))){
-        filteredListUstensils.push(el)
+        filteredListUstensils.push(formatText(el))
       }
     })
   })
@@ -372,6 +375,8 @@ function filteringRecipeswithTags(recipes) {
   result = recipes.filter(element => {
 
     element.ingredients.forEach(el => {
+      console.log(el.ingredient);
+      console.log(tagsIngredients)
       tagsIngredients.forEach(tag => {
         if (el.ingredient.includes(tag) ) {
           tempArray.push(element);
@@ -392,10 +397,12 @@ function filteringRecipeswithTags(recipes) {
 
   result = recipes.filter(element => {
     element.ustensils.forEach(el => {
+      console.log(el)
+      console.log(tagsUstensils)
       tagsUstensils.forEach(tag => {
-        if (el.includes(tag)){
+        if (el.includes(formatText(tag))){
 
-          tempArray.push(el)
+          tempArray.push(element)
         }
       })
     })

@@ -352,18 +352,27 @@ function closeTheTag(){
   switch(classTarget) {
     case 'tag-ingredient tag rounded' : 
       index = tagsIngredients.indexOf(item);
+      console.log(item)
+      console.log(tagsIngredients)
+
       tagsIngredients.splice(index, 1);
       removeDisplayNoneWhenCloseTheTag(item, ingredientUl);
       break;
 
     case 'tag-appliance tag rounded' : 
       index = tagsAppliances.indexOf(item);
+      console.log(item)
+      console.log(tagsAppliances)
+
+
       tagsAppliances.splice(index, 1);
       removeDisplayNoneWhenCloseTheTag(item, applianceUl);
       break;
 
     case 'tag-ustensil tag rounded' : 
+    console.log(tagsUstensils)
       index = tagsUstensils.indexOf(item);
+      console.log(item)
       tagsUstensils.splice(index, 1);
       removeDisplayNoneWhenCloseTheTag(item, ustensilUl);
       break;
