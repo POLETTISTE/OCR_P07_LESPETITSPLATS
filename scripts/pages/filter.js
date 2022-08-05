@@ -296,7 +296,7 @@ function filteringListWithTagsUstensils(filteredRecipes){
 
       element.ustensils.forEach(el => {
         if (!tagsUstensils.includes(CapitalizeFirstLetterText(el))) {
-          filteredListUstensils.push(el);
+          filteredListUstensils.push(CapitalizeFirstLetterText(el));
         }
       })
     })
@@ -315,6 +315,8 @@ function filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients) 
     element.ingredients.some(resultIng);   
           
     element.ingredients.forEach(el => {
+      console.log(el.ingredient);
+      console.log(tagsIngredients)
       if (!tagsIngredients.includes(el.ingredient)){
         filteredListIngredients.push(el.ingredient)
       }
@@ -346,6 +348,7 @@ function filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils){
   filteredListUstensils=[];
 
   result = filteredRecipes.filter(element => {
+    console.log(element);
     let resultUst = (item) => formatText(item).includes(element);
     element.ustensils.some(resultUst);   
 
@@ -354,7 +357,7 @@ function filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils){
       console.log(tagsUstensils)
 
       if (!tagsUstensils.includes(CapitalizeFirstLetterText(el))){
-        filteredListUstensils.push(formatText(el))
+        filteredListUstensils.push(CapitalizeFirstLetterText(el))
       }
     })
   })
