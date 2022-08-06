@@ -21,7 +21,9 @@ function searchInput1Datas(data) {
            formatText(element.description).includes(formatText(actualValueInput1)) ||
            element.ingredients.some(resultIng)
   })
-  return filteredRecipes=result
+  filteredRecipes=result;
+  
+  return filteredRecipes;
 }
 
 function searchInputBar() {
