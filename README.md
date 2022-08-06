@@ -1,2 +1,5 @@
 # OCR_P7_LESPETITSPLATS
 OPENCLASSROOMS P7
+
+consultable sur :
+polettiste.github.io/OCR_P7_LESPETITSPLATS/
