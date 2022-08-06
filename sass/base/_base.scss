@@ -5,6 +5,12 @@ body{
     margin-left: 70px;
     margin-right: 70px;
 }
+@media screen and (max-width: 992px){
+body {
+    margin-top: 15px;
+    margin-left: 5px;
+    margin-right: 5px;}
+}
 
 strong {
     text-decoration: underline;

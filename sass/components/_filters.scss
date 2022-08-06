@@ -37,9 +37,8 @@
 
 @media screen and (max-width: 992px){
     .dropdownMenuLink{
-        width:300px;
-        // max-width:500px;
-        display: flex;
+        width:350px;
+        display: block;
         justify-content: center;
         align-items: center;
         margin:0px;
@@ -55,6 +54,21 @@
     width: 100%;
     display: flex;
     justify-content: space-around;
+}
+@media screen and (max-width: 992px){
+    .btn-title{
+        align-items: center;
+        justify-content:space-between;
+
+    }
+    
+    .btn-title > span{
+        padding-left:80px;
+    }
+    .fa-chevron-down {
+        padding-right:30px;
+    }
+
 }
 
 
@@ -115,7 +129,7 @@
 
 .search-list {
     max-width:667px;
-    height:340px;
+    max-height:340px;
     margin-right:40px;
     color:white;
     overflow: hidden;
@@ -156,6 +170,8 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .ingredientLi,
@@ -170,6 +186,18 @@
     cursor: pointer;
     z-index:10;
 }
+@media screen and (max-width: 992px){
+    .ingredientLi,
+    .applianceLi,
+    .ustensilLi {
+    font-size: 14px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    }
+}
+
 
 .tagged {
     display: none;
