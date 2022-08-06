@@ -3,7 +3,6 @@
 // INPUTS
 
 function searchInput1Datas(data) {
-  let resultIng = (item) => formatText(item.ingredient).includes(formatText(actualValueInput1));
   // let newArray = [];
 
   // for (let i = 0; i < data.length; i++) {
@@ -15,7 +14,7 @@ function searchInput1Datas(data) {
 
   //   }
   // }
-  // console.log(newArray);
+  let resultIng = (item) => formatText(item.ingredient).includes(formatText(actualValueInput1));
 
   result = data.filter(element => {
     return formatText(element.name).includes(formatText(actualValueInput1)) || 

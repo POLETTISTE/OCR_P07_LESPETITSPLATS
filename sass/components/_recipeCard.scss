@@ -1,9 +1,9 @@
 #recipes {
-    width: fit-content;
+    width: 100%;
     margin-top: 130px;
     padding: 0px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
 }
 @media screen and (max-width: 992px){
