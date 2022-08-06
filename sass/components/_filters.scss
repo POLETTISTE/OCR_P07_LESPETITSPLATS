@@ -155,6 +155,7 @@
     .appliances-list,
     .ustensils-list {
         height:200px;
+        width: 100%;
     }
 }
 
@@ -170,6 +171,16 @@
     justify-content: center;
     align-items: center;
 }
+@media screen and (max-width: 992px){
+    .ingredientUl,
+.applianceUl,
+.ustensilUl {
+    grid-template-columns: repeat(2, 1fr);
+
+}
+}
+
+
 
 .ingredientLi,
 .applianceLi,
@@ -182,12 +193,24 @@
     width:fit-content;
     cursor: pointer;
     z-index:10;
+    &:hover{
+        text-decoration: underline;
+    }
 }
+// @media screen and (min-width:768px) and (max-width: 992px){
+//     .ingredientLi,
+//     .applianceLi,
+//     .ustensilLi {
+//             font-size: 14px;
+
+//     }
+// }
+
 @media screen and (max-width: 992px){
     .ingredientLi,
     .applianceLi,
     .ustensilLi {
-    font-size: 14px;
+    // font-size: 14px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;

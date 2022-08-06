@@ -333,6 +333,7 @@ header {
 .appliances-list,
 .ustensils-list {
     height: 200px;
+    width: 100%;
   }
 }
 .ingredientUl,
@@ -347,6 +348,13 @@ header {
   align-items: center;
 }
 
+@media screen and (max-width: 992px) {
+  .ingredientUl,
+.applianceUl,
+.ustensilUl {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 .ingredientLi,
 .applianceLi,
 .ustensilLi {
@@ -359,12 +367,16 @@ header {
   cursor: pointer;
   z-index: 10;
 }
+.ingredientLi:hover,
+.applianceLi:hover,
+.ustensilLi:hover {
+  text-decoration: underline;
+}
 
 @media screen and (max-width: 992px) {
   .ingredientLi,
 .applianceLi,
 .ustensilLi {
-    font-size: 14px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
