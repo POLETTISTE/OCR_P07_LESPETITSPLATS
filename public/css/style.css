@@ -67,7 +67,7 @@ span {
   margin-top: 130px;
   padding: 0px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   flex-wrap: wrap;
 }
 

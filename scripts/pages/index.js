@@ -4,12 +4,12 @@ let result = [];
 let arrTriIngredients = []; //TEMP contient toutes les noms des ingrédients avec doublons
 let arrTriAppliances = [];// TEMP contient toutes les noms des appareils avec doublons
 let arrTriUstensils = [];// TEMP contient toutes les noms des ustensiles sans doublons
-let filteredListIngredients = [];
-let filteredListAppliances = [];
-let filteredListUstensils = [];
-let dataIngredientsFiltered = []; // contient toutes les noms des ingrédients sans doublons
-let dataAppliancesFiltered = []; // contient toutes les noms des appareils sans doublons
-let dataUstensilsFiltered = []; // contient toutes les noms des ustensiles sans doublons
+let filteredListIngredients = [];// contient toutes les noms des ingrédients sans doublons
+let filteredListAppliances = [];// contient toutes les noms des ingrédients sans doublons
+let filteredListUstensils = [];// contient toutes les noms des ingrédients sans doublons
+let dataIngredientsFiltered = []; // contient toutes les noms des ingrédients avec doublons
+let dataAppliancesFiltered = []; // contient toutes les noms des appareils avec doublons
+let dataUstensilsFiltered = []; // contient toutes les noms des ustensiles avec doublons
 let tagsIngredients = []; //ajoute / supprime tag + stocke element dans array
 let tagsAppliances = []; //ajoute / supprime tag + stocke element dans array
 let tagsUstensils = []; //ajoute / supprime tag + stocke element dans array
@@ -218,7 +218,7 @@ function pushAndConcatItem(clickedItem,tag){
 function clickIngredient(e) {
 
   errorMessage.style.display = "none";
-  recipesSection.className = "d-flex flex-wrap justify-content-between col-12";
+  recipesSection.style.display = "flex";
   // inputForm1.value='';
   addDisplayNoneWhenCreateTag(e);
   let clickedIngredient = e.target.textContent;
@@ -228,14 +228,13 @@ function clickIngredient(e) {
   pushAndConcatItem(clickedIngredient, tagsIngredients);
 
   //regarder si input 1 !==0 etc...
-  if(tags.length === 1) {
-    searchWithTagIngredient(clickedIngredient);
+  if (tags.length === 1) {
 
-  }else if(tags.length >1){
+    searchWithTagIngredient(clickedIngredient);
+  } else if (tags.length >1){
 
     searchWithTagIngredient(clickedIngredient);
     filteringRecipeswithTags(filteredRecipes);
-
   }
   // on affiche les recettes triées
   displayCards(filteredRecipes);
@@ -260,7 +259,7 @@ function clickIngredient(e) {
 function clickAppliance(e) {
 
   errorMessage.style.display = "none";
-  recipesSection.className = "d-flex flex-wrap justify-content-between col-12";
+  recipesSection.style.display = "flex";
 
   // inputForm1.value = '';
   addDisplayNoneWhenCreateTag(e);
@@ -297,7 +296,7 @@ function clickAppliance(e) {
 function clickUstensil(e) {
 
   errorMessage.style.display = "none";
-  recipesSection.className = "d-flex flex-wrap justify-content-between col-12";
+  recipesSection.style.display = "flex";
   // inputForm1.value = '';
   addDisplayNoneWhenCreateTag(e);
   let clickedUstensil = e.target.textContent;

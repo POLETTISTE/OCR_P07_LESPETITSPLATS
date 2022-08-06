@@ -3,6 +3,8 @@
 // INPUTS
 
 function searchInput1Datas(data) {
+
+
   // let newArray = [];
 
   // for (let i = 0; i < data.length; i++) {
@@ -22,7 +24,7 @@ function searchInput1Datas(data) {
            element.ingredients.some(resultIng)
   })
   filteredRecipes=result;
-  
+
   return filteredRecipes;
 }
 
