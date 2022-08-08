@@ -4,28 +4,30 @@
 
 function searchInput1Datas(data) {
 
-
-  // let newArray = [];
-
-  // for (let i = 0; i < data.length; i++) {
-  //   data[i]
-  //   if (formatText(data[i].name).includes(formatText(actualValueInput1)) || 
-  //   formatText(data[i].description).includes(formatText(actualValueInput1)) ||
-  //   data[i].ingredients.some(resultIng)) {
-  // newArray.push(data[i]);
-
-  //   }
-  // }
   let resultIng = (item) => formatText(item.ingredient).includes(formatText(actualValueInput1));
+  let newArray = [];
 
-  result = data.filter(element => {
-    return formatText(element.name).includes(formatText(actualValueInput1)) || 
-           formatText(element.description).includes(formatText(actualValueInput1)) ||
-           element.ingredients.some(resultIng)
-  })
-  filteredRecipes=result;
+  for (let i = 0; i < data.length; i++) {
+    data[i]
+    if (formatText(data[i].name).includes(formatText(actualValueInput1)) || 
+    formatText(data[i].description).includes(formatText(actualValueInput1)) ||
+    data[i].ingredients.some(resultIng)) {
+      newArray.push(data[i]);
+    }
+  };
+    filteredRecipes=newArray;
 
   return filteredRecipes;
+  
+
+  // result = data.filter(element => {
+  //   return formatText(element.name).includes(formatText(actualValueInput1)) || 
+  //          formatText(element.description).includes(formatText(actualValueInput1)) ||
+  //          element.ingredients.some(resultIng)
+  // })
+  // filteredRecipes=result;
+
+  // return filteredRecipes;
 }
 
 function searchInputBar() {
