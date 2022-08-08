@@ -8,23 +8,26 @@ function searchInput1Datas(data) {
   let newArray = [];
 
   for (let i = 0; i < data.length; i++) {
-   result =  data[i]
+   result =  data[i];
     if (formatText(data[i].name).includes(formatText(actualValueInput1)) || 
     formatText(data[i].description).includes(formatText(actualValueInput1)) ||
     data[i].ingredients.some(resultIng)) {
       newArray.push(result);
     }
-  };
+  }
+
     filteredRecipes = newArray;
 
   return filteredRecipes;
   
+  // let resultIng = (item) => formatText(item.ingredient).includes(formatText(actualValueInput1));
 
   // result = data.filter(element => {
+
   //   return formatText(element.name).includes(formatText(actualValueInput1)) || 
   //          formatText(element.description).includes(formatText(actualValueInput1)) ||
-  //          element.ingredients.some(resultIng)
-  // })
+  //          element.ingredients.some(resultIng);
+  // });
   // filteredRecipes=result;
 
   // return filteredRecipes;
