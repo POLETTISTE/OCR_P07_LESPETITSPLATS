@@ -103,6 +103,8 @@ inputForm1.addEventListener(('input'), (e) => {
   getList(dataUstensilsFiltered,'ustensilLi', clickUstensil, ustensilUl);
 });
 
+
+// RECHERCHE INGREDIENT
 inputForm2.addEventListener('input', (e) => {
 
   e.preventDefault();
@@ -117,8 +119,7 @@ inputForm2.addEventListener('input', (e) => {
   
 })
 
-
-
+// RECHERCHE APPLIANCE
 inputForm3.addEventListener('input', (e) => {
 
   e.preventDefault();
@@ -132,6 +133,7 @@ inputForm3.addEventListener('input', (e) => {
 
 })
 
+// RECHERCHE USTENSIL
 inputForm4.addEventListener('input', (e) => {
   e.preventDefault();
   e.stopPropagation();
@@ -207,7 +209,7 @@ dropdownDanger.addEventListener('click', (e)=> {
 });
 
 
-//AJOUT TAG DANS ARRAY TAGS
+//AJOUT D'UN TAG DANS ARRAY TAGS
 function pushAndConcatItem(clickedItem,tag){
 
   tag.push(clickedItem);
@@ -330,7 +332,6 @@ function clickUstensil(e) {
 
 }
 
-
 function closeTheTag(){
 
   inputForm1.textContent='';
@@ -363,7 +364,6 @@ function closeTheTag(){
       
     default:
   }
-
 
   removeTag(target);
 

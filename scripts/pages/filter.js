@@ -2,80 +2,45 @@
 
 // INPUTS
 
-function searchInput1Datas(data) {
-
-
-  // let newArray = [];
-
-  // for (let i = 0; i < data.length; i++) {
-  //   data[i]
-  //   if (formatText(data[i].name).includes(formatText(actualValueInput1)) || 
-  //   formatText(data[i].description).includes(formatText(actualValueInput1)) ||
-  //   data[i].ingredients.some(resultIng)) {
-  // newArray.push(data[i]);
-
-  //   }
-  // }
+function searchInput1Datas(data){
   let resultIng = (item) => formatText(item.ingredient).includes(formatText(actualValueInput1));
 
   result = data.filter(element => {
     return formatText(element.name).includes(formatText(actualValueInput1)) || 
            formatText(element.description).includes(formatText(actualValueInput1)) ||
-           element.ingredients.some(resultIng)
+           element.ingredients.some(resultIng);
   })
   filteredRecipes=result;
 
   return filteredRecipes;
 }
 
-function searchInputBar() {
+function searchInputBar(){
+  deleteTags();
 
-
-  //MOINS DE 3 CARACTERES
-  if (inputForm1.value.length <= 2) {
-
-    // si on a aucune donnee filtree, on prend recipes
-    if (tags.length === 0) {
-      filteredRecipes = recipes.filter(recipe => recipe);
-
-      // si on a deja des donnes filtrees dans recipearray, alors on prend filteredRecipes pour filtrer
-    } else {
-      deleteTags();
-      filteredRecipes = recipes.filter(recipe => recipe);
-    }
-    displayCards(recipes);
+  //LORSQU'IL Y A MOINS DE 3 CARACTERES
+  if (inputForm1.value.length <= 2){
+    filteredRecipes = recipes.filter(recipe => recipe);
   }
 
-  // PLUS DE 2 CARACTERES
-  else if (inputForm1.value.length > 2) {
-    
+  // LORSQU'IL Y A PLUS DE 2 CARACTERES
+  else if (inputForm1.value.length > 2){
     searchInput1Datas(recipes);
-    // si on a aucune donnee filtree, on prend recipes
-    if (filteredRecipes.length === 0) {
-
+    if (filteredRecipes.length === 0){
       errorMessage.style.display = "flex";
       recipesSection.style.display = "none";
-      
       inputForm1.value="";
       inputForm1.select();
-
-      deleteTags();
-
       init();
-      filteredRecipes = recipes;
-      // displayCards(filteredRecipes);
-      // si on a deja des donnes filtrees dans recipearray, alors on prend filteredRecipes pour filtrer
-    }else  {
-      searchInput1Datas(filteredRecipes);
-
     }
-    displayCards(filteredRecipes)
-    
-
-
+  } else {
+    searchInput1Datas(filteredRecipes);
   }
+  displayCards(filteredRecipes);
 }
 
+
+// RECHERCHE PAR INPUT SECONDAIRE
 function searchInputIngredient(dataIngredientsFiltered) {
   filteredListIngredients = dataIngredientsFiltered.filter(element => {
     return formatText(element).includes(formatText(actualValueInput2))

@@ -1,11 +1,13 @@
 // ---------------------------DISPLAY.JS------------------------
+
 //remove physically tag button
-function removeTag(item) {
+function removeTag(item){
   item.textContent='';
   item.remove();
 }
 
-function getTagCloseButton(item) {
+
+function getTagCloseButton(item){
   let closeTag = document.createElement('span');
   closeTag.classList.add('tag-close');
   closeTag.innerHTML = '<i class="fa-regular fa-circle-xmark"></i>';
@@ -35,23 +37,19 @@ function addDisplayNoneWhenCreateTag(e) {
   e.target.classList.add('tagged'); 
 }
 
-
-
-
-function removeDisplayNoneWhenCloseTheTag(item, source) {
-  
-  const elements = source.childNodes
+function removeDisplayNoneWhenCloseTheTag(item, source){
+  const elements = source.childNodes;
  
   elements.forEach(element => {
     if (element.textContent === item) {
       element.classList.remove('tagged');
-    }
-  })
+    };
+  });
 }
 
 
 //INITIALISATION LANCEMENT DES 3 FONCTIONS 
-async function displayIngredientsAppliancesUstensils() {
+async function displayIngredientsAppliancesUstensils(){
   getList(dataIngredientsFiltered,'ingredientLi', clickIngredient, ingredientUl );
   getList(dataAppliancesFiltered,'applianceLi', clickAppliance, applianceUl );
   getList(dataUstensilsFiltered,'ustensilLi', clickUstensil, ustensilUl );
