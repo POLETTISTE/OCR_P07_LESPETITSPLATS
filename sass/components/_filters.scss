@@ -4,8 +4,8 @@
     flex-wrap: wrap;
     position:absolute;
     z-index:5;
-
 }
+
 @media screen and (max-width: 992px){
     .filters {
         // max-width:667px;
@@ -14,7 +14,6 @@
         align-items: center;
         position: relative;
     }
-
 }
 
 .dropdownMenuLink{
@@ -65,11 +64,7 @@
     .fa-chevron-down {
         padding-right:30px;
     }
-
 }
-
-
-
 
 .saisie-recherche {
     max-width:667px;
@@ -91,9 +86,9 @@
 }
 
 @media screen and (max-width: 992px){
-.saisie-recherche {
-    width:100%;
-}
+    .saisie-recherche {
+        width:100%;
+    }
 }
 
 
@@ -111,18 +106,12 @@
 #SaisieRecherche3 {
     background-color: #68D9A4;
     color:white;
-
-
 }
 
 #SaisieRecherche4 {
     background-color: #ED6454;
     color:white;
-
 }
-
-
-
 
 .search-list {
     max-width:667px;
@@ -131,6 +120,7 @@
     color:white;
     overflow: hidden;
 }
+
 @media screen and (max-width: 1200px){
     .search-list {
         width:450px;
@@ -142,13 +132,11 @@
     .search-list {
         margin: 0;
         width:100%;
-
     }
 }
 
 .ingredients-list {
     background-color: #3382F7;
-
 }
 
 .appliances-list {
@@ -158,6 +146,7 @@
 .ustensils-list {
     background-color: #ED6454;
 }
+
 @media screen and (max-width: 992px){
     .ingredients-list,
     .appliances-list,
@@ -179,6 +168,7 @@
     justify-content: center;
     align-items: center;
 }
+
 @media screen and (max-width: 992px){
     .ingredientUl,
     .applianceUl,
@@ -209,18 +199,13 @@
     .ingredientLi,
     .applianceLi,
     .ustensilLi {
-    // font-size: 14px;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
-    overflow: hidden;
-    }
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+        }
 }
 
-
-.tagged {
-    display: none;
-}
 
 
 
