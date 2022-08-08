@@ -8,14 +8,14 @@ function searchInput1Datas(data) {
   let newArray = [];
 
   for (let i = 0; i < data.length; i++) {
-    data[i]
+   result =  data[i]
     if (formatText(data[i].name).includes(formatText(actualValueInput1)) || 
     formatText(data[i].description).includes(formatText(actualValueInput1)) ||
     data[i].ingredients.some(resultIng)) {
-      newArray.push(data[i]);
+      newArray.push(result);
     }
   };
-    filteredRecipes=newArray;
+    filteredRecipes = newArray;
 
   return filteredRecipes;
   
