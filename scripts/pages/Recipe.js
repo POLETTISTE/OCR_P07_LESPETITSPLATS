@@ -5,10 +5,6 @@ function Recipe(data) {
   const dataIngredients = ingredients;
   const dataAppliances = appliance;
   const dataUstensils = ustensils;
-  
-  
-  // //PUSH TOUTES LES RECETTES DANS ARRAY RecipesArray
-  // recipesArray.push(dataRecipes);
 
   //CREATION DE LA CARTE RECETTE
   function getRecipeCard() {
@@ -96,8 +92,6 @@ function Recipe(data) {
   dataUstensilsFiltered = arrTriUstensils.filter(function(ele , pos){
     return arrTriUstensils.indexOf(ele) === pos;
   });
-
-
 
   return { id, name, servings, ingredients, time, description, appliance, ustensils, getRecipeCard }
 }

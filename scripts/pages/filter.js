@@ -2,6 +2,7 @@
 
 // INPUTS
 
+// SEARCH IN MAIN INPUT
 function searchInput1Datas(data){
   let resultIng = (item) => formatText(item.ingredient).includes(formatText(actualValueInput1));
 
@@ -41,6 +42,7 @@ function searchInputBar(){
 
 
 // RECHERCHE PAR INPUT SECONDAIRE
+// MET LA LISTE A JOUR DES ELEMENTS QUI CORRESPONDENT A LA SAISIE DANS L'INPUT
 function searchInputIngredient(dataIngredientsFiltered) {
   filteredListIngredients = dataIngredientsFiltered.filter(element => {
     return formatText(element).includes(formatText(actualValueInput2))
@@ -78,7 +80,6 @@ function searchWithTagIngredient(clickedIngredient){
       return element.ingredients.some(resultIng)
     })
   }
-
   else if(tags.length ===1 && inputForm1.value!=="") {
     filteredRecipes = filteredRecipes.filter(element => {
       return element.ingredients.some(resultIng)
@@ -90,7 +91,6 @@ function searchWithTagIngredient(clickedIngredient){
     })
   }
   return filteredRecipes
-    
 }
 
 function searchWithTagAppliance(clickedAppliance){
@@ -148,6 +148,7 @@ function searchWithTagUstensils(clickedUstensil){
   }
 }
 
+// FILTRE LES LISTES DES INPUTS SECONDAIRES GRACE A LA SAISIE DANS L'INPUT PRINCIPAL
 function filteringListIngredientsWithInputPrincipal(filteredRecipes) {
 
   filteredListIngredients=[];
@@ -206,7 +207,7 @@ function filteringListUstensilsWithInputPrincipal(filteredRecipes) {
 
 }
 
-
+// FILTRE LES LISTES DES RECHERCHES SECONDAIRES GRACE A LA SAISIE DANS L'INPUT SECONDAIRE
 function filteringListWithTagsIngredients(filteredRecipes){
 
   filteredListIngredients=[];
@@ -270,6 +271,7 @@ function filteringListWithTagsUstensils(filteredRecipes){
 
 }
 
+// FILTRE LES LISTES DES RECHERCHES SECONDAIRES AVEC LES TAGS DEJA SELECTIONNES
 function filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients) {
   filteredListIngredients=[];
   result = filteredRecipes.filter(element => {
@@ -327,17 +329,13 @@ function filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils){
 }
 
 
-// when remove a tag
+// MISE A JOUR DES RECETTES FILTREES A LA DESTRUCTION D'UN TAG
 
 function filteringRecipeswithTags(recipes) {
-
   let tempArray=[];
 
-
   result = recipes.filter(element => {
-
     element.ingredients.forEach(el => {
-
       tagsIngredients.forEach(tag => {
         if (el.ingredient.includes(tag) ) {
           tempArray.push(element);
@@ -350,7 +348,6 @@ function filteringRecipeswithTags(recipes) {
   result = recipes.filter(element => {
     tagsAppliances.forEach(tag => {
       if (element.appliance.includes(tag)){
-
         tempArray.push(element)
       }
     })
@@ -358,19 +355,15 @@ function filteringRecipeswithTags(recipes) {
 
   result = recipes.filter(element => {
     element.ustensils.forEach(el => {
-
       tagsUstensils.forEach(tag => {
         if (formatText(CapitalizeFirstLetterText(el)).includes(formatText(tag))){
-
           tempArray.push(element)
         }
       })
     })
   })
 
-
   filteredRecipes = [...new Set(tempArray)];
 
   return filteredRecipes;
-
 }

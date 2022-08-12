@@ -1,3 +1,5 @@
+
+//FETCH JSON RECIPES
 async function getRecipes() {
   await fetch('data/recipes.json')
     .then((res) => res.json())

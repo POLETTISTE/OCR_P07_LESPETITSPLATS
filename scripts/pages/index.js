@@ -81,7 +81,6 @@ inputForm1.addEventListener(('input'), (e) => {
   e.preventDefault();
   e.stopPropagation();
 
-
   errorMessage.style.display = "none";
   recipesSection.style.display='flex';
 
@@ -332,9 +331,10 @@ function clickUstensil(e) {
 
 }
 
+// A LA FERMETURE D'UN TAG
 function closeTheTag(){
-
   inputForm1.textContent='';
+
   //on récupère le nom du tag
   const target = this.parentNode;
   let item = target.textContent;
@@ -377,20 +377,21 @@ function closeTheTag(){
 
   // AFFICHE LA LISTE COMPLETE
   if (tags.length === 0) {
-    // // on affiche toutes les recettes existantes
-    // //on affiche la liste complète des ingrédients
+
     inputForm1.value='';
     inputForm1.select();
-  
-    init()
+  //on revient au stade initial (display all recipes)
+    init();
 
   }else {
+    //(display filteredRecipes)
     displayCards(filteredRecipes);
 
     refreshLists()
   } 
 }
 
+// ON SUPPRIME TOUS LES TAGS
 function deleteTags(){
   let deleteTag = document.querySelectorAll('.tag');
 
@@ -403,6 +404,7 @@ function deleteTags(){
   }
 }
 
+// ON REINITIALISE LES LISTES ORIGINELLES
 function refreshLists() {
   dataIngredientsFiltered =  filteringListIngredientsWhenClickOnAnotherTag(filteredListIngredients);
   dataAppliancesFiltered = filteringListAppliancesWhenClickOnAnotherTag(filteredListAppliances);
