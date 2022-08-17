@@ -333,7 +333,7 @@ function clickUstensil(e) {
 
 // A LA FERMETURE D'UN TAG
 function closeTheTag(){
-  // inputForm1.textContent='';
+  console.log('TEST')
 
   //on récupère le nom du tag
   const target = this.parentNode;
@@ -395,7 +395,7 @@ function closeTheTag(){
     
   } else if (tags.length !== 0 && inputForm1.value!==''){
 
-    filteredRecipes =  filteringRecipeswithTags(filteredRecipes);
+    filteredRecipes =  filteringRecipeswithTags(recipes);
     searchInput1Datas(filteredRecipes);
 
     displayCards(filteredRecipes);

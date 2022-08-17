@@ -344,7 +344,7 @@ function filteringRecipeswithTags(recipes) {
   result = recipes.filter(element => {
     element.ingredients.forEach(el => {
       tagsIngredients.forEach(tag => {
-        if (el.ingredient.includes(tag) ) {
+        if (formatText(el.ingredient).includes(formatText(tag)) ) {
           tempArray.push(element);
         }
       })
@@ -354,7 +354,7 @@ function filteringRecipeswithTags(recipes) {
 
   result = recipes.filter(element => {
     tagsAppliances.forEach(tag => {
-      if (element.appliance.includes(tag)){
+      if (formatText(element.appliance).includes(formatText(tag))){
         tempArray.push(element)
       }
     })
@@ -363,7 +363,9 @@ function filteringRecipeswithTags(recipes) {
   result = recipes.filter(element => {
     element.ustensils.forEach(el => {
       tagsUstensils.forEach(tag => {
-        if (formatText(CapitalizeFirstLetterText(el)).includes(formatText(tag))){
+        if (formatText(el).includes(formatText(tag))){
+          console.log(el);
+          console.log(formatText(tag))
           tempArray.push(element)
         }
       })
