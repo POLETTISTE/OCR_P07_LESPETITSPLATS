@@ -17,26 +17,33 @@ function searchInput1Datas(data){
 }
 
 function searchInputBar(){
-  deleteTags();
+
 
   //LORSQU'IL Y A MOINS DE 3 CARACTERES
-  if (inputForm1.value.length <= 2){
+  if (inputForm1.value.length <= 2 && tags.length===0){
     filteredRecipes = recipes.filter(recipe => recipe);
+  }
+  else if (inputForm1.value.length <= 2 && tags.length!==0){
+    filteredRecipes = filteredRecipes.filter(recipe => recipe);
   }
 
   // LORSQU'IL Y A PLUS DE 2 CARACTERES
-  else if (inputForm1.value.length > 2){
+  else if (inputForm1.value.length > 2 && tags.length===0){
+    
     searchInput1Datas(recipes);
     if (filteredRecipes.length === 0){
       errorMessage.style.display = "flex";
       recipesSection.style.display = "none";
-      inputForm1.value="";
-      inputForm1.select();
+      // inputForm1.value="";
+      // inputForm1.select();
       init();
     }
-  } else {
+  } else if (inputForm1.value.length > 2 && tags.length!==0){
+
     searchInput1Datas(filteredRecipes);
+    filteringRecipeswithTags(filteredRecipes)
   }
+
   displayCards(filteredRecipes);
 }
 
@@ -355,6 +362,9 @@ function filteringRecipeswithTags(recipes) {
 
   result = recipes.filter(element => {
     element.ustensils.forEach(el => {
+      console.log(el);
+      console.log(CapitalizeFirstLetterText(el));
+
       tagsUstensils.forEach(tag => {
         if (formatText(CapitalizeFirstLetterText(el)).includes(formatText(tag))){
           tempArray.push(element)

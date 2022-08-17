@@ -333,7 +333,7 @@ function clickUstensil(e) {
 
 // A LA FERMETURE D'UN TAG
 function closeTheTag(){
-  inputForm1.textContent='';
+  // inputForm1.textContent='';
 
   //on récupère le nom du tag
   const target = this.parentNode;
@@ -373,22 +373,33 @@ function closeTheTag(){
   applianceUl.textContent='';
   ustensilUl.textContent ='';
 
-  filteredRecipes =  filteringRecipeswithTags(recipes);
-
+  
   // AFFICHE LA LISTE COMPLETE
-  if (tags.length === 0) {
+  if (tags.length === 0 && inputForm1.value==='') {
 
-    inputForm1.value='';
-    inputForm1.select();
-  //on revient au stade initial (display all recipes)
+    //on revient au stade initial (display all recipes)
     init();
-
-  }else {
-    //(display filteredRecipes)
+  } else if (tags.length === 0 && inputForm1.value!==''){
+    searchInput1Datas(filteredRecipes);
     displayCards(filteredRecipes);
-
     refreshLists()
-  } 
+    
+    
+  }else if(tags.length !== 0 && inputForm1.value===''){
+    filteredRecipes =  filteringRecipeswithTags(recipes);
+    displayCards(filteredRecipes);
+    refreshLists()
+    
+  } else if (tags.length !== 0 && inputForm1.value!==''){
+    filteredRecipes =  filteringRecipeswithTags(recipes);
+
+    searchInput1Datas(filteredRecipes);
+    filteringRecipeswithTags(filteredRecipes)
+
+    displayCards(filteredRecipes);
+    refreshLists();
+
+  }
 }
 
 // ON SUPPRIME TOUS LES TAGS
