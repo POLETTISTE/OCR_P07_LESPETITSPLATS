@@ -380,7 +380,8 @@ function closeTheTag(){
     //on revient au stade initial (display all recipes)
     init();
   } else if (tags.length === 0 && inputForm1.value!==''){
-    searchInput1Datas(filteredRecipes);
+    filteredRecipes = recipes
+    filteredRecipes = searchInput1Datas(filteredRecipes);
     displayCards(filteredRecipes);
     refreshLists()
     
