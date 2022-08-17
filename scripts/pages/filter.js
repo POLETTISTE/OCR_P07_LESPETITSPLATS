@@ -362,9 +362,6 @@ function filteringRecipeswithTags(recipes) {
 
   result = recipes.filter(element => {
     element.ustensils.forEach(el => {
-      console.log(el);
-      console.log(CapitalizeFirstLetterText(el));
-
       tagsUstensils.forEach(tag => {
         if (formatText(CapitalizeFirstLetterText(el)).includes(formatText(tag))){
           tempArray.push(element)

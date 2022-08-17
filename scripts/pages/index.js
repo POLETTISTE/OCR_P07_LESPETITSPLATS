@@ -388,19 +388,17 @@ function closeTheTag(){
     
     
   }else if(tags.length !== 0 && inputForm1.value===''){
-    filteredRecipes = recipes
 
     filteredRecipes =  filteringRecipeswithTags(recipes);
     displayCards(filteredRecipes);
     refreshLists()
     
   } else if (tags.length !== 0 && inputForm1.value!==''){
-    filteredRecipes = recipes
 
     filteredRecipes =  filteringRecipeswithTags(recipes);
-
     searchInput1Datas(filteredRecipes);
-    filteringRecipeswithTags(filteredRecipes)
+    console.log(filteredRecipes)
+    // filteringRecipeswithTags(filteredRecipes)
 
     displayCards(filteredRecipes);
     refreshLists();
