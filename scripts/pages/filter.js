@@ -41,7 +41,7 @@ function searchInputBar(){
   } else if (inputForm1.value.length > 2 && tags.length!==0){
 
     searchInput1Datas(filteredRecipes);
-    filteringRecipeswithTags(filteredRecipes)
+    // filteringRecipeswithTags(filteredRecipes)
   }
 
   displayCards(filteredRecipes);
@@ -340,39 +340,42 @@ function filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils){
 
 function filteringRecipeswithTags(recipes) {
   let tempArray=[];
+  let ingredients=[];
+  let appliances=[];
+  let ustensils=[];
 
-  result = recipes.filter(element => {
+  recipes.filter(element => {
     element.ingredients.forEach(el => {
       tagsIngredients.forEach(tag => {
         if (formatText(el.ingredient).includes(formatText(tag)) ) {
-          tempArray.push(element);
+          ingredients.push(element);
         }
       })
     })
   })
   
 
-  result = recipes.filter(element => {
+  recipes.filter(element => {
     tagsAppliances.forEach(tag => {
       if (formatText(element.appliance).includes(formatText(tag))){
-        tempArray.push(element)
+        appliances.push(element)
       }
     })
   })
 
-  result = recipes.filter(element => {
+  recipes.filter(element => {
     element.ustensils.forEach(el => {
       tagsUstensils.forEach(tag => {
         if (formatText(el).includes(formatText(tag))){
           console.log(el);
           console.log(formatText(tag))
-          tempArray.push(element)
+          ustensils.push(element)
         }
       })
     })
   })
 
-  filteredRecipes = [...new Set(tempArray)];
+  filteredRecipes = [...new Set([...ingredients, ...appliances, ...ustensils])];
 
   return filteredRecipes;
 }

@@ -235,7 +235,7 @@ function clickIngredient(e) {
   } else if (tags.length >1){
 
     searchWithTagIngredient(clickedIngredient);
-    filteringRecipeswithTags(filteredRecipes);
+    // filteringRecipeswithTags(filteredRecipes);
   }
   // on affiche les recettes triées
   displayCards(filteredRecipes);
@@ -274,7 +274,7 @@ function clickAppliance(e) {
   } 
   else if(tags.length >1){
     searchWithTagAppliance(clickedAppliance);
-    filteringRecipeswithTags(filteredRecipes);
+    // filteringRecipeswithTags(filteredRecipes);
   }
   displayCards(filteredRecipes);
 
@@ -310,7 +310,7 @@ function clickUstensil(e) {
   } else if (tags.length >1){
     searchWithTagUstensils(clickedUstensil);
 
-    filteringRecipeswithTags(filteredRecipes);
+    // filteringRecipeswithTags(filteredRecipes);
 
   }
   displayCards(filteredRecipes);
