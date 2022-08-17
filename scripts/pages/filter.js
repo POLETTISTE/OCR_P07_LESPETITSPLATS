@@ -339,7 +339,7 @@ function filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils){
 // MISE A JOUR DES RECETTES FILTREES A LA DESTRUCTION D'UN TAG
 
 function filteringRecipeswithTags(recipes) {
-  let tempArray=[];
+
   let ingredients=[];
   let appliances=[];
   let ustensils=[];
@@ -354,7 +354,6 @@ function filteringRecipeswithTags(recipes) {
     })
   })
   
-
   recipes.filter(element => {
     tagsAppliances.forEach(tag => {
       if (formatText(element.appliance).includes(formatText(tag))){
@@ -367,15 +366,24 @@ function filteringRecipeswithTags(recipes) {
     element.ustensils.forEach(el => {
       tagsUstensils.forEach(tag => {
         if (formatText(el).includes(formatText(tag))){
-          console.log(el);
-          console.log(formatText(tag))
           ustensils.push(element)
         }
       })
     })
   })
 
-  filteredRecipes = [...new Set([...ingredients, ...appliances, ...ustensils])];
+  result = [...new Set([...ingredients, ...appliances, ...ustensils])];
+
+  console.log(ingredients);
+  console.log(appliances);
+  console.log(ustensils);
+  console.log(result);
+
+
+filteredRecipes = result
+  //comparer les array et ingredients /  appliances / ustensils contiennent la meme recette alors on l'ajoute
+  //aux recettes filtrees ?
+
 
   return filteredRecipes;
 }
