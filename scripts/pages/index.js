@@ -397,8 +397,6 @@ function closeTheTag(){
 
     filteredRecipes =  filteringRecipeswithTags(recipes);
     searchInput1Datas(filteredRecipes);
-    console.log(filteredRecipes)
-    // filteringRecipeswithTags(filteredRecipes)
 
     displayCards(filteredRecipes);
     refreshLists();
