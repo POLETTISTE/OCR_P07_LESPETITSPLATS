@@ -395,7 +395,7 @@ function closeTheTag(){
     
   } else if (tags.length !== 0 && inputForm1.value!==''){
 
-    filteredRecipes =  filteringRecipeswithTags(recipes);
+    filteredRecipes =  filteringRecipeswithTags(filteredRecipes);
     searchInput1Datas(filteredRecipes);
 
     displayCards(filteredRecipes);
