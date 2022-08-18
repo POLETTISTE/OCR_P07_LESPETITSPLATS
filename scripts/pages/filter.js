@@ -361,7 +361,7 @@ function filteringRecipeswithTags(recipes) {
 
   
   if(tagsAppliances.length>0) {
-    filteredRecipes =  filteredRecipes.filter(element => {
+    filteredRecipes.filter(element => {
       tagsAppliances.forEach(tag => {
         if (formatText(element.appliance).includes(formatText(tag))){
           appliances.push(element);
@@ -373,7 +373,7 @@ function filteringRecipeswithTags(recipes) {
   }
 
   if(tagsUstensils.length>0){
-    filteredRecipes =  filteredRecipes.filter(element => {
+    filteredRecipes.filter(element => {
       element.ustensils.forEach(el => {
         tagsUstensils.forEach(tag => {
           if (formatText(el).includes(formatText(tag))){
