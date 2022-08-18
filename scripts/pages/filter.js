@@ -339,51 +339,52 @@ function filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils){
 // MISE A JOUR DES RECETTES FILTREES A LA DESTRUCTION D'UN TAG
 
 function filteringRecipeswithTags(recipes) {
-
+  let filteredRecipes=[];
   let ingredients=[];
   let appliances=[];
   let ustensils=[];
 
-  recipes.filter(element => {
-    element.ingredients.forEach(el => {
-      tagsIngredients.forEach(tag => {
-        if (formatText(el.ingredient).includes(formatText(tag)) ) {
-          ingredients.push(element);
-        }
+  if(tagsIngredients.length>0) {
+    recipes.filter(element => {
+      element.ingredients.forEach(el => {
+        tagsIngredients.forEach(tag => {
+          if (formatText(el.ingredient).includes(formatText(tag)) ) {
+            ingredients.push(element);
+          }
+        })
       })
     })
-  })
+    filteredRecipes = ingredients;
+  }else{
+    filteredRecipes = recipes
+  }
+
   
-  recipes.filter(element => {
-    tagsAppliances.forEach(tag => {
-      if (formatText(element.appliance).includes(formatText(tag))){
-        appliances.push(element)
-      }
-    })
-  })
+  if(tagsAppliances.length>0) {
+    filteredRecipes =  filteredRecipes.filter(element => {
+      tagsAppliances.forEach(tag => {
+        if (formatText(element.appliance).includes(formatText(tag))){
+          appliances.push(element);
 
-  recipes.filter(element => {
-    element.ustensils.forEach(el => {
-      tagsUstensils.forEach(tag => {
-        if (formatText(el).includes(formatText(tag))){
-          ustensils.push(element)
         }
       })
     })
-  })
+    filteredRecipes = appliances
+  }
 
-  result = [...new Set([...ingredients, ...appliances, ...ustensils])];
+  if(tagsUstensils.length>0){
+    filteredRecipes =  filteredRecipes.filter(element => {
+      element.ustensils.forEach(el => {
+        tagsUstensils.forEach(tag => {
+          if (formatText(el).includes(formatText(tag))){
+            ustensils.push(element)
+          }
+        })
+      })
+    })
+    filteredRecipes = ustensils
 
-  console.log(ingredients);
-  console.log(appliances);
-  console.log(ustensils);
-  console.log(result);
-
-
-filteredRecipes = result
-  //comparer les array et ingredients /  appliances / ustensils contiennent la meme recette alors on l'ajoute
-  //aux recettes filtrees ?
-
+  }
 
   return filteredRecipes;
 }
