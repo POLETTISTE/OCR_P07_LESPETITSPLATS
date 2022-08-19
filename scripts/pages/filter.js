@@ -339,48 +339,49 @@ function filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils){
 // MISE A JOUR DES RECETTES FILTREES A LA DESTRUCTION D'UN TAG
 
 function filteringRecipeswithTags(recipes) {
-  let filteredRecipes=recipes;
+  let filteredRecipes=[];
   let ingredients=[];
   let appliances=[];
   let ustensils=[];
-  filteredRecipes = recipes
-
 
   if(tagsIngredients.length>0) {
-    filteredRecipes.filter(element => {
+    tagsIngredients.forEach(tag => {
+
+    recipes.filter(element => {
       element.ingredients.forEach(el => {
-        tagsIngredients.forEach(tag => {
+
           if (formatText(el.ingredient).includes(formatText(tag)) ) {
+
             ingredients.push(element);
           }
           filteredRecipes = ingredients;
         })
       })
     })
- 
+  }else{
+    filteredRecipes = recipes
   }
 
   
   if(tagsAppliances.length>0) {
+    tagsAppliances.forEach(tag => {
     filteredRecipes.filter(element => {
-      tagsAppliances.forEach(tag => {
         if (formatText(element.appliance).includes(formatText(tag))){
           appliances.push(element);
-
         }
-        filteredRecipes = appliances
+        filteredRecipes = appliances;
       })
     })
   }
 
   if(tagsUstensils.length>0){
+    tagsUstensils.forEach(tag => {
     filteredRecipes.filter(element => {
       element.ustensils.forEach(el => {
-        tagsUstensils.forEach(tag => {
           if (formatText(el).includes(formatText(tag))){
             ustensils.push(element)
           }
-          filteredRecipes = ustensils
+          filteredRecipes = ustensils;
         })
       })
     })
