@@ -333,7 +333,6 @@ function clickUstensil(e) {
 
 // A LA FERMETURE D'UN TAG
 function closeTheTag(){
-  console.log('TEST')
 
   //on récupère le nom du tag
   const target = this.parentNode;
