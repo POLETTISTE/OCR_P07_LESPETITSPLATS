@@ -349,12 +349,14 @@ function filteringRecipeswithTags(recipes) {
       element.ingredients.forEach(el => {
         tagsIngredients.forEach(tag => {
           if (formatText(el.ingredient).includes(formatText(tag)) ) {
-            ingredients.push(element);
+            // ingredients.push(element);
+            filteredRecipes=element;
+            return filteredRecipes
           }
         })
       })
     })
-    filteredRecipes = ingredients;
+    // filteredRecipes = ingredients;
   }else{
     filteredRecipes = recipes
   }
@@ -364,12 +366,13 @@ function filteringRecipeswithTags(recipes) {
     filteredRecipes.filter(element => {
       tagsAppliances.forEach(tag => {
         if (formatText(element.appliance).includes(formatText(tag))){
-          appliances.push(element);
-
+          // appliances.push(element);
+          filteredRecipes=element;
+          return filteredRecipes
         }
       })
     })
-    filteredRecipes = appliances
+    // filteredRecipes = appliances
   }
 
   if(tagsUstensils.length>0){
@@ -377,12 +380,14 @@ function filteringRecipeswithTags(recipes) {
       element.ustensils.forEach(el => {
         tagsUstensils.forEach(tag => {
           if (formatText(el).includes(formatText(tag))){
-            ustensils.push(element)
+            // ustensils.push(element)
+            filteredRecipes=element;
+            return filteredRecipes
           }
         })
       })
     })
-    filteredRecipes = ustensils
+    // filteredRecipes = ustensils
 
   }
 
