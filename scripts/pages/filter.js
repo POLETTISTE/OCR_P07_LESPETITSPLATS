@@ -339,54 +339,67 @@ function filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils){
 // MISE A JOUR DES RECETTES FILTREES A LA DESTRUCTION D'UN TAG
 
 function filteringRecipeswithTags(recipes) {
-  let filteredRecipes=[];
-  let ingredients=[];
-  let appliances=[];
-  let ustensils=[];
+  let filteredRecipes=recipes;
+  // let ingredients=[];
+  // let appliances=[];
+  // let ustensils=[];
 
-  if(tagsIngredients.length>0) {
-    tagsIngredients.forEach(tag => {
+tags.forEach(tag => {
+  let resultIng = (item) => formatText(item.ingredient).includes(formatText(tag));
+  let resultUst = (item) => formatText(item).includes(formatText(tag));
 
-    recipes.filter(element => {
-      element.ingredients.forEach(el => {
+  result = filteredRecipes.filter(element => {
+    return formatText(element.appliance).includes(formatText(tag)) || 
+           element.ustensils.some(resultUst) ||
+           element.ingredients.some(resultIng);
+  })
+  filteredRecipes = result;
+  
+})
+return filteredRecipes;
 
-          if (formatText(el.ingredient).includes(formatText(tag)) ) {
 
-            ingredients.push(element);
-          }
-          filteredRecipes = ingredients;
-        })
-      })
-    })
-  }else{
-    filteredRecipes = recipes
-  }
+  // if(tagsIngredients.length>0) {
+  //   recipes.filter(element => {
+  //     element.ingredients.forEach(el => {
+  //       tagsIngredients.forEach(tag => {
+  //         if (formatText(el.ingredient).includes(formatText(tag)) ) {
+  //           ingredients.push(element);
+  //         }
+  //       })
+  //     })
+  //   })
+  //   filteredRecipes = ingredients;
+  // }else{
+  //   filteredRecipes = recipes
+  // }
 
   
-  if(tagsAppliances.length>0) {
-    tagsAppliances.forEach(tag => {
-    filteredRecipes.filter(element => {
-        if (formatText(element.appliance).includes(formatText(tag))){
-          appliances.push(element);
-        }
-        filteredRecipes = appliances;
-      })
-    })
-  }
+  // if(tagsAppliances.length>0) {
+  //   filteredRecipes.filter(element => {
+  //     tagsAppliances.forEach(tag => {
+  //       if (formatText(element.appliance).includes(formatText(tag))){
+  //         appliances.push(element);
 
-  if(tagsUstensils.length>0){
-    tagsUstensils.forEach(tag => {
-    filteredRecipes.filter(element => {
-      element.ustensils.forEach(el => {
-          if (formatText(el).includes(formatText(tag))){
-            ustensils.push(element)
-          }
-          filteredRecipes = ustensils;
-        })
-      })
-    })
+  //       }
+  //     })
+  //   })
+  //   filteredRecipes = appliances
+  // }
 
-  }
+  // if(tagsUstensils.length>0){
+  //   filteredRecipes.filter(element => {
+  //     element.ustensils.forEach(el => {
+  //       tagsUstensils.forEach(tag => {
+  //         if (formatText(el).includes(formatText(tag))){
+  //           ustensils.push(element)
+  //         }
+  //       })
+  //     })
+  //   })
+  //   filteredRecipes = ustensils
 
-  return filteredRecipes;
+  // }
+
+  // return filteredRecipes;
 }
