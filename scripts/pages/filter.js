@@ -339,7 +339,7 @@ function filteringListUstensilsWhenClickOnAnotherTag(filteredListUstensils){
 // MISE A JOUR DES RECETTES FILTREES A LA DESTRUCTION D'UN TAG
 
 function filteringRecipeswithTags(recipes) {
-  let filteredRecipes=[];
+  let filteredRecipes=recipes;
   let ingredients=[];
   let appliances=[];
   let ustensils=[];
