@@ -6,7 +6,6 @@
   "scripts": {
     "lint": "./node_modules/.bin/eslint .",
     "sass": "sass --watch ./sass/main.scss:./public/css/style.css"
-      
   },
   "repository": {
     "type": "git",
